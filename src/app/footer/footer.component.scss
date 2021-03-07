@@ -6,6 +6,11 @@ section{
         height: 2rem;
         width: 2rem;
         margin: 0.7rem;
+        transition: transform .2s;  
+    }
+
+    img:hover{
+        transform: scale(1.5);
     }
 
 }
