@@ -14,13 +14,13 @@ export class SentimentComponent implements OnInit {
   constructor(private rootService : RootService) { }
 
   ngOnInit() {
-    this.rootService.getAPIData().subscribe((response)=>{
-      console.log('response is ', response)
-      // this.texto=response[1].name;
-
-    },(error) => {
-      console.log('error is ', error)
-    })
+    // this.rootService.getAPIData().subscribe((response)=>{
+    //   console.log('response is ', response)
+    //   // this.texto=response[1].name;
+    //
+    // },(error) => {
+    //   console.log('error is ', error)
+    // })
 
     this.rootService.postAPIData().subscribe((response)=>{
       console.log('response is ', response)
@@ -29,6 +29,10 @@ export class SentimentComponent implements OnInit {
     },(error) => {
       console.log('error is ', error)
     })
+
+  }
+
+  guardarTexto(){
 
   }
 
