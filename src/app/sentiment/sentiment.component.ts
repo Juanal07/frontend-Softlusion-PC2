@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RootService } from './root.service';
+import {Sentiment} from "./sentiment.model";
 
 
 @Component({
@@ -9,30 +10,27 @@ import { RootService } from './root.service';
 })
 export class SentimentComponent implements OnInit {
 
-  texto="asdf";
+  respuesta='';
+  textArea='';
+  sentiment = new Sentiment;
 
   constructor(private rootService : RootService) { }
 
   ngOnInit() {
-    // this.rootService.getAPIData().subscribe((response)=>{
-    //   console.log('response is ', response)
-    //   // this.texto=response[1].name;
-    //
-    // },(error) => {
-    //   console.log('error is ', error)
-    // })
 
-    this.rootService.postAPIData().subscribe((response)=>{
+  }
+
+  viewSentiment(){
+    this.sentiment["text"]=this.textArea;
+
+    this.rootService.postAPIData(this.sentiment).subscribe((response)=>{
       console.log('response is ', response)
-      this.texto=response["result"];
+
+      this.respuesta=response["result"];
 
     },(error) => {
       console.log('error is ', error)
     })
-
-  }
-
-  guardarTexto(){
 
   }
 

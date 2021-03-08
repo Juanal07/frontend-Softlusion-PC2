@@ -2,11 +2,11 @@
 <div class="row" class="titulo">
     <h1>Análisis de sentimiento</h1>
 </div>
-<form>
+
     <div class="row">
         <div class ="col-md-3"></div>
         <div class ="col-md-6">
-            <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe aquí..."></textarea>
+            <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe aquí..." [(ngModel)]="textArea"></textarea>
             <small id="emailHelp" class="form-text text-muted">A continuación se mostrará el sentimiento del texto</small>
         </div>
         <div class ="col-md-3"></div>
@@ -14,7 +14,7 @@
     <div class="row">
         <div class ="col-md-3"></div>
         <div class ="col-md-6 posicion-boton">
-            <button type="submit" class="btn boton">Analizar</button>
+            <button (click)="viewSentiment()" type="submit" class="btn boton">Analizar</button>
         </div>
         <div class ="col-md-3">
         </div>
@@ -38,12 +38,11 @@
         </div>
         <div class ="col-md-1"></div>
     </div>
-</form>
 </div>
 
-<h1>Esto es una prueba: {{texto}}</h1>
-<p *ngIf="texto=='1'">tu madre es muy guapa</p>
-<p *ngIf="texto=='2'">tu madre es muy guapa</p>
-<p *ngIf="texto=='3'">tu madre es muy guapa</p>
-<p *ngIf="texto=='4'">tu madre es muy guapa</p>
-<p *ngIf="texto=='5'">tu madre es muy guapa</p>
+<h1>Esto es una prueba: {{textArea}}</h1>
+<p *ngIf="this.respuesta=='1'">muy feliz</p>
+<p *ngIf="this.respuesta=='2'">feliz</p>
+<p *ngIf="this.respuesta=='3'">neutral</p>
+<p *ngIf="this.respuesta=='4'">triste</p>
+<p *ngIf="this.respuesta=='5'">muy triste</p>
