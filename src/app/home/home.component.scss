@@ -1,4 +1,79 @@
-.curva {
+/* .curva {
     background: linear-gradient(190deg, #b2b2b8 50%, rgb(255, 255, 255) 51%);
     height: 2rem;
+} */
+
+.fondo-tools{
+    background-color: rgb(19, 24, 41);
+    margin-top: 3rem;
+}
+.tools{
+    display: flex;
+    justify-content: center;
+    margin-top:3rem;
+    margin-bottom: 3rem;
+}
+
+.tool-angular{
+    width: 55%;
+    height: 50%;
+    margin-bottom: 2.5rem;
+}
+
+.tool-python{
+    width: 45%;
+    height: 20%;
+    margin-top: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.tool-sql{
+    margin-top: 1.2rem;
+    width: 90%;
+    height: 23%;
+    margin-bottom: 2.5rem;
+}
+
+.texto {
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+h4 {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.texto-card {
+    margin-bottom: 2.5rem;
+    text-align: center;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.foto-home {
+    width: 10%;
+    height: 10%;
+}
+
+.card {
+    background-color: #22283100;
+    border-color: white;
+    height: 37rem;
+    width: 20rem;
+    border-radius: 10px;
+    border-width: .3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(255, 255, 255, 0.7);
+    color: white;
+    transition: transform .2s;
+    margin-bottom: 2rem;
+}
+
+.card:hover{
+    background-color: #ffffff;
+    transform: scale(1.2); 
+    color:rgb(19, 24, 41);
 }
