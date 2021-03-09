@@ -1,3 +1,5 @@
+$azulFoot: rgb(19, 24, 41);
+
 section{
     padding-top: .5rem;
     padding-bottom: .5rem;
@@ -16,7 +18,7 @@ section{
 }
 
 footer{
-    background-color: rgb(19, 24, 41);
+    background-color: $azulFoot;
     color: white;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     text-align: center;
@@ -36,7 +38,7 @@ footer{
     cursor: pointer;
 
     :hover{
-        color: black;
+        color: $azulFoot;
         background-color: white;
         border-color: white;
     }
