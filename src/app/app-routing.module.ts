@@ -4,8 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { SentimentComponent } from './sentiment/sentiment.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent,  pathMatch: 'full'},
-  { path: 'analisis', component: SentimentComponent}
+  { path: '', component: HomeComponent, pathMatch:"full"},
+  { path: 'analisis', component: SentimentComponent, pathMatch:"full"}
 ];
 
 @NgModule({

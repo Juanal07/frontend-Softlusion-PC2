@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RootService } from './root.service';
+import { SentimentService } from './sentiment.service';
 import {Sentiment} from "./sentiment.model";
 
 
@@ -14,7 +14,7 @@ export class SentimentComponent implements OnInit {
   textArea='';
   sentiment = new Sentiment;
 
-  constructor(private rootService : RootService) { }
+  constructor(private sentimentService : SentimentService) { }
 
   ngOnInit() {
 
@@ -23,7 +23,7 @@ export class SentimentComponent implements OnInit {
   viewSentiment(){
     this.sentiment["text"]=this.textArea;
 
-    this.rootService.postAPIData(this.sentiment).subscribe((response)=>{
+    this.sentimentService.postAPIData(this.sentiment).subscribe((response)=>{
       console.log('response is ', response)
 
       this.respuesta=response["result"];

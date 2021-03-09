@@ -1,7 +1,7 @@
 <div class="container">
-<div class="row" class="titulo">
-    <h1>Análisis de sentimiento</h1>
-</div>
+    <div class="row" class="titulo">
+        <h1>Análisis de sentimiento</h1>
+    </div>
 
     <div class="row">
         <div class ="col-md-3"></div>
@@ -19,30 +19,22 @@
         <div class ="col-md-3">
         </div>
     </div>
+
     <div class="row">
-        <div class ="col-md-1"></div>
-        <div class ="col-md-2">
-            <img class="face" src="../../assets/images/face-hate.PNG" alt="">
-        </div>
-        <div class ="col-md-2">
-            <img class="face" src="../../assets/images/face-almost-hate.PNG" alt="">
-        </div>
-        <div class ="col-md-2">
-            <img class="face" src="../../assets/images/face-normal.PNG" alt="">
-        </div>
-        <div class ="col-md-2">
-            <img class="face" src="../../assets/images/face-happy.PNG" alt="">
-        </div>
-        <div class ="col-md-2">
-            <img class="face" src="../../assets/images/face-super-happy.PNG" alt="">
-        </div>
-        <div class ="col-md-1"></div>
+        <img *ngIf="this.respuesta=='5'" class="face" src="../../assets/images/face-hate.PNG" alt="">
+        <img *ngIf="this.respuesta=='4'" class="face" src="../../assets/images/face-almost-hate.PNG" alt="">
+        <img *ngIf="this.respuesta=='3'" class="face" src="../../assets/images/face-normal.PNG" alt="">
+        <img *ngIf="this.respuesta=='2'" class="face" src="../../assets/images/face-happy.PNG" alt="">
+        <img *ngIf="this.respuesta=='1'" class="face" src="../../assets/images/face-super-happy.PNG" alt="">
     </div>
 </div>
 
-<h1>Esto es una prueba: {{textArea}}</h1>
+<!-- <h1>Esto es una prueba: {{textArea}}</h1>
 <p *ngIf="this.respuesta=='1'">muy feliz</p>
 <p *ngIf="this.respuesta=='2'">feliz</p>
 <p *ngIf="this.respuesta=='3'">neutral</p>
 <p *ngIf="this.respuesta=='4'">triste</p>
 <p *ngIf="this.respuesta=='5'">muy triste</p>
+ -->
+
+ 

@@ -1,7 +1,8 @@
+$azulOs: rgb(19, 35, 83);
 .boton {
     margin-top: 2rem;
     color: #fff;
-    background-color:rgb(19, 35, 83);
+    background-color:$azulOs;
     border-color: rgb(19, 35, 83);
     border-radius: 5px;
     font-weight: 400;
@@ -18,8 +19,14 @@
 }
 
 .face {
-    margin-top: 5rem;
-    width: 10rem;
-    height: 10rem;
-    margin-bottom: 5rem;
+    display:block;
+    margin:auto;
+    margin-top: 3rem;
+    width: 20rem;
+    height: 20rem;
+    margin-bottom: 3rem;
+    transition: transform .2s;
+    transform: scale(1.2); 
+    animation-delay: 2s;
+
 }
