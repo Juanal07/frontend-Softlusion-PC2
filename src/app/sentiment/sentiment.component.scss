@@ -6,6 +6,7 @@ $azulOs: rgb(19, 35, 83);
     border-color: $azulOs;
     border-radius: 5px;
     font-weight: 400;
+    margin-bottom: 3rem;
 }
 
 .posicion-boton {
@@ -21,7 +22,6 @@ $azulOs: rgb(19, 35, 83);
 .face {
     display:block;
     margin:auto;
-    margin-top: 3rem;
     width: 20rem;
     height: 20rem;
     margin-bottom: 3rem;
@@ -29,4 +29,8 @@ $azulOs: rgb(19, 35, 83);
     transform: scale(1.2); 
     animation-delay: 2s;
 
+}
+
+.bloque-blanco {
+    height: 25rem;
 }
