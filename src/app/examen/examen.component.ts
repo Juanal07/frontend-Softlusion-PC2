@@ -19,8 +19,6 @@ export class ExamenComponent implements OnInit {
   respuesta = '';
   textArea = '';
   examen = { text: "" };
-/*   frases: String[] = [];
-  resultados: number[] = []; */
   media:number =0.0;
   tuplas:{text:string, resultado:number}[]=[];
 
@@ -32,12 +30,13 @@ export class ExamenComponent implements OnInit {
   }
 
   agregar() {
-    this.tuplas.push({text:this.textArea,resultado:0});
+    this.tuplas.push({text:this.textArea,resultado:undefined});
     console.log(this.tuplas);
     this.textArea = "";
   }
 
   analizar() {
+    this.media=0;
     for (let i = 0; i < this.tuplas.length; i++) {
       this.examenService.postAPIData({ text: this.tuplas[i]["text"] }).subscribe((response) => {
         this.tuplas[i]["resultado"] = response["result"];

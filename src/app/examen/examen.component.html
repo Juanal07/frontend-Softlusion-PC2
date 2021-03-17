@@ -6,8 +6,7 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Escribe aquí..." [(ngModel)]="textArea"></textarea>
+            <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe aquí..." [(ngModel)]="textArea"></textarea>
             <small id="emailHelp" class="form-text text-muted">A continuación se mostrará el sentimiento del
                 texto</small>
         </div>
@@ -24,15 +23,15 @@
     </div>
     <div class="bloque-blanco">
         <div class="row">
-            <div class="col-md-2">
-                <div *ngFor="let item of tuplas;" [ngClass]="{'rojo': item.resultado >= 4, 'amarillo': item.resultado == 3, 'verde': item.resultado == 2, 'verde': item.resultado == 1}">{{item["text"]}}</div>
+            <div class="col-md-4">
+                <div *ngFor="let item of tuplas;" [ngClass]="{'rojo': item.resultado >= 4, 'amarillo': item.resultado == 3, 'verde': 2 >= item.resultado}">{{item["text"]}}</div>
             </div>
             <div class="col-md-2">
                 <div *ngFor="let res of tuplas;">{{res["resultado"]}}</div>
             </div>
             <div class="col-md-2">
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-4"></div>
         </div>
         <div class="row">
             <p *ngIf="this.media >= 0">La media es: {{this.media}}</p>
