@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SentimentService } from './sentiment.service';
-import {Sentiment} from "./sentiment.model";
+import { SentimentService } from '../../services/sentiment.service';
+import {Sentiment} from "../../models/sentiment.model";
 
 
 @Component({

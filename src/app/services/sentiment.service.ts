@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Sentiment} from "./sentiment.model";
+import {Sentiment} from "../models/sentiment.model";
 import {endpoints} from '../../environments/endpoints';
 
 @Injectable({

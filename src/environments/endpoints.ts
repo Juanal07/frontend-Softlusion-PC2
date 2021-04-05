@@ -1,6 +1,5 @@
-
-import {environment} from './environment';
+import { environment } from './environment';
 
 export const endpoints = {
-  sentiment: `${environment.apiUrl}/sentiment`,
+  sentiment: `${environment.apiFlask}/sentiment`,
 };
