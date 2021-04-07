@@ -8,23 +8,8 @@
     margin-bottom: 3rem;
 }
 
-.tool-angular{
-    width: 55%;
-    // height: 50%;
-    margin-bottom: 2.5rem;
-}
-
-.tool-python{
-    width: 45%;
-    // height: 20%;
-    margin-top: 1.2rem;
-    margin-bottom: 2.5rem;
-}
-
-.tool-sql{
-    margin-top: 1.2rem;
-    width: 90%;
-    // height: 23%;
+.tool-image{
+    width: 60%;
     margin-bottom: 2.5rem;
 }
 
@@ -54,7 +39,7 @@ h4 {
 .card {
     background-color: #22283100;
     border-color: white;
-    height: 37rem;
+    height: auto;
     width: 20rem;
     border-radius: 10px;
     border-width: .3rem;
