@@ -4,30 +4,27 @@
     </div>
 
     <div class="row">
-        <div class ="col-md-3"></div>
-        <div class ="col-md-6">
+        <div class="col-md-6 offset-md-3">
             <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe aquí..." [(ngModel)]="textArea"></textarea>
             <small id="emailHelp" class="form-text text-muted">A continuación se mostrará el sentimiento del texto</small>
         </div>
-        <div class ="col-md-3"></div>
     </div>
+
     <div class="row">
-        <div class ="col-md-3"></div>
-        <div class ="col-md-6 posicion-boton">
+        <div class="col-md-6 offset-md-3 posicion-boton ">
             <button (click)="viewSentiment()" type="submit" class="btn boton">Analizar</button>
         </div>
-        <div class ="col-md-3">
+    </div>
+
+    <div class="bloque-blanco">
+        <div class="row">
+            <img *ngIf="this.respuesta=='5'" class="face" src="../../assets/images/face-hate.PNG" alt="">
+            <img *ngIf="this.respuesta=='4'" class="face" src="../../assets/images/face-almost-hate.PNG" alt="">
+            <img *ngIf="this.respuesta=='3'" class="face" src="../../assets/images/face-normal.PNG" alt="">
+            <img *ngIf="this.respuesta=='2'" class="face" src="../../assets/images/face-happy.PNG" alt="">
+            <img *ngIf="this.respuesta=='1'" class="face" src="../../assets/images/face-super-happy.PNG" alt="">
         </div>
     </div>
-<div class="bloque-blanco">
-    <div class="row">
-        <img *ngIf="this.respuesta=='5'" class="face" src="../../assets/images/face-hate.PNG" alt="">
-        <img *ngIf="this.respuesta=='4'" class="face" src="../../assets/images/face-almost-hate.PNG" alt="">
-        <img *ngIf="this.respuesta=='3'" class="face" src="../../assets/images/face-normal.PNG" alt="">
-        <img *ngIf="this.respuesta=='2'" class="face" src="../../assets/images/face-happy.PNG" alt="">
-        <img *ngIf="this.respuesta=='1'" class="face" src="../../assets/images/face-super-happy.PNG" alt="">
-    </div>
-</div>
 </div>
 
 <!-- <h1>Esto es una prueba: {{textArea}}</h1>
@@ -37,5 +34,3 @@
 <p *ngIf="this.respuesta=='4'">triste</p>
 <p *ngIf="this.respuesta=='5'">muy triste</p>
  -->
-
- 
