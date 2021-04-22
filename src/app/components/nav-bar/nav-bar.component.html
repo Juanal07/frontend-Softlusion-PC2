@@ -21,20 +21,20 @@
 
                 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
                 <div id="id01" class="modal">
-                    <form class="modal-content animate" action="/action_page.php" method="post">
+                    <div class="modal-content animate">
                         <div class="imgcontainer">
                             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                             <img src="../../assets/images/mundo-digital.jpg" alt="Avatar" class="avatar">
                         </div>
 
                         <div class="container">
-                            <label for="uname"><b>Usuario</b></label>
-                            <input type="text" placeholder="Introduzca su usuario" name="uname" required>
+                            <p>Usuario</p>
+                            <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="User" [(ngModel)]="user"></textarea>
 
-                            <label for="psw"><b>Contraseña</b></label>
-                            <input type="password" placeholder="Introduzca su contraseña" name="psw" required>
+                            <p>Contraseña</p>
+                            <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Password" [(ngModel)]="password"></textarea>
 
-                            <button type="submit">Login</button>
+                            <button (click)="sendLogin()" type="submit">Login</button>
                             <label>
                             <input type="checkbox" checked="checked" name="remember"> Recuerdame
                             </label>
@@ -44,7 +44,7 @@
                             <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
                             <span class="psw"><a href="crearregistro.html">Registrate</a></span>
                         </div>
-                    </form>
+                    </div>
                 </div>
 
             </div>
