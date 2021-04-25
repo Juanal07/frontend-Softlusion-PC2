@@ -1,8 +1,8 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { Login } from '../models/login.model';
-import { RegisterComponent } from 'src/app/register/register.component';
-import { LoginService } from '../services/login.service';
+import { Login } from '../../models/login.model';
+import { RegisterComponent } from 'src/app/components/register/register.component';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LoginComponent } from 'src/app/login/login.component';
+import { LoginComponent } from 'src/app/components/login/login.component';
 
 
 
