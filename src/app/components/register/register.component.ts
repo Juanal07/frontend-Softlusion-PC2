@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { RegisterService } from '../services/register.service';
-import { Register } from '../models/register.model';
+import { RegisterService } from '../../services/register.service';
+import { Register } from '../../models/register.model';
 
 @Component({
   selector: 'app-register',
