@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Login} from "../models/login.model";
+import {Register} from "../models/register.model";
 import {endpoints} from '../../environments/endpoints';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  postAPIData(login: Login){
-    return this.http.post(endpoints.login, login)
+  postAPIData(register: Register){
+    return this.http.post(endpoints.register, register)
   }
 }

@@ -10,6 +10,7 @@ import { Register } from '../models/register.model';
 })
 export class RegisterComponent implements OnInit {
   @ViewChild("content") block: ElementRef;
+  register: Register = new Register();
   closeResult = '';
   email: string = '';
   password: string = '';
@@ -37,5 +38,21 @@ export class RegisterComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  sendRegister() {
+    this.register['name'] = this.name;
+    this.register['email'] = this.email;
+    this.register['password'] = this.password;
+    this.registerService.postAPIData(this.register).subscribe(
+      (response) => {
+        console.log('response is ', response);
+        // this.respuesta = response['result'];
+        // console.log(this.login['email']);
+      },
+      (error) => {
+        console.log('error is ', error);
+      }
+    );
   }
 }

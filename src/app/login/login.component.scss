@@ -1,8 +1,8 @@
-$azulOs: rgb(19, 35, 83);
+$azulOs: rgb(10, 18, 41);
 $azul2: rgb(10, 18, 43);
 .boton {
     color: #fff;
-    background-color:$azulOs;
+    background-color: $azulOs;
     border-color: $azulOs;
     border-radius: 5px;
     font-weight: 400;
@@ -11,6 +11,12 @@ $azul2: rgb(10, 18, 43);
     width: 100%;
     margin-top: 1rem;
 }
+
+/* .modal-rounded {
+    .modal-content {
+      border-radius: 100px !important;
+    }
+  } */
 
 .boton1 {
     color: #fff;
@@ -36,8 +42,8 @@ $azul2: rgb(10, 18, 43);
 
 .modal-header{
     color: #fff;
-    background-color:$azul2;
-    border-color: $azul2;
+    background-color:$azulOs;
+    border-color: $azulOs;
 }
 
 

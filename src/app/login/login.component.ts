@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Login } from '../models/login.model';
 import { RegisterComponent } from 'src/app/register/register.component';
@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
   password: string = '';
   respuesta: string = '';
   login: Login = new Login();
-  closeResult = '';
+  closeResult: string = '';
   @ViewChild("content") block: ElementRef;
-  @ViewChild(RegisterComponent) child:RegisterComponent;
+  @ViewChild(RegisterComponent) child:RegisterComponent;  //hijo referenciado 
 
   constructor(private loginService: LoginService, private modalService: NgbModal) { }
 
