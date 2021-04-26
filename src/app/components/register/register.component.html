@@ -1,0 +1,18 @@
+<ng-template #content let-modal>
+      <div class="modal-header">
+          <h3 class="modal-title" id="modal-basic-title">Register to your SoftLusion</h3>
+      </div>
+      <div class="modal-body">
+          <div class="container">
+              <p>Name</p>
+              <input type="text" class="form-control" placeholder="User name" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="name">
+              <p>Email</p>
+              <input type="text" class="form-control" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="email">
+              <p>Password</p>
+              <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="password">
+              <p>Confirm password</p>
+              <input type="password" class="form-control" placeholder="Confirm password" aria-label="Username" aria-describedby="basic-addon1">
+              <button class="boton" (click)="modal.dismiss('Cross click')" (click)="sendRegister()" type="submit">Register and Login</button>
+          </div>
+      </div>
+</ng-template>
