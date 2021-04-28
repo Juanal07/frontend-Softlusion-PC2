@@ -12,6 +12,7 @@ import { LoginService } from '../../services/login.service';
 export class LoginComponent implements OnInit {
   // @Input() show: boolean;
   user: string = '';
+  name: string = '';
   password: string = '';
   respuesta: string = '';
   login: Login = new Login();
@@ -22,6 +23,10 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    if (this.name !=''){
+      localStorage.setItem('name','');
+      this.name = localStorage.getItem('name');
+    }
   }
 
   showRegister(){
@@ -47,13 +52,21 @@ export class LoginComponent implements OnInit {
   }
 
   sendLogin() {
+    if (this.name !=''){
+      localStorage.setItem('name','');
+      this.name = localStorage.getItem('name');
+    }
     this.login['email'] = this.user;
     this.login['password'] = this.password;
     this.loginService.postAPIData(this.login).subscribe(
       (response) => {
         console.log('response is ', response);
         // this.respuesta = response['result'];
-        console.log(this.login['email']);
+        localStorage.setItem('name',response['data']['name'])
+
+        this.name = localStorage.getItem('name')
+        console.log("Ususario logeado: ", this.name)
+        // console.log(this.login['email']);
       },
       (error) => {
         console.log('error is ', error);

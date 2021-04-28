@@ -20,6 +20,7 @@
                     <form class="d-flex">
                         <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
                             <a class="nav-link" (click)="showLogin()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
+                            <p class="nav-link" *ngIf="this.name!=''">{{this.name}}</p>
                         </div>
                     </form>
                 </div>
@@ -28,30 +29,3 @@
         </nav>
     </div>
 </div>
-              <!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-                <div id="id01" class="modal">
-                    <div class="modal-content animate">
-                        <div class="imgcontainer">
-                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                            <img src="../../assets/images/mundo-digital.jpg" alt="Avatar" class="avatar">
-                        </div>
-
-                        <div class="container">
-                            <p>Usuario</p>
-                            <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="User" [(ngModel)]="user"></textarea>
-
-                            <p>Contraseña</p>
-                            <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Password" [(ngModel)]="password"></textarea>
-
-                            <button (click)="sendLogin()" type="submit">Login</button>
-                            <label>
-                            <input type="checkbox" checked="checked" name="remember"> Recuerdame
-                            </label>
-                        </div>
-
-                        <div class="container" style="background-color:#f1f1f1">
-                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
-                            <span class="psw"><a href="crearregistro.html">Registrate</a></span>
-                        </div>
-                    </div>
-                </div> -->

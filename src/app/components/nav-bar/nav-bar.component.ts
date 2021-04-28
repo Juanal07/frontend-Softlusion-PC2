@@ -11,6 +11,7 @@ import { LoginComponent } from 'src/app/components/login/login.component';
 
 export class NavBarComponent implements OnInit {
   // estado: boolean = false;
+  name: string = localStorage.getItem('name');
   @ViewChild(LoginComponent) child:LoginComponent;
 
 
