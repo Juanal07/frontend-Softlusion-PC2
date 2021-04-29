@@ -1,24 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Login} from "../models/login.model";
-import {endpoints} from '../../environments/endpoints';
+import { Login } from '../models/login.model';
+import { endpoints } from '../../environments/endpoints';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  postAPIData(login: Login){
-    return this.http.post(endpoints.login, login)
+  postAPIData(login: Login) {
+    return this.http.post(endpoints.login, login);
   }
 
- setName(name: string){
-   localStorage.setItem('name', name);
- }
- 
- getName(){
-   return localStorage.getItem('name');
- }
+  setName(name: string) {
+    localStorage.setItem('name', name);
+  }
+
+  setToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+  getToken() {
+    return localStorage.getItem('token');
+  }
+  getName() {
+    return localStorage.getItem('name');
+  }
+
+  endSession() {
+    localStorage.setItem('name', 'null');
+    localStorage.setItem('token', 'null');
+  }
 }
