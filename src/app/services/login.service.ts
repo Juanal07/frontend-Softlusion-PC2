@@ -13,4 +13,12 @@ export class LoginService {
   postAPIData(login: Login){
     return this.http.post(endpoints.login, login)
   }
+
+ setName(name: string){
+   localStorage.setItem('name', name);
+ }
+ 
+ getName(){
+   return localStorage.getItem('name');
+ }
 }

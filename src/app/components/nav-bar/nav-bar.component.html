@@ -19,8 +19,9 @@
                     </ul>
                     <form class="d-flex">
                         <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
-                            <a class="nav-link" (click)="showLogin()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
-                            <p class="nav-link" *ngIf="this.name!=''">{{this.name}}</p>
+                            <a class="nav-link" (click)="showLogin()"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
+                            <p>{{this.getName()}}</p>
+                            <!-- class="nav-link" *ngIf="this.name!=''" -->
                         </div>
                     </form>
                 </div>
@@ -28,9 +29,4 @@
             </div>
         </nav>
     </div>
-</div>
-
-
-<div>
-    hola
 </div>
