@@ -1,31 +1,71 @@
 <div class="nav-bar fixed-top">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark nav-dark">
-            <div class="container-fluid">
-                <a routerLink="">
-                    <img class="logo" src="../../assets/images/logo.PNG" alt="">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" routerLink="analisis" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sentiment analysis</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
-                            <a class="nav-link" (click)="showLogin()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
-                            <p class="nav-link" *ngIf="this.name!=''">{{this.name}}</p>
-                        </div>
-                    </form>
-                </div>
-                <app-login></app-login>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark nav-dark">
+      <div class="container-fluid">
+        <a routerLink="">
+          <img class="logo" src="../../assets/images/logo.PNG" alt="" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink=""
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="analisis"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+                >Sentiment analysis</a
+              >
+            </li>
+          </ul>
+          <form *ngIf="this.getName()=='null'" class="d-flex">
+            <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
+              <a
+                class="nav-link"
+                (click)="showLogin()"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+                >Login</a
+              >
             </div>
-        </nav>
-    </div>
+          </form>
+          <form *ngIf="this.getName()!='null'" lass="d-flex">
+            <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
+              <a class="nav-link">Bienvenido/a {{this.getName()}}</a>
+            </div>
+          </form>
+          <form *ngIf="this.getName()!='null'" lass="d-flex">
+            <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
+              <a class="nav-link">Perfil</a>
+            </div>
+          </form>
+          <form *ngIf="this.getName()!='null'" lass="d-flex">
+            <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
+              <a class="nav-link" (click)="endSession()">Cerrar sesión</a>
+            </div>
+          </form>
+        </div>
+        <app-login></app-login>
+      </div>
+    </nav>
+  </div>
 </div>

@@ -1,26 +1,38 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginComponent } from 'src/app/components/login/login.component';
-
-
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  styleUrls: ['./nav-bar.component.scss'],
 })
-
 export class NavBarComponent implements OnInit {
   // estado: boolean = false;
-  name: string = localStorage.getItem('name');
-  @ViewChild(LoginComponent) child:LoginComponent;
+  name: string = '';
+  @ViewChild(LoginComponent) child: LoginComponent;
 
+  constructor(private loginService: LoginService) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  showLogin() {
+    this.child.showPopupLogin();
   }
 
-  showLogin(){
-    this.child.showPopupLogin();
+  showName() {
+    this.name = this.loginService.getName();
+  }
+
+  getName() {
+    return this.loginService.getName();
+  }
+
+  getToken() {
+    return this.loginService.getToken();
+  }
+
+  endSession() {
+    this.loginService.endSession();
   }
 }

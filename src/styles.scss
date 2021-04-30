@@ -18,5 +18,16 @@
     padding-bottom: 2rem;
     padding-top: 3rem;
 }
+
+.modal-content{
+    border-radius: 20px !important; 
+    margin-top:12rem !important;
+}
+
+.modal-header{
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
