@@ -12,7 +12,8 @@ export class MunicipioComponent implements OnInit {
 
   constructor(private municipioService: MunicipioService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log("Componente iniciado")
   }
 
 }
