@@ -1,4 +1,58 @@
-.prueba {
-  width: 10px;
-  height: 1000px;
+$azulOs: rgb(19, 35, 83);
+.encabezado {
+  height: 12rem;
+  background-image: url("/../../assets/images/lake.jpeg");
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 50% 50%;
+  gap: 3%;
+  padding: 5%;
+
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    padding: 5% 20%;
+    border-style: solid;
+    border-color: grey;
+
+    div {
+      font-weight: bold;
+    }
+
+    .flex-item {
+      margin: 0.5rem 0rem;
+    }
+
+    .titulo {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      color: #fff;
+      background-color: $azulOs;
+      border-color: $azulOs;
+      border-radius: 5px;
+      font-weight: 400;
+      width: 35%;
+    }
+
+    button:hover {
+      color: #fff;
+      background-color: #3c5a8f;
+    }
+  }
+}
+@media all and (max-width: 1000px) {
+  .grid {
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 100%;
+
+    .grid-item {
+      height: 700px;
+    }
+  }
 }
