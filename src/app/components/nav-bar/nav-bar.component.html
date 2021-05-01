@@ -48,21 +48,33 @@
               >
             </div>
           </form>
-          <form *ngIf="this.getName()!='null'" lass="d-flex">
-            <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
-              <a class="nav-link">Bienvenido/a {{this.getName()}}</a>
-            </div>
-          </form>
-          <form *ngIf="this.getName()!='null'" lass="d-flex">
-            <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
-              <a class="nav-link">Perfil</a>
-            </div>
-          </form>
-          <form *ngIf="this.getName()!='null'" lass="d-flex">
-            <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
-              <a class="nav-link" (click)="endSession()">Cerrar sesión</a>
-            </div>
-          </form>
+          <div *ngIf="this.getName()!='null'" class="dropdown d-flex">
+            <button  routerLinkActive="active" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Welcome {{this.getName()}}
+            </button>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Perfil</a></li>
+              <li><a class="dropdown-item" (click)="endSession()" href="#">Cerrar sesión</a></li>
+            </ul>
+            <!-- <ul>
+            <li>
+                <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
+                  <a class="dropdown-item">Bienvenido/a {{this.getName()}}</a>
+                </div>
+          </li>
+          <li>
+              <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
+                <a class="dropdown-item">Perfil</a>
+              </div>
+          </li>
+          <li>
+              <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
+                <a class="dropdown-item" (click)="endSession()">Cerrar sesión</a>
+              </div>
+          </li>
+        </ul> -->
+        </div>
         </div>
         <app-login></app-login>
       </div>
