@@ -6,8 +6,8 @@ $azulOs: rgb(19, 35, 83);
 
 .grid {
   display: grid;
-  grid-template-rows: 100%;
-  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 3%;
   padding: 5%;
 
@@ -17,6 +17,7 @@ $azulOs: rgb(19, 35, 83);
     padding: 5% 20%;
     border-style: solid;
     border-color: grey;
+    height: auto;
 
     div {
       font-weight: bold;
@@ -48,11 +49,7 @@ $azulOs: rgb(19, 35, 83);
 }
 @media all and (max-width: 1000px) {
   .grid {
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 100%;
-
-    .grid-item {
-      height: 700px;
-    }
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
