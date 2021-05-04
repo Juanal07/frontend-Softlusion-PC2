@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,11 +15,23 @@ export class ProfileComponent implements OnInit {
   new_psw: string;
   repeat_psw: string;
 
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.name = 'Juan';
-    this.email = 'jjrr1307@gmail.com';
+    this.getUser();
+  }
+
+  getUser() {
+    this.auth.getName().subscribe(
+      (response) => {
+        console.log('response is ', response);
+        this.name = response['data']['name'];
+        this.email = response['data']['email'];
+      },
+      (error) => {
+        console.log('error is ', error);
+      }
+    );
   }
 
   updateName() {
