@@ -38,7 +38,7 @@ $azulOs: rgb(19, 35, 83);
       border-color: $azulOs;
       border-radius: 5px;
       font-weight: 400;
-      width: 35%;
+      width: auto;
     }
 
     button:hover {
@@ -47,6 +47,7 @@ $azulOs: rgb(19, 35, 83);
     }
   }
 }
+
 @media all and (max-width: 1000px) {
   .grid {
     grid-template-rows: 1fr 1fr;
