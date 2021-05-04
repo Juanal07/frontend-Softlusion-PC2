@@ -1,0 +1,25 @@
+<div class="encabezado"></div>
+<div class="grid">
+  <div class="grid-item">
+    <h2 class="flex-item titulo">Datos del perfil</h2>
+    <div class="flex-item">Nombre</div>
+    <input class="flex-item" value="{{this.name}}" [(ngModel)]="this.name" />
+    <div class="flex-item">Email</div>
+    <input class="flex-item" value="{{this.email}}" [(ngModel)]="this.email" />
+    <button class="flex-item" (click)="updateName()">Guardar cambios</button>
+    <div class="flex-item">Antigua contraseña</div>
+    <input class="flex-item" value="{{this.old_psw}}" type="password" />
+    <div class="flex-item">Nueva contraseña</div>
+    <input class="flex-item" value="{{this.new_psw}}" type="password" />
+    <div class="flex-item">Confirme nueva contraseña</div>
+    <input class="flex-item" value="{{this.repeat_psw}}" type="password" />
+    <button class="flex-item">Cambiar contraseña</button>
+  </div>
+  <div class="grid-item">
+    <h2 class="titulo">Últimas búsquedas</h2>
+    <br />
+    <p>Villaviciosa de odon 1/5/2021</p>
+    <br />
+    <p>Villaviciosa de odon 1/5/2021</p>
+  </div>
+</div>

@@ -33,7 +33,7 @@
               >
             </li>
           </ul>
-          <form *ngIf="this.getName()=='null'" class="d-flex">
+          <form *ngIf="!isLogged()" class="d-flex">
             <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
               <a
                 class="nav-link"
@@ -44,24 +44,39 @@
               >
             </div>
           </form>
-          <form *ngIf="this.getName()!='null'" lass="d-flex">
-            <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
-              <a class="nav-link">Bienvenido/a {{this.getName()}}</a>
-                </div>
-                </form>
-                <form *ngIf="this.getName()!='null'" lass="d-flex">
-                    <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
-                        <a class="nav-link">Perfil</a>
-                    </div>
-                </form>
-                <form *ngIf="this.getName()!='null'" lass="d-flex">
-                    <div class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
-                        <a class="nav-link" (click)="endSession()">Cerrar sesión</a>
-                    </div>
-                </form>
-            </div>
-            <app-login></app-login>
-    </div>
+
+          <div *ngIf="isLogged()" class="dropdown d-flex">
+            <button
+              routerLinkActive="active"
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Welcome {{this.getName()}}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  routerLink="profile"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{exact: true}"
+                  >Perfil</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="endSession()" href="#"
+                  >Cerrar sesión</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <app-login></app-login>
+      </div>
     </nav>
 </div>
 </div>
