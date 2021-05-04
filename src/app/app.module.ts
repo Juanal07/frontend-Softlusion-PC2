@@ -15,6 +15,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+import { MunicipioComponent } from './components/municipio/municipio.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
+    MunicipioComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

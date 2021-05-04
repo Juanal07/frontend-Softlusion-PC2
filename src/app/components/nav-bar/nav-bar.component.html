@@ -1,30 +1,17 @@
 <div class="nav-bar fixed-top">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark nav-dark">
-      <div class="container-fluid">
-        <a routerLink="">
-          <img class="logo" src="../../assets/images/logo.PNG" alt="" />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark nav-dark">
+            <div class="container-fluid">
+                <a routerLink="">
+                    <img class="logo" src="../../assets/images/logo.PNG" alt="" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                routerLink=""
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}"
-                >Home</a
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a
               >
             </li>
             <li class="nav-item">
@@ -34,6 +21,15 @@
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{exact: true}"
                 >Sentiment analysis</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="municipio"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+                >Municipio</a
               >
             </li>
           </ul>
@@ -48,6 +44,7 @@
               >
             </div>
           </form>
+
           <div *ngIf="isLogged()" class="dropdown d-flex">
             <button
               routerLinkActive="active"
@@ -81,5 +78,5 @@
         <app-login></app-login>
       </div>
     </nav>
-  </div>
+</div>
 </div>
