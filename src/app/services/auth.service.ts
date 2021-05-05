@@ -8,19 +8,29 @@ import { endpoints } from '../../environments/endpoints';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  token: string = 'Bearer ' + this.getToken();
-
-  httpHeader = {
-    headers: new HttpHeaders({
-      authorization: this.token,
-    }),
-  };
-
   getToken(): string {
     return localStorage.getItem('token');
   }
 
-  getName() {
-    return this.http.post(endpoints.profile, {}, this.httpHeader);
+  getUser() {
+    let httpHeader = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${this.getToken()}`,
+      }),
+    };
+    return this.http.post(endpoints.profile, {}, httpHeader);
+  }
+
+  updateUser(name: string, email: string) {
+    let httpHeader = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${this.getToken()}`,
+      }),
+    };
+    return this.http.post(
+      `${endpoints.profile}/changeData`,
+      { name, email },
+      httpHeader
+    );
   }
 }

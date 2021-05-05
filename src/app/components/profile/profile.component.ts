@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getUser() {
-    this.auth.getName().subscribe(
+    this.auth.getUser().subscribe(
       (response) => {
         console.log('response is ', response);
         this.name = response['data']['name'];
@@ -34,8 +34,15 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  updateName() {
-    console.log(this.name);
+  updateUser() {
+    this.auth.updateUser(this.name, this.email).subscribe(
+      (response) => {
+        console.log('response is ', response);
+      },
+      (error) => {
+        console.log('error is ', error);
+      }
+    );
   }
 
   updatePsw() {}
