@@ -1,0 +1,35 @@
+.tools {
+    display: flex;
+    justify-content: center;
+    //width: 20rem;
+    margin-top: 9rem;
+    margin-bottom: 9rem;
+    flex-direction: column;
+    color: rgb(22, 21, 21);
+    //margin-bottom: 2rem;
+}
+
+.tool-image {
+    width: 70%;
+    //margin-bottom: 9rem;
+}
+
+.texto-bbdd {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.boton {
+    text-align: center;
+    margin-top: 3rem;
+    // margin-left: 1rem;
+    // margin-right: 1rem;
+    color: rgb(236, 224, 217);
+    background-color: rgb(57, 139, 9);
+    border-radius: 5px;
+}
+
+.row {
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
