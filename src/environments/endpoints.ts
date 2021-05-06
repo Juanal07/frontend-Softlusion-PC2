@@ -4,6 +4,6 @@ export const endpoints = {
   sentiment: `${environment.apiFlask}/sentiment`,
   login: `${environment.apiNode}/login`,
   register: `${environment.apiNode}/register`,
-  municipio: `${environment.apiNode}/municipio`
+  profile: `${environment.apiNode}/profile`,
+  municipio: `${environment.apiNode}/municipio`,
 };
-

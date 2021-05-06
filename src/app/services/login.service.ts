@@ -28,7 +28,7 @@ export class LoginService {
   }
 
   endSession() {
-    localStorage.setItem('name', 'null');
-    localStorage.setItem('token', 'null');
+    localStorage.setItem('name', '');
+    localStorage.setItem('token', '');
   }
 }

@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class NavBarComponent implements OnInit {
   // estado: boolean = false;
   name: string = '';
+
   @ViewChild(LoginComponent) child: LoginComponent;
 
   constructor(private loginService: LoginService) {}
@@ -34,5 +35,8 @@ export class NavBarComponent implements OnInit {
 
   endSession() {
     this.loginService.endSession();
+  }
+  isLogged() {
+    return this.getName() != '';
   }
 }

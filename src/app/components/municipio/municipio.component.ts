@@ -6,6 +6,7 @@ import { Municipio } from '../../models/municipio.model';
   selector: 'app-municipio',
   templateUrl: './municipio.component.html',
   styleUrls: ['./municipio.component.scss'],
+
   //providers: [MunicipioService]
 })
 export class MunicipioComponent implements OnInit {
@@ -31,4 +32,5 @@ export class MunicipioComponent implements OnInit {
       }
     );
   }
+
 }

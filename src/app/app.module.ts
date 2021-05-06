@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { MunicipioComponent } from './components/municipio/municipio.component';
 
 @NgModule({
@@ -25,9 +26,16 @@ import { MunicipioComponent } from './components/municipio/municipio.component';
     LoginComponent,
     RegisterComponent,
     BuscadorComponent,
+    ProfileComponent,
     MunicipioComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgbModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
