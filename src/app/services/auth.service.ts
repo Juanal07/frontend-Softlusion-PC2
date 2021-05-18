@@ -1,36 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { endpoints } from '../../environments/endpoints';
+import { Login } from '../models/login.model';
+import { Register } from '../models/register.model';
 
 @Injectable({
   providedIn: 'root',
 })
+
+//login + registro
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  getToken(): string {
-    return localStorage.getItem('token');
+  postLogin(login: Login) {
+    return this.http.post(endpoints.login, login);
   }
-
-  getUser() {
-    let httpHeader = {
-      headers: new HttpHeaders({
-        authorization: `Bearer ${this.getToken()}`,
-      }),
-    };
-    return this.http.post(endpoints.profile, {}, httpHeader);
-  }
-
-  updateUser(name: string, email: string) {
-    let httpHeader = {
-      headers: new HttpHeaders({
-        authorization: `Bearer ${this.getToken()}`,
-      }),
-    };
-    return this.http.post(
-      `${endpoints.profile}/changeData`,
-      { name, email },
-      httpHeader
-    );
+  postRegister(register: Register) {
+    return this.http.post(endpoints.register, register);
   }
 }

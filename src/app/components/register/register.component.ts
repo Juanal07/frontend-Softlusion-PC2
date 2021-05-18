@@ -1,7 +1,9 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { RegisterService } from '../../services/register.service';
+// import { RegisterService } from '../../services/register.service';
 import { Register } from '../../models/register.model';
+import { AuthService } from 'src/app/services/auth.service';
+import { CommonsService } from 'src/app/services/commons.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +19,11 @@ export class RegisterComponent implements OnInit {
   name: String = '';
 
 
-  constructor(private registerService: RegisterService, private modalService: NgbModal) { }
+  constructor(
+    // private registerService: RegisterService, 
+    private modalService: NgbModal,
+    private commonsService: CommonsService, 
+    private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -44,7 +50,7 @@ export class RegisterComponent implements OnInit {
     this.register['name'] = this.name;
     this.register['email'] = this.email;
     this.register['password'] = this.password;
-    this.registerService.postAPIData(this.register).subscribe(
+    this.authService.postRegister(this.register).subscribe(
       (response) => {
         console.log('response is ', response);
         // this.respuesta = response['result'];

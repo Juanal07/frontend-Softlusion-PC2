@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginComponent } from 'src/app/components/login/login.component';
-import { LoginService } from 'src/app/services/login.service';
+// import { LoginService } from 'src/app/services/login.service';
+// import { AuthService } from 'src/app/services/auth.service';
+import { CommonsService } from 'src/app/services/commons.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,7 +15,11 @@ export class NavBarComponent implements OnInit {
 
   @ViewChild(LoginComponent) child: LoginComponent;
 
-  constructor(private loginService: LoginService) {}
+  constructor(
+      // private loginService: LoginService, 
+      private commonsService: CommonsService, 
+      // private authService: AuthService
+      ) {}
 
   ngOnInit(): void {}
 
@@ -22,19 +28,19 @@ export class NavBarComponent implements OnInit {
   }
 
   showName() {
-    this.name = this.loginService.getName();
+    this.name = this.commonsService.getName();
   }
 
   getName() {
-    return this.loginService.getName();
+    return this.commonsService.getName();
   }
 
   getToken() {
-    return this.loginService.getToken();
+    return this.commonsService.getToken();
   }
 
   endSession() {
-    this.loginService.endSession();
+    this.commonsService.endSession();
   }
   isLogged() {
     return this.getName() != '';

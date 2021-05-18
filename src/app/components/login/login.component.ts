@@ -2,7 +2,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Login } from '../../models/login.model';
 import { RegisterComponent } from 'src/app/components/register/register.component';
-import { LoginService } from '../../services/login.service';
+// import { LoginService } from '../../services/login.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { CommonsService } from 'src/app/services/commons.service';
 
 @Component({
   selector: 'app-login',
@@ -20,8 +22,10 @@ export class LoginComponent implements OnInit {
   @ViewChild(RegisterComponent) child: RegisterComponent; //hijo referenciado
 
   constructor(
-    private loginService: LoginService,
-    private modalService: NgbModal
+    // private loginService: LoginService,
+    private modalService: NgbModal,
+    private commonsService: CommonsService, 
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {}
@@ -56,11 +60,11 @@ export class LoginComponent implements OnInit {
   sendLogin() {
     this.login['email'] = this.user;
     this.login['password'] = this.password;
-    this.loginService.postAPIData(this.login).subscribe(
+    this.authService.postLogin(this.login).subscribe(
       (response) => {
         console.log('response is ', response);
-        this.loginService.setName(response['data']['name']);
-        this.loginService.setToken(response['data']['token']);
+        this.commonsService.setName(response['data']['name']);
+        this.commonsService.setToken(response['data']['token']);
       },
       (error) => {
         console.log('error is ', error);
