@@ -13,9 +13,9 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   postLogin(login: Login) {
-    return this.http.post(endpoints.login, login);
+    return this.http.post(`${endpoints.auth}/login`, login);
   }
   postRegister(register: Register) {
-    return this.http.post(endpoints.register, register);
+    return this.http.post(`${endpoints.auth}/register`, register);
   }
 }

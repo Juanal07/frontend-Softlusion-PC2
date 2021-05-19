@@ -2,8 +2,11 @@ import { environment } from './environment';
 
 export const endpoints = {
   sentiment: `${environment.apiFlask}/sentiment`,
-  login: `${environment.apiNode}/login`,
-  register: `${environment.apiNode}/register`,
+
+  auth: `${environment.apiNode}/auth`,
   profile: `${environment.apiNode}/profile`,
-  municipio: `${environment.apiNode}/municipio`,
+  municipality: `${environment.apiNode}/municipality`,
+  community: `${environment.apiNode}/community`,
+
+  admin: `${environment.apiNode}/admin`,
 };

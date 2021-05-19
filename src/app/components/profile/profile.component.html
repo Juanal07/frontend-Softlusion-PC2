@@ -8,12 +8,27 @@
     <input class="flex-item" value="{{this.email}}" [(ngModel)]="this.email" />
     <button class="flex-item" (click)="updateUser()">Guardar cambios</button>
     <div class="flex-item">Antigua contraseña</div>
-    <input class="flex-item" value="{{this.old_psw}}" type="password" />
+    <input
+      class="flex-item"
+      value="{{this.old_psw}}"
+      [(ngModel)]="this.old_psw"
+      type="password"
+    />
     <div class="flex-item">Nueva contraseña</div>
-    <input class="flex-item" value="{{this.new_psw}}" type="password" />
+    <input
+      class="flex-item"
+      value="{{this.new_psw}}"
+      [(ngModel)]="this.new_psw"
+      type="password"
+    />
     <div class="flex-item">Confirme nueva contraseña</div>
-    <input class="flex-item" value="{{this.repeat_psw}}" type="password" />
-    <button class="flex-item">Cambiar contraseña</button>
+    <input
+      class="flex-item"
+      value="{{this.repeat_psw}}"
+      [(ngModel)]="this.repeat_psw"
+      type="password"
+    />
+    <button class="flex-item" (click)="updatePsw()">Cambiar contraseña</button>
   </div>
   <div class="grid-item">
     <h2 class="titulo">Últimas búsquedas</h2>
