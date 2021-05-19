@@ -17,8 +17,9 @@ export class ProfileComponent implements OnInit {
   repeat_psw: string;
 
   constructor(
-    private commonsService: CommonsService, 
-    private authService: AuthService) {}
+    private commonsService: CommonsService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.getUser();
@@ -41,6 +42,8 @@ export class ProfileComponent implements OnInit {
     this.commonsService.updateUser(this.name, this.email).subscribe(
       (response) => {
         console.log('response is ', response);
+        console.log(response['data']['name']);
+        this.commonsService.setName(response['data']['name']);
       },
       (error) => {
         console.log('error is ', error);

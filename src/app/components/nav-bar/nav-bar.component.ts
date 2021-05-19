@@ -16,19 +16,20 @@ export class NavBarComponent implements OnInit {
   @ViewChild(LoginComponent) child: LoginComponent;
 
   constructor(
-      // private loginService: LoginService, 
-      private commonsService: CommonsService, 
-      // private authService: AuthService
-      ) {}
+    // private loginService: LoginService,
+    private commonsService: CommonsService // private authService: AuthService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.showName();
+  }
 
   showLogin() {
     this.child.showPopupLogin();
   }
 
   showName() {
-    this.name = this.commonsService.getName();
+    return (this.name = this.getName());
   }
 
   getName() {
