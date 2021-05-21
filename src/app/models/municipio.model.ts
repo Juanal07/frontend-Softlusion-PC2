@@ -10,7 +10,24 @@ export class Municipio {
     surface: number;
     altitude: number;
     density: number;
-      
+    nRestaurants: number;
+    media: number;
+    unpopulated: number;
+    supermarkets:{
+        name: string;
+        address: number;
+        distance: number;
+    }[];
+    stations: {
+        cercanias: number;
+        name: string;
+        address: string
+    }[]; 
+    medicalcenters: {
+        name: string;
+        type: string;
+        address: string
+    }[];
 }
 /*
 [
