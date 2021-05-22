@@ -75,6 +75,11 @@ export class BuscadorComponent implements OnInit {
         if (response['status'] == 200){
           this.municipio = response['data']
           console.log(this.municipio)
+          console.log(this.municipio.name)
+          console.log(this.municipio.ccaa)
+          console.log(this.municipio.density)
+          console.log(this.municipio.province)
+          console.log(this.municipio.population)
           // console.log(this.municipio.medicalcenters)
         }else{
           console.log("ELSEEE")
@@ -101,8 +106,8 @@ export class BuscadorComponent implements OnInit {
             (response) => {
               console.log(response)
               this.municipio.stations = response['data'];
-              // console.log("ESTACIONES: ",this.municipio.stations)
-              // console.log("OBJETO: ", response['data'])
+              console.log("ESTACIONES: ",this.municipio.stations)
+              console.log("OBJETO: ", response['data'])
             }
           )
 
@@ -110,8 +115,8 @@ export class BuscadorComponent implements OnInit {
             (response) => {
               console.log(response)
               this.municipio.medicalcenters = response['data'];
-              console.log("CENTROS MEDICOS: ",this.municipio.medicalcenters)
-              console.log("OBJETO: ", response['data'])
+              // console.log("CENTROS MEDICOS: ",this.municipio.medicalcenters)
+              // console.log("OBJETO: ", response['data'])
             }
           )
 
@@ -119,8 +124,8 @@ export class BuscadorComponent implements OnInit {
             (response) => {
               console.log(response)
               this.municipio.supermarkets = response['data'];
-              console.log("SUPERMERCADOS: ",this.municipio.supermarkets)
-              console.log("OBJETO: ", response['data'])
+              // console.log("SUPERMERCADOS: ",this.municipio.supermarkets)
+              // console.log("OBJETO: ", response['data'])
             }
           )
 

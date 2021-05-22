@@ -13,7 +13,9 @@
   </mat-form-field>
 </form>
 
-<div>
+<!-- <div *ngIf = "this.municipio != null"> -->
+  <!-- HOLAque hase? -->
   <!-- [{ngModel}]="this.municipio" -->
-  {{municipio}}
-</div>
+  <!-- {{this.municipio.stations | json}} -->
+  <div *ngFor = "let item of this.municipio.stations">{{item | json}}</div>
+<!-- </div> -->
