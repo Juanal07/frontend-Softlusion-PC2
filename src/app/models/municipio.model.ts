@@ -13,21 +13,25 @@ export class Municipio {
     nRestaurants: number;
     media: number;
     unpopulated: number;
-    supermarkets:{
-        name: string;
-        address: number;
-        distance: number;
-    }[];
-    stations: {
-        cercanias: number;
-        name: string;
-        address: string
-    }[]; 
-    medicalcenters: {
-        name: string;
-        type: string;
-        address: string
-    }[];
+    supermarkets: Super[];
+    stations: Station[]; 
+    medicalcenters: Center[];
+}
+export class Station {
+    name: string;
+    address: string;
+    cercanias: number;
+    feve: number;
+}
+export class Center {
+    name: string;
+    type: string;
+    address: string;
+}
+export class Super {
+    name: string;
+    address: number;
+    distance: number;
 }
 /*
 [

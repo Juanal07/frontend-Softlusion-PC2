@@ -18,7 +18,7 @@ export class BuscadorComponent implements OnInit {
   respuesta: Autocompletado[];
   filteredOptions: Observable<string[]>;
   texto: string;
-  municipio: Municipio;
+  municipio = new Municipio();
   idSearch: number;
   idMunicipio: number;
 
@@ -77,43 +77,75 @@ export class BuscadorComponent implements OnInit {
           console.log(this.municipio)
           // console.log(this.municipio.medicalcenters)
         }else{
+          console.log("ELSEEE")
           this.idSearch = response['data']['idSearch']
           this.idMunicipio = response['data']['idMunicipality']
           // console.log(this.idSearch)
           // console.log(this.idMunicipio)
           this.municipalityService.getInfoPueblo(this.idMunicipio).subscribe(
             (response) => {
-              console.log(response)
+              // console.log("RESPONSEEE: ", response)
+              this.municipio = response['data'];
+              // console.log(this.municipio.name)
+              // console.log(this.municipio.ccaa)
+              // console.log(this.municipio.density)
+              // console.log(this.municipio.province)
+              // console.log(this.municipio.population)
+
+              // this.municipio.name = "hola";
+              console.log("OBJETO: ", this.municipio)
             }
           )
 
           this.municipalityService.getEstaciones(this.idMunicipio).subscribe(
             (response) => {
               console.log(response)
+              this.municipio.stations = response['data'];
+              // console.log("ESTACIONES: ",this.municipio.stations)
+              // console.log("OBJETO: ", response['data'])
             }
           )
 
           this.municipalityService.getCentrosMedicos(this.idMunicipio).subscribe(
             (response) => {
               console.log(response)
+              this.municipio.medicalcenters = response['data'];
+              console.log("CENTROS MEDICOS: ",this.municipio.medicalcenters)
+              console.log("OBJETO: ", response['data'])
             }
           )
 
           this.municipalityService.getSupermercados(this.idMunicipio, this.idSearch).subscribe(
             (response) => {
               console.log(response)
+              this.municipio.supermarkets = response['data'];
+              console.log("SUPERMERCADOS: ",this.municipio.supermarkets)
+              console.log("OBJETO: ", response['data'])
             }
           )
 
           this.municipalityService.getRestaurantes(this.idMunicipio, this.idSearch).subscribe(
             (response) => {
               console.log(response)
+              this.municipio.media = response['data']['media'];
+              this.municipio.nRestaurants = response['data']['nRestaurants'];
+              // console.log(this.municipio.media)
+              // console.log(this.municipio.nRestaurants)
             }
           )
 
           this.municipalityService.getNoticias(this.idMunicipio, this.idSearch).subscribe(
             (response) => {
               console.log(response)
+              this.municipio.unpopulated = response['data']['populated'];
+              // console.log("OBJETO: ", this.municipio)
+              // console.log(this.municipio.name)
+              // console.log(this.municipio.ccaa)
+              // console.log(this.municipio.density)
+              // console.log(this.municipio.province)
+              // console.log(this.municipio.population)
+              // console.log(this.municipio.unpopulated)
+
             }
           )
           // this.municipalityService.getBusqueda(this.getIdPueblo(this.texto)).subscribe(
