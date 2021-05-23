@@ -7,15 +7,15 @@
     <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="texto" (keydown.enter)="getInfoPueblo()" />
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option}}
+        {{ option }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 </form>
 
 <!-- <div *ngIf = "this.municipio != null"> -->
-  <!-- HOLAque hase? -->
-  <!-- [{ngModel}]="this.municipio" -->
-  <!-- {{this.municipio.stations | json}} -->
-  <div *ngFor = "let item of this.municipio.stations">{{item | json}}</div>
+<!-- HOLAque hase? -->
+<!-- [{ngModel}]="this.municipio" -->
+<!-- {{this.municipio.stations | json}} -->
+<div *ngFor="let item of this.municipio.stations">{{ item | json }}</div>
 <!-- </div> -->
