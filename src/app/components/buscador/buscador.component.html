@@ -20,11 +20,12 @@
       <img class = "escudo" [src]="municipio.shield">
     </div>
     <div class = "col-md-4">
+      <br><br>
       <div class = "row">
         <p>{{this.municipio.name}}</p>
       </div>
       <div class = "row">
-        <p>{{this.municipio.region}}</p>
+        <p *ngIf = "this.municipio.region != null" >{{this.municipio.region}}</p>
       </div>
       <div class = "row">
         <p>{{this.municipio.province}}</p>
@@ -34,6 +35,7 @@
       </div>
     </div>
     <div class = "col-md-4">
+      <br><br>
       <div class = "row">
         <p *ngIf = "this.municipio.population != null" >Población: {{this.municipio.population}}</p>
       </div>
@@ -50,7 +52,7 @@
   </div>
 
   <div class = "row centros">
-    <h3 *ngIf = "this.municipio.stations != null" >Estaciones </h3>
+    <h3 *ngIf = "this.municipio.stations != null">Estaciones </h3>
     <div class = "col-md-4" *ngFor = "let item of this.municipio.stations">
       <div class="card bloque">
         <h5 class="card-header stations">Estación: {{item['name']}}</h5>
@@ -72,6 +74,23 @@
         <h5 class="card-header cmedicos">Centro Médico: {{item['name']}}</h5>
         <div class="card-body">
             <h5 class="card-title">Tipo: {{item['type']}}</h5>
+            <p class="card-text"> Dirección: {{item['address']}}</p>
+        </div>       
+    </div>
+        <!-- <p class = "bloque">Centro Médico: {{item['name']}}</p>
+        <p class = "bloque">Tipo: {{item['type']}}</p>
+        <p class = "bloque">Dirección: {{item['address']}}</p>
+        <p class = "bloque">-------------------------------------------------------------------</p> -->
+    </div>
+  </div>
+
+  <div class = "row centros">
+    <h3 *ngIf = "this.municipio.medicalcenters != null" >Supermercados</h3>
+    <div class = "col-md-4 "  *ngFor = "let item of this.municipio.supermarkets">
+      <div class="card bloque">
+        <h5 class="card-header supermarkets">Supermercado: {{item['name']}}</h5>
+        <div class="card-body">
+            <h5 class="card-title">Distancia: {{item['distance']}} Km</h5>
             <p class="card-text"> Dirección: {{item['address']}}</p>
         </div>       
     </div>

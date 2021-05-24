@@ -48,6 +48,7 @@
     margin-top: 4rem;
 }
 
+
 ::ng-deep .mat-form-field {
     .mat-input-element {
         color: black !important;
@@ -75,5 +76,10 @@
 
 .stations {
     background-color: rgb(134, 1, 1);
+    color: white;
+}
+
+.supermarkets{
+    background-color: rgb(149, 156, 49);
     color: white;
 }
