@@ -1,23 +1,79 @@
-.gris{
-    padding-top: 0px;
-    align-items: center;
-    background-color: gray;
-    text-align: center;
-    z-index: 1;
-    position: relative;
-}
+// .gris{
+//     padding-top: 0px;
+//     align-items: center;
+//     background-color: gray;
+//     text-align: center;
+//     z-index: 1;
+//     position: relative;
+// }
 
-h4 {
-    padding-top: 7rem;
-    padding-bottom: 6rem;
-}
+// .example-form {
+//     min-width: 150px;
+//     max-width: 500px;
+//     width: 100%;
+//   }
 
-.barraBuscador{
-    z-index: 3;
-    position: relative;
-    top: -25px;
-    margin-left: auto;
-    margin-right: auto;
+
+// .barraBuscador{
+//     z-index: 3;
+//     position: relative;
+//     top: -25px;
+//     margin-left: auto;
+//     margin-right: auto;
+//     display: block;
+//     color: black; 
+// }
+
+.barra{
+    width: 15%;
+    margin:auto;
     display: block;
-    
+    position: relative;
+    top: -30px;
+}
+.escudo {
+    // width: 15rem;
+    height: 10rem;
+    display: block;
+    margin:auto;
+}
+
+.bloque{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.centros {
+    margin-top: 4rem;
+}
+
+::ng-deep .mat-form-field {
+    .mat-input-element {
+        color: black !important;
+        width: 100%;
+    }
+    .mat-form-field-label {
+        color: rgb(19, 24, 41) !important;
+        // font-size: medium ;
+    }
+    .mat-form-field-underline {
+        background-color: rgb(19, 24, 41) !important;
+    }
+    .mat-form-field-ripple {
+        background-color: rgb(19, 24, 41) !important;
+    }
+    .mat-form-field-required-marker {
+        color: black !important;
+    }
+}
+
+.cmedicos {
+    background-color: green;
+    color: white;
+}
+
+.stations {
+    background-color: rgb(134, 1, 1);
+    color: white;
 }
