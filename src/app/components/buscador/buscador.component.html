@@ -15,6 +15,7 @@
 </form>
 
 <div class = "container">
+  <h3 *ngIf = "this.municipio.name != null">Información básica </h3>
   <div class = "row">
     <div class = "col-md-4">
       <img class = "escudo" [src]="municipio.shield">
