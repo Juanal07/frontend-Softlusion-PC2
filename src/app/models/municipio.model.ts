@@ -12,7 +12,7 @@ export class Municipio {
     density: number;
     nRestaurants: number;
     media: number;
-    unpopulated: number;
+    unpopulated: string;
     supermarkets: Super[];
     stations: Station[]; 
     medicalcenters: Center[];
