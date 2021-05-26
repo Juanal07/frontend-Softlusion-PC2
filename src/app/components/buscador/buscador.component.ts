@@ -132,8 +132,15 @@ export class BuscadorComponent implements OnInit {
           this.municipalityService.getRestaurantes(this.idMunicipio, this.idSearch).subscribe(
             (response) => {
               console.log(response)
-              this.municipio.media = response['data']['media'];
-              this.municipio.nRestaurants = response['data']['nRestaurants'];
+              if ( response['data']['nRestaurants'] == -10){
+                this.municipio.nRestaurants = 0;
+                this.municipio.media = 0;
+              }
+              else {
+                this.municipio.nRestaurants = response['data']['nRestaurants'];
+                this.municipio.media = response['data']['media'];
+              }
+              // this.municipio.nRestaurants = response['data']['nRestaurants'];
               // console.log(this.municipio.media)
               // console.log(this.municipio.nRestaurants)
             }
@@ -142,7 +149,12 @@ export class BuscadorComponent implements OnInit {
           this.municipalityService.getNoticias(this.idMunicipio, this.idSearch).subscribe(
             (response) => {
               console.log(response)
-              this.municipio.unpopulated = response['data']['populated'];
+              if(response['data']['populated'] == 0 )
+                this.municipio.unpopulated = 'Pertenece a la España Vaciada'
+              else(
+                this.municipio.unpopulated = 'NO Pertenece a la España Vaciada'
+              )
+                // this.municipio.unpopulated = response['data']['populated'];
               // console.log("OBJETO: ", this.municipio)
               // console.log(this.municipio.name)
               // console.log(this.municipio.ccaa)

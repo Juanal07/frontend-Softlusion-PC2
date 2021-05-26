@@ -21,7 +21,7 @@
       <img class = "escudo" [src]="municipio.shield">
     </div>
     <div class = "col-md-4">
-      <br><br>
+      <br>
       <div class = "row">
         <p>{{this.municipio.name}}</p>
       </div>
@@ -34,9 +34,16 @@
       <div class = "row">
         <p>{{this.municipio.ccaa}}</p>
       </div>
+      <br>
+      <div class = "row">
+        <p *ngIf = "this.municipio.nRestaurants != null" >Número de restaurantes: {{this.municipio.nRestaurants}}</p>
+      </div>
+      <div class = "row">
+        <p *ngIf = "this.municipio.media != null" >Media de restaurantes: {{this.municipio.media}}</p>
+      </div>
     </div>
     <div class = "col-md-4">
-      <br><br>
+      <br>
       <div class = "row">
         <p *ngIf = "this.municipio.population != null" >Población: {{this.municipio.population}}</p>
       </div>
@@ -48,6 +55,10 @@
       </div>
       <div class = "row">
         <p *ngIf = "this.municipio.density != null" >Densidad: {{this.municipio.density}}</p>
+      </div>
+      <br>
+      <div class = "row">
+        <p *ngIf = "this.municipio.unpopulated != null" >{{this.municipio.unpopulated}}</p>
       </div>
     </div>
   </div>
