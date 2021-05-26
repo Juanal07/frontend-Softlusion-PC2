@@ -152,7 +152,7 @@ export class BuscadorComponent implements OnInit {
               if(response['data']['populated'] == 0 )
                 this.municipio.unpopulated = 'Pertenece a la España Vaciada'
               else(
-                this.municipio.unpopulated = 'NO Pertenece a la España Vaciada'
+                this.municipio.unpopulated = 'NO pertenece a la España Vaciada'
               )
                 // this.municipio.unpopulated = response['data']['populated'];
               // console.log("OBJETO: ", this.municipio)
