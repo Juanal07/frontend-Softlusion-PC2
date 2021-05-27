@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './services/interceptor';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { Interceptor } from './services/interceptor';
     RegisterComponent,
     BuscadorComponent,
     ProfileComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
