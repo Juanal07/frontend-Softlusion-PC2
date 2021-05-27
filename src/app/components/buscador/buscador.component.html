@@ -64,7 +64,7 @@
   </div>
 
   <div class = "row centros">
-    <h3 *ngIf = "this.municipio.stations != null">Estaciones </h3>
+    <h3 *ngIf = "this.municipio.stations != null && this.municipio.stations.length != 0">Estaciones </h3>
     <div class = "col-md-4" *ngFor = "let item of this.municipio.stations">
       <div class="card bloque">
         <h5 class="card-header stations">Estación: {{item['name']}}</h5>
@@ -80,7 +80,7 @@
       </div>
       
   <div class = "row centros">
-    <h3 *ngIf = "this.municipio.medicalcenters != null" >Centros médicos </h3>
+    <h3 *ngIf = "this.municipio.medicalcenters != null && this.municipio.medicalcenters.length != 0" >Centros médicos </h3>
     <div class = "col-md-4"  *ngFor = "let item of this.municipio.medicalcenters">
       <div class="card bloque">
         <h5 class="card-header cmedicos">Centro Médico: {{item['name']}}</h5>
@@ -97,7 +97,7 @@
   </div>
 
   <div class = "row centros">
-    <h3 *ngIf = "this.municipio.medicalcenters != null" >Supermercados</h3>
+    <h3 *ngIf = "this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0" >Supermercados</h3>
     <div class = "col-md-4 "  *ngFor = "let item of this.municipio.supermarkets">
       <div class="card bloque">
         <h5 class="card-header supermarkets">Supermercado: {{item['name']}}</h5>

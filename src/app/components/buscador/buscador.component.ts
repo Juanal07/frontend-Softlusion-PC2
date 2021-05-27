@@ -73,14 +73,34 @@ export class BuscadorComponent implements OnInit {
       (response) => {
         // console.log("hola2")
         if (response['status'] == 200){
-          this.municipio = response['data']
-          console.log(this.municipio)
-          console.log(this.municipio.name)
-          console.log(this.municipio.ccaa)
-          console.log(this.municipio.density)
-          console.log(this.municipio.province)
-          console.log(this.municipio.population)
-          // console.log(this.municipio.medicalcenters)
+
+          this.municipio.name = response['data']['name'];
+          this.municipio.shield = response['data']['shield'];
+          this.municipio.region = response['data']['region'];
+          this.municipio.province = response['data']['province'];
+          this.municipio.ccaa = response['data']['ccaa'];
+          this.municipio.population = response['data']['population'];
+          this.municipio.surface = response['data']['surface'];
+          this.municipio.altitude = response['data']['altitude'];
+          this.municipio.density = response['data']['density'];
+          this.municipio.stations = response['data']['stations'];
+          this.municipio.medicalcenters = response['data']['medicalcenters'];
+          this.municipio.supermarkets = response['data']['supermarkets'];
+          
+          if ( response['data']['nRestaurants'] == -10){
+            this.municipio.nRestaurants = 0;
+            this.municipio.media = 0;
+          } else {
+            this.municipio.nRestaurants = response['data']['nRestaurants'];
+            this.municipio.media = response['data']['media'];
+          }
+
+          if(response['data']['populated'] == 0 ){
+            this.municipio.unpopulated = 'Pertenece a la España Vaciada'
+          } else {
+            this.municipio.unpopulated = 'NO pertenece a la España Vaciada'
+          }
+
         }else{
           console.log("ELSEEE")
           this.idSearch = response['data']['idSearch']
