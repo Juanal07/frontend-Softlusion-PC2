@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginComponent } from 'src/app/components/login/login.component';
 // import { LoginService } from 'src/app/services/login.service';
-// import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { CommonsService } from 'src/app/services/commons.service';
 
 @Component({
@@ -17,7 +17,8 @@ export class NavBarComponent implements OnInit {
 
   constructor(
     // private loginService: LoginService,
-    private commonsService: CommonsService // private authService: AuthService
+    private commonsService: CommonsService, // private authService: AuthService
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +42,14 @@ export class NavBarComponent implements OnInit {
   }
 
   endSession() {
+    this.authService.postendSession().subscribe(
+      (response) => {
+            console.log('response is ', response);
+          },
+          (error) => {
+            console.log('error is ', error);
+          }
+    );
     this.commonsService.endSession();
   }
   isLogged() {
