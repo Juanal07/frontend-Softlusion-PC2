@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   old_psw: string;
   new_psw: string;
   repeat_psw: string;
+  busquedas: string[];
 
   constructor(
     private commonsService: CommonsService,
@@ -25,6 +26,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    this.showSearches();
   }
 
   getUser() {
@@ -64,5 +66,17 @@ export class ProfileComponent implements OnInit {
           console.log('error is ', error);
         }
       );
+  }
+
+  showSearches() {
+    this.profileService.showSearches().subscribe(
+      (response) => {
+        this.busquedas = response['data'];
+        console.log('MOSTRAR BUSQUEDAS: ', this.busquedas);
+      },
+      (error) => {
+        console.log('error is ', error);
+      }
+    );
   }
 }
