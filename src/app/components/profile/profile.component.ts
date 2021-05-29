@@ -18,6 +18,11 @@ export class ProfileComponent implements OnInit {
   repeat_psw: string;
   busquedas: string[];
 
+  public data: any[];
+  public toolbar: string[];
+  public selectOptions: Object;
+  public editSettings: Object;
+
   constructor(
     private commonsService: CommonsService,
     private profileService: ProfileService,
@@ -27,6 +32,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.showSearches();
+    // this.selectOptions = { persistSelection: true };
+    // this.editSettings = { allowDeleting: true };
+    this.toolbar = ['Search'];
   }
 
   getUser() {
@@ -73,6 +81,7 @@ export class ProfileComponent implements OnInit {
       (response) => {
         this.busquedas = response['data'];
         console.log('MOSTRAR BUSQUEDAS: ', this.busquedas);
+        this.data = response['data'];
       },
       (error) => {
         console.log('error is ', error);

@@ -1,3 +1,18 @@
+<div class="row titulo">
+  <h1>¿Qué es SoftLusion?</h1>
+</div>
+<div class="control-section">
+  <ejs-grid class="sortingenabled" [dataSource]="data" allowPaging="true" allowSorting="true" [enableHover]="false" [allowSelection]="true" [toolbar]="toolbar">
+    <e-columns>
+      <e-column field="name" headerText="Municipio" width="170"></e-column>
+      <e-column field="media" headerText="Media restaurantes" width="155" textAlign="Right"></e-column>
+      <e-column field="nRestaurants" headerText="Número de restaurantes" width="120" textAlign="Right"></e-column>
+      <e-column field="unpopulated" headerText="España vaciada" width="150" textAlign="Right"></e-column>
+      <e-column field="date" headerText="Fecha" format="yMd" width="150"></e-column>
+      <e-column field="expDate" headerText="Fecha de expiración" format="yMd" width="150"></e-column>
+    </e-columns>
+  </ejs-grid>
+</div>
 <div class="encabezado"></div>
 <div class="grid">
   <div class="grid-item">
@@ -5,45 +20,20 @@
     <div class="flex-item">Nombre</div>
     <input class="flex-item" value="{{ this.name }}" [(ngModel)]="this.name" />
     <div class="flex-item">Email</div>
-    <input
-      class="flex-item"
-      value="{{ this.email }}"
-      [(ngModel)]="this.email"
-    />
+    <input class="flex-item" value="{{ this.email }}" [(ngModel)]="this.email" />
     <button class="flex-item" (click)="updateUser()">Guardar cambios</button>
     <div class="flex-item">Antigua contraseña</div>
-    <input
-      class="flex-item"
-      value="{{ this.old_psw }}"
-      [(ngModel)]="this.old_psw"
-      type="password"
-    />
+    <input class="flex-item" value="{{ this.old_psw }}" [(ngModel)]="this.old_psw" type="password" />
     <div class="flex-item">Nueva contraseña</div>
-    <input
-      class="flex-item"
-      value="{{ this.new_psw }}"
-      [(ngModel)]="this.new_psw"
-      type="password"
-    />
+    <input class="flex-item" value="{{ this.new_psw }}" [(ngModel)]="this.new_psw" type="password" />
     <div class="flex-item">Confirme nueva contraseña</div>
-    <input
-      class="flex-item"
-      value="{{ this.repeat_psw }}"
-      [(ngModel)]="this.repeat_psw"
-      type="password"
-    />
+    <input class="flex-item" value="{{ this.repeat_psw }}" [(ngModel)]="this.repeat_psw" type="password" />
     <button class="flex-item" (click)="updatePsw()">Cambiar contraseña</button>
   </div>
   <div class="grid-item">
     <h2 class="titulo">Últimas búsquedas</h2>
     <ul class="scroller">
-      <li *ngFor="let busqueda of busquedas; let i = index">
-        {{ i + 1 }} - idSearch: {{ busqueda.idSearch }} - Municipio: {{
-        busqueda.idMunicipality }} - Número de restaurantes: {{
-        busqueda.nRestaurants }} - Media: {{ busqueda.media }} - Fecha: {{
-        busqueda.date }} - Fecha de expiración: {{ busqueda.expDate }} - España
-        vaciada: {{ busqueda.unpopulated }}
-      </li>
+      <li *ngFor="let busqueda of busquedas; let i = index">{{ i + 1 }} - idSearch: {{ busqueda.idSearch }} - Municipio: {{ busqueda.idMunicipality }} - Número de restaurantes: {{ busqueda.nRestaurants }} - Media: {{ busqueda.media }} - Fecha: {{ busqueda.date }} - Fecha de expiración: {{ busqueda.expDate }} - España vaciada: {{ busqueda.unpopulated }}</li>
     </ul>
   </div>
 </div>
