@@ -19,6 +19,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './services/interceptor';
+import { AdminComponent } from './components/admin/admin.component';
+import { TablasComponent } from './components/tablas/tablas.component';
+import { GridAllModule } from '@syncfusion/ej2-angular-grids';
+import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
+import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,8 @@ import { Interceptor } from './services/interceptor';
     RegisterComponent,
     BuscadorComponent,
     ProfileComponent,
+    AdminComponent,
+    TablasComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +52,9 @@ import { Interceptor } from './services/interceptor';
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
+    GridAllModule,
+    ToolbarModule,
+    CheckBoxModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
