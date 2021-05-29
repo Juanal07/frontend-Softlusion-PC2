@@ -5,6 +5,7 @@ import { RegisterComponent } from 'src/app/components/register/register.componen
 // import { LoginService } from '../../services/login.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommonsService } from 'src/app/services/commons.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +24,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     // private loginService: LoginService,
+    private router: Router,
     private modalService: NgbModal,
-    private commonsService: CommonsService, 
+    private commonsService: CommonsService,
     private authService: AuthService
   ) {}
 
@@ -65,6 +67,9 @@ export class LoginComponent implements OnInit {
         console.log('response is ', response);
         this.commonsService.setName(response['data']['name']);
         this.commonsService.setToken(response['data']['token']);
+        if (response['data']['db_idUser'] == 43) {
+          this.router.navigate(['admin']);
+        }
       },
       (error) => {
         console.log('error is ', error);
