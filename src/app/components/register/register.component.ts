@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 // import { RegisterService } from '../../services/register.service';
 import { Register } from '../../models/register.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -8,32 +8,36 @@ import { CommonsService } from 'src/app/services/commons.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  @ViewChild("content") block: ElementRef;
+  @ViewChild('content') block: ElementRef;
   register: Register = new Register();
   closeResult = '';
   email: string = '';
   password: string = '';
   name: String = '';
 
-
   constructor(
-    // private registerService: RegisterService, 
+    // private registerService: RegisterService,
     private modalService: NgbModal,
-    private commonsService: CommonsService, 
-    private authService: AuthService) { }
+    private commonsService: CommonsService,
+    private authService: AuthService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  showPopupRegister(){
-    this.modalService.open(this.block, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  showPopupRegister() {
+    this.modalService
+      .open(this.block, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
   }
 
   private getDismissReason(reason: any): string {
@@ -53,8 +57,8 @@ export class RegisterComponent implements OnInit {
     this.authService.postRegister(this.register).subscribe(
       (response) => {
         console.log('response is ', response);
-        // this.respuesta = response['result'];
-        // console.log(this.login['email']);
+        this.commonsService.setName(response['data']['name']);
+        this.commonsService.setToken(response['data']['token']);
       },
       (error) => {
         console.log('error is ', error);
