@@ -15,6 +15,7 @@ export class AdminComponent implements OnInit {
   public toolbar: string[];
   public selectOptions: Object;
   public editSettings: Object;
+  // public initialPage: Object;
 
     constructor(
       private commonsService: CommonsService,
@@ -26,6 +27,7 @@ export class AdminComponent implements OnInit {
       this.getUser() 
       this.getMunicipios()
       this.getRankingActivos()
+      // this.initialPage = { pageSize: 10, pageCount: 2 };
       this.toolbar = ['Search'];
   }
 

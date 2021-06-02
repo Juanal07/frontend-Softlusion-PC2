@@ -1,39 +1,47 @@
 <div class="container">
     <div class="row titulo">
-      <h1>¿Qué es SoftLusion?</h1>
+      <h1>Dashboard</h1>
     </div>
-    <!-- <div class = "col-md-4">
-        <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-        </table>
-    </div> -->
-    <h1>Datos de los usuarios registrados</h1>
+    <!-- <ng-template #rowTemplate let-data>
+      <tr>
+          <td class="rowphoto">
+              <img src="./assets/grid/images/{{data.EmployeeID}}.png" alt="{{data.EmployeeID}}" />
+          </td>
+          <td class="details">
+              <table class="CardTable" cellpadding="3" cellspacing="2">
+                  <colgroup>
+                      <col width="50%">
+                      <col width="50%">
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <td class="CardHeader">First Name </td>
+                          <td>{{data.FirstName}} </td>
+                      </tr>
+                      <tr>
+                          <td class="CardHeader">Last Name</td>
+                          <td>{{data.LastName}} </td>
+                      </tr>
+                      <tr>
+                          <td class="CardHeader">Title</td>
+
+                          <td>{{data.Title}}</td>
+                      </tr>
+                      <tr>
+                          <td class="CardHeader">Birth Date</td>
+                          <td>{{format(data.BirthDate)}}</td>
+                      </tr>
+                      <tr>
+                          <td class="CardHeader">Hire Date</td>
+                          <td>{{format(data.HireDate)}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </td>
+      </tr>
+  </ng-template> -->
+  <div class="row">
+    <h2>Datos de los usuarios registrados</h2>
     <div class="control-section">
         <ejs-grid class="sortingenabled" [dataSource]="data" allowPaging="true" allowSorting="true" [enableHover]="false" [allowSelection]="true" [toolbar]="toolbar">
           <e-columns>
@@ -44,24 +52,26 @@
           </e-columns>
         </ejs-grid>
       </div>
-
+  </div>
+  <div class="row">
+    <div class="col-md-6">
       <br>
       <br>
-      <h1>Ranking de municipios búscados</h1>
+      <h2>Ranking de municipios búscados</h2>
       <div class="control-section">
-        <div class='e-mastertext'>Master Grid</div>
-        <ejs-grid class="sortingenabled" [dataSource]="data1" allowPaging="true" width= 50% allowSorting="true" [enableHover]="false" [allowSelection]="true" [toolbar]="toolbar">
+        <!-- <div class='e-mastertext'>Master Grid</div> -->
+        <ejs-grid class="sortingenabled" [dataSource]="data1"  allowPaging="true" allowSorting="true" [enableHover]="false" [allowSelection]="true" [toolbar]="toolbar">
           <e-columns>
             <e-column field="name" headerText="Nombre Municipio" width="10"></e-column>
             <e-column field="numBusquedas" headerText="Número de búsquedas" width="10" textAlign="Center"></e-column>
           </e-columns>
         </ejs-grid>
       </div>
-
-
+    </div>
+    <div class="col-md-6">
       <br>
       <br>
-      <h1>Tiempo de navegación de cada usuario</h1>
+      <h2>Tiempo de navegación de cada usuario</h2>
       <div class="control-section">
         <ejs-grid class="sortingenabled" [dataSource]="data2" allowPaging="true" allowSorting="true" [enableHover]="false" [allowSelection]="true" [toolbar]="toolbar">
           <e-columns>
@@ -70,6 +80,6 @@
           </e-columns>
         </ejs-grid>
       </div>
-
-    
+    </div>
+  </div>
 </div>
