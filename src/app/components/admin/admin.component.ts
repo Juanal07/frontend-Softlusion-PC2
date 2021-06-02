@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { CommonsService } from 'src/app/services/commons.service';
 import { AdminService } from 'src/app/services/admin.service';
+// import { BarchartComponent } from 'src/app/components/barchart.component' 
 
 @Component({
     selector: 'app-admin',
@@ -28,7 +29,7 @@ export class AdminComponent implements OnInit {
       this.getMunicipios()
       this.getRankingActivos()
       // this.initialPage = { pageSize: 10, pageCount: 2 };
-      this.toolbar = ['Search'];
+
   }
 
   getUser() {
