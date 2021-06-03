@@ -20,5 +20,9 @@ export class AdminService {
     return this.http.get(`${endpoints.admin}/rankingsActivos`);
   }
 
+  actData() {
+    return this.http.get(`${endpoints.admin}/actData`);
+  }
+
 
 }

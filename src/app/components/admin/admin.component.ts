@@ -66,4 +66,16 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+
+  actData() {
+    this.adminService.actData().subscribe(
+      (response) => {
+        console.log('response is ', response);
+      },
+      (error) => {
+        console.log('error is ', error);
+      }
+    );
+  }
+
 }
