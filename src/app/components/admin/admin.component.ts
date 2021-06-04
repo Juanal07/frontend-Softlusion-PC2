@@ -21,13 +21,13 @@ export class AdminComponent implements OnInit {
     constructor(
       private commonsService: CommonsService,
       private adminService: AdminService,
-    ) {
-    }
+    ) {}
 
     public ngOnInit(): void {
       this.getUser() 
       this.getMunicipios()
       this.getRankingActivos()
+      this.toolbar = ['Search'];
       // this.initialPage = { pageSize: 10, pageCount: 2 };
 
   }

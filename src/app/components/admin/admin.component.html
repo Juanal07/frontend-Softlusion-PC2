@@ -43,8 +43,7 @@
   <div class="row">
     <h2>Datos de los usuarios registrados</h2>
     <div class="control-section">
-        <ejs-grid class="sortingenabled" [dataSource]="data" allowPaging="true" allowSorting="true" [enableHover]="false" [allowSelection]="true" [toolbar]="toolbar">
-          <e-columns>
+      <ejs-grid class="sortingenabled" [dataSource]='data' allowPaging='true' allowSorting='true' [enableHover]="false" [allowSelection]="true" [selectionSettings]="selectOptions" [editSettings]='editSettings' [toolbar]='toolbar'>          <e-columns>
             <e-column field="idUser" headerText="ID Usuario" width="20"></e-column>
             <e-column field="name" headerText="Nombre" width="70" textAlign="Center"></e-column>
             <e-column field="email" headerText="email" width="70" textAlign="Center"></e-column>
@@ -82,5 +81,13 @@
       </div>
     </div>
   </div>
-    <app-barchart></app-barchart>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <app-barchart></app-barchart>
+    </div>
+    <div class="col-md-6">
+      <app-piechart></app-piechart>
+    </div>
+  </div>
 </div>

@@ -24,6 +24,9 @@ import { TablasComponent } from './components/tablas/tablas.component';
 import { GridAllModule } from '@syncfusion/ej2-angular-grids';
 import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
 import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
+import { BarchartComponent } from './components/barchart/barchart.component';
+import { ChartsModule } from 'ng2-charts';
+import { PieChartComponent } from './components/piechart/piechart.component'
 
 @NgModule({
   declarations: [
@@ -38,6 +41,8 @@ import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
     ProfileComponent,
     AdminComponent,
     TablasComponent,
+    BarchartComponent,
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +60,7 @@ import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
     GridAllModule,
     ToolbarModule,
     CheckBoxModule,
+    ChartsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
