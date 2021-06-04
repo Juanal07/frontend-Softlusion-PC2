@@ -56,17 +56,33 @@
     <div class="col-md-6">
       <br>
       <br>
-      <h2>Ranking de municipios búscados</h2>
+      <!-- <h2>Ranking de municipios búscados</h2>
       <div class="control-section">
-        <!-- <div class='e-mastertext'>Master Grid</div> -->
+        <div class='e-mastertext'>Master Grid</div>
         <ejs-grid class="sortingenabled" [dataSource]="data1"  allowPaging="true" allowSorting="true" [enableHover]="false" [allowSelection]="true" [toolbar]="toolbar">
           <e-columns>
             <e-column field="name" headerText="Nombre Municipio" width="10"></e-column>
             <e-column field="numBusquedas" headerText="Número de búsquedas" width="10" textAlign="Center"></e-column>
           </e-columns>
         </ejs-grid>
+      </div> -->
+      <div class="row">
+        <h2>Top municipios más búscados</h2>
+        <hr>
+      <div class="col-md-4 center">
+        <img class="segundo-puesto" src="../../assets/images/second.png" alt="" />
+        <h2>{{segundo_puesto}}</h2>
+      </div>
+      <div class="col-md-4 center">
+        <img class="primer-puesto" src="../../assets/images/first.png" alt="" />
+        <h1>{{primer_puesto}}</h1>
+      </div>
+      <div class="col-md-4 center">
+        <img class="tercer-puesto" src="../../assets/images/third.png" alt="" />
+        <h3>{{tercer_puesto}}</h3>
       </div>
     </div>
+  </div>
     <div class="col-md-6">
       <br>
       <br>
@@ -84,9 +100,13 @@
   <br>
   <div class="row">
     <div class="col-md-6">
+      <h2>Usuarios registrados por mes</h2>
+      <hr>
       <app-barchart></app-barchart>
     </div>
     <div class="col-md-6">
+      <h2>Porcentaje de municipios scrapeados</h2>
+      <hr>
       <app-piechart></app-piechart>
     </div>
   </div>

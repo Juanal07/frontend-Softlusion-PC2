@@ -12,6 +12,9 @@ export class AdminComponent implements OnInit {
 
   public data: any[];
   public data1: any[];
+  primer_puesto: string;
+  segundo_puesto: string;
+  tercer_puesto: string;
   public data2: any[];
   public toolbar: string[];
   public selectOptions: Object;
@@ -49,6 +52,12 @@ export class AdminComponent implements OnInit {
       (response) => {
         console.log('response is ', response);
         this.data1 = response['data'];
+        this.primer_puesto = this.data1[0]['name']
+        this.segundo_puesto = this.data1[1]['name']
+        this.tercer_puesto = this.data1[2]['name']
+        console.log('primer puesto' , this.primer_puesto)
+        console.log('segundo puesto' , this.segundo_puesto)
+        console.log('tercer puesto' , this.tercer_puesto)
       },
       (error) => {
         console.log('error is ', error);

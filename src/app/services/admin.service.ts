@@ -25,10 +25,11 @@ export class AdminService {
     return this.http.get(`${endpoints.admin}/muniScrapeados`);
   }
 
+  getUsuariosMes() {
+    return this.http.get(`${endpoints.admin}/RegisterMes`);
+  }
+
   actData() {
     return this.http.get(`${endpoints.admin}/actData`);
   }
-
-
-
 }

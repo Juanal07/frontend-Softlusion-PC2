@@ -2,3 +2,31 @@
 //     width: 50%;
 
 // }
+.primer-puesto{
+    width: 100%;
+    margin-bottom: 2.5rem;
+}
+
+.segundo-puesto{
+    width: 80%;
+    margin-bottom: 2.5rem;
+    margin-top:4rem;
+}
+
+.tercer-puesto{
+    width: 60%;
+    margin-bottom: 2.5rem;
+    margin-top:7rem;
+}
+
+h2{
+    font-weight: normal;
+}
+
+.center{
+    // margin:auto;
+    display: block;
+    margin:auto;
+    text-align: center;
+    // align-items: center;
+}
