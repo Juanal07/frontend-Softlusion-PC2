@@ -58,7 +58,13 @@
               </ng-template>
             </e-column>
             <e-column field="name" headerText="Nombre" width="15" textAlign="Left"></e-column>
-            <e-column field="email" headerText="email" width="22" textAlign="Left"></e-column>
+            <e-column headerText="email" width="22" textAlign="Left">
+              <ng-template #template let-data>
+                <div class="url">
+                    <a href="mailto:{{data.email}}">{{data.email}}</a>
+                </div>
+            </ng-template>
+            </e-column>
             <e-column field="dateSignIn" headerText="Fecha de registro" width="20" textAlign="Center"></e-column>
           </e-columns>
         </ejs-grid>
