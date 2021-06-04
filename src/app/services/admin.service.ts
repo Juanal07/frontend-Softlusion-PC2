@@ -19,8 +19,4 @@ export class AdminService {
   getRankingActivos() {
     return this.http.get(`${endpoints.admin}/rankingsActivos`);
   }
-
-  getMunicipiosScrapeados() {
-    return this.http.get(`${endpoints.admin}/muniScrapeados`);
-  }
 }
