@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="row titulo">
-      <h1>Dashboard</h1>
-    </div>
-    <!-- <ng-template #rowTemplate let-data>
+  <div class="row titulo">
+    <h1>Dashboard</h1>
+  </div>
+  <!-- <ng-template #rowTemplate let-data>
       <tr>
           <td class="rowphoto">
               <img src="./assets/grid/images/{{data.EmployeeID}}.png" alt="{{data.EmployeeID}}" />
@@ -41,54 +41,34 @@
       </tr>
   </ng-template> -->
   <div class="row">
-    <h2>Datos de los usuarios registrados</h2>
-    <div class="control-section">
-      <ejs-grid class="sortingenabled" [dataSource]='data' allowPaging='true' allowSorting='true' [enableHover]="false" [allowSelection]="true" [selectionSettings]="selectOptions" [editSettings]='editSettings' [toolbar]='toolbar'>          <e-columns>
-            <e-column field="idUser" headerText="ID Usuario" width="20"></e-column>
-            <e-column field="name" headerText="Nombre" width="70" textAlign="Center"></e-column>
-            <e-column field="email" headerText="email" width="70" textAlign="Center"></e-column>
-            <e-column field="dateSignIn" headerText="Fecha de registro" width="70" textAlign="Center"></e-column>
-          </e-columns>
-        </ejs-grid>
-      </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <br>
-      <br>
-      <!-- <h2>Ranking de municipios búscados</h2>
+    <div class="col-md-8">
+      <h2>Datos de los usuarios registrados</h2>
       <div class="control-section">
-        <div class='e-mastertext'>Master Grid</div>
-        <ejs-grid class="sortingenabled" [dataSource]="data1"  allowPaging="true" allowSorting="true" [enableHover]="false" [allowSelection]="true" [toolbar]="toolbar">
+        <ejs-grid class="sortingenabled" [dataSource]='data' allowPaging='true' allowSorting='true'
+          [enableHover]="false" [allowSelection]="true" [selectionSettings]="selectOptions"
+          [editSettings]='editSettings' [toolbar]='toolbar' allow-resize-to-fit="true" databound="databound">
           <e-columns>
-            <e-column field="name" headerText="Nombre Municipio" width="10"></e-column>
-            <e-column field="numBusquedas" headerText="Número de búsquedas" width="10" textAlign="Center"></e-column>
+            <e-column field="idUser" headerText="ID" width="5"></e-column>
+            <e-column field="active" headerText="Activo" width="10" textAlign="Center">
+              <ng-template #template let-data>
+                <div class="imageActive">
+                  <img class="imgAct" *ngIf="data['active']==0" src="../../../assets/images/red_circle_96px.png" />
+                  <img class="imgAct" *ngIf="data['active']==1" src="../../../assets/images/green_circle_96px.png" />
+                </div>
+              </ng-template>
+            </e-column>
+            <e-column field="name" headerText="Nombre" width="15" textAlign="Left"></e-column>
+            <e-column field="email" headerText="email" width="22" textAlign="Left"></e-column>
+            <e-column field="dateSignIn" headerText="Fecha de registro" width="20" textAlign="Center"></e-column>
           </e-columns>
         </ejs-grid>
-      </div> -->
-      <div class="row">
-        <h2>Top municipios más búscados</h2>
-        <hr>
-      <div class="col-md-4 center">
-        <img class="segundo-puesto" src="../../assets/images/second.png" alt="" />
-        <h2>{{segundo_puesto}}</h2>
-      </div>
-      <div class="col-md-4 center">
-        <img class="primer-puesto" src="../../assets/images/first.png" alt="" />
-        <h1>{{primer_puesto}}</h1>
-      </div>
-      <div class="col-md-4 center">
-        <img class="tercer-puesto" src="../../assets/images/third.png" alt="" />
-        <h3>{{tercer_puesto}}</h3>
       </div>
     </div>
-  </div>
-    <div class="col-md-6">
-      <br>
-      <br>
+    <div class="col-md-4">
       <h2>Tiempo de navegación de cada usuario</h2>
       <div class="control-section">
-        <ejs-grid class="sortingenabled" [dataSource]="data2" allowPaging="true" allowSorting="true" [enableHover]="false" [allowSelection]="true" [toolbar]="toolbar">
+        <ejs-grid class="sortingenabled" [dataSource]="data2" allowPaging="true" allowSorting="true"
+          [enableHover]="false" [allowSelection]="true" [toolbar]="toolbar">
           <e-columns>
             <e-column field="name" headerText="Nombre usuario" width="30"></e-column>
             <e-column field="activos" headerText="Tiempo total logeado" width="10" textAlign="Center"></e-column>
@@ -98,6 +78,30 @@
     </div>
   </div>
   <br>
+  <br>
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h2>Top municipios más búscados</h2>
+      <hr>
+      <div class="row">
+        <div class="col-md-4 center">
+          <img class="segundo-puesto" src="../../assets/images/second.png" alt="" />
+          <h2>{{segundo_puesto}}</h2>
+        </div>
+        <div class="col-md-4 center">
+          <img class="primer-puesto" src="../../assets/images/first.png" alt="" />
+          <h1>{{primer_puesto}}</h1>
+        </div>
+        <div class="col-md-4 center">
+          <img class="tercer-puesto" src="../../assets/images/third.png" alt="" />
+          <h3>{{tercer_puesto}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
   <div class="row">
     <div class="col-md-6">
       <h2>Usuarios registrados por mes</h2>
