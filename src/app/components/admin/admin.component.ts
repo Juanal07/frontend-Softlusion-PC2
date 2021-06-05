@@ -88,4 +88,8 @@ export class AdminComponent implements OnInit {
     );
   }
 
+  printTest() {
+    console.log("Hola")
+  }
+
 }

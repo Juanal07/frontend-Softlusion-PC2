@@ -2,6 +2,8 @@
 //     width: 50%;
 
 // }
+$azulOs: rgb(10, 18, 41);
+
 .primer-puesto{
     width: 100%;
     margin-bottom: 2.5rem;
@@ -52,4 +54,20 @@ h1{
 
 .tablas{
     margin-bottom: 3%;
+}
+
+.boton1 {
+    color: #fff;
+    background-color:$azulOs;
+    border-color: $azulOs;
+    border-radius: 5px;
+    font-weight: 400;
+}
+
+.divAct{
+    margin-bottom: 5%;
+}
+
+.botAct{
+    text-align: center;
 }
