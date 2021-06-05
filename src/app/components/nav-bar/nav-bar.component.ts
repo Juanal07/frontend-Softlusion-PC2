@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginComponent } from 'src/app/components/login/login.component';
-// import { LoginService } from 'src/app/services/login.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommonsService } from 'src/app/services/commons.service';
 
@@ -10,14 +9,11 @@ import { CommonsService } from 'src/app/services/commons.service';
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent implements OnInit {
-  // estado: boolean = false;
   name: string = '';
 
   @ViewChild(LoginComponent) child: LoginComponent;
-
   constructor(
-    // private loginService: LoginService,
-    private commonsService: CommonsService, // private authService: AuthService
+    private commonsService: CommonsService,
     private authService: AuthService
   ) {}
 
@@ -44,11 +40,11 @@ export class NavBarComponent implements OnInit {
   endSession() {
     this.authService.postendSession().subscribe(
       (response) => {
-            console.log('response is ', response);
-          },
-          (error) => {
-            console.log('error is ', error);
-          }
+        console.log('response is ', response);
+      },
+      (error) => {
+        console.log('error is ', error);
+      }
     );
     this.commonsService.endSession();
   }
