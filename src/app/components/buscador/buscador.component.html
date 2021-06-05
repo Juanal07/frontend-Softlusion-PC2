@@ -20,7 +20,7 @@
   <div *ngIf="loading" class="loading-container flex-content-center">
     <div class="row">
       <div class="col-md-4 offset-md-4 gifloading">
-        <mat-progress-spinner class = "gifloading" color="accent" mode="indeterminate">
+        <mat-progress-spinner class="gifloading" color="accent" mode="indeterminate">
         </mat-progress-spinner>
       </div>
     </div>
@@ -132,6 +132,22 @@
           </div>
         </div>
       </div>
+
+      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
+        [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" 
+        class="mySwiper">
+        <ng-template *ngFor="let item of this.municipio.medicalcenters" swiperSlide>
+          <!-- Slide 1 -->
+          <div class="card bloque">
+            <h5 class="card-header cmedicos">Centro Médico: {{item['name']}}</h5>
+            <div class="card-body">
+              <h5 class="card-title">Tipo: {{item['type']}}</h5>
+              <p class="card-text">Dirección: {{item['address']}}</p>
+            </div>
+          </div>
+        </ng-template>
+      </swiper>
+
     </div>
 
     <div *ngIf="this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0" class="row centros">

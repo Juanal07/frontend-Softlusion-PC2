@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
@@ -8,11 +8,15 @@ import { Municipio } from '../../models/municipio.model';
 import { delay } from 'rxjs/operators';
 import { LoadingService } from '../../services/loading.service';
 import { NgbPaginationNumber } from '@ng-bootstrap/ng-bootstrap';
+import SwiperCore, { Navigation, Pagination } from 'swiper/core';
+
+SwiperCore.use([Navigation, Pagination]);
 
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
   styleUrls: ['./buscador.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class BuscadorComponent implements OnInit {
   myControl = new FormControl();
