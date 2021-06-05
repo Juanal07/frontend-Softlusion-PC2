@@ -30,6 +30,15 @@
   position: relative;
   top: -30px;
 }
+
+// input{
+//   border:2px solid rgb(0, 0, 0); 
+// }
+
+.gifloading{
+  display:block;
+  margin:auto;
+}
 .escudo {
   // width: 15rem;
   height: 10rem;
@@ -41,6 +50,13 @@
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
+}
+
+.bloque2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 9rem;
+  margin-bottom: 1rem;
 }
 
 .centros {

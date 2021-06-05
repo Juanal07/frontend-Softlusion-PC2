@@ -5,21 +5,10 @@
 
   <form class="example-form">
     <mat-form-field class="barra">
-      <input
-        type="text"
-        placeholder=""
-        aria-label="Number"
-        matInput
-        [formControl]="myControl"
-        [matAutocomplete]="auto"
-        [(ngModel)]="texto"
-        (keydown.enter)="getInfoPueblo()"
-      />
+      <input type="text" placeholder="Introduce un municipio" aria-label="Number" matInput [formControl]="myControl"
+        [matAutocomplete]="auto" [(ngModel)]="texto" (keydown.enter)="getInfoPueblo()" />
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option
-          *ngFor="let option of filteredOptions | async | slice:0:10"
-          [value]="option"
-        >
+        <mat-option *ngFor="let option of filteredOptions | async | slice:0:10" [value]="option">
           {{option}}
         </mat-option>
       </mat-autocomplete>
@@ -27,79 +16,97 @@
   </form>
 
   <!-- Loading spinner -->
+
   <div *ngIf="loading" class="loading-container flex-content-center">
-    <mat-progress-spinner color="primary" mode="indeterminate">
-    </mat-progress-spinner>
+    <div class="row">
+      <div class="col-md-4 offset-md-4 gifloading">
+        <mat-progress-spinner class = "gifloading" color="accent" mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+    </div>
   </div>
   <!-- the application -->
-
-  <!-- <div class = "fondo1"> -->
-  <h3 *ngIf="this.municipio.name != null">Información básica</h3>
-  <div class="row">
-    <div class="col-md-4">
-      <img class="escudo" [src]="municipio.shield" />
-    </div>
-    <div class="col-md-4">
-      <br />
-      <div class="row">
-        <p>{{this.municipio.name}}</p>
-      </div>
-      <div class="row">
-        <p *ngIf="this.municipio.region != null">{{this.municipio.region}}</p>
-      </div>
-      <div class="row">
-        <p>{{this.municipio.province}}</p>
-      </div>
-      <div class="row">
-        <p>{{this.municipio.ccaa}}</p>
-      </div>
-      <br />
-      <div class="row">
-        <p *ngIf="this.municipio.nRestaurants != null">
-          Número de restaurantes: {{this.municipio.nRestaurants}}
-        </p>
-      </div>
-      <div class="row">
-        <p *ngIf="this.municipio.media != null">
-          Media de restaurantes: {{this.municipio.media}}
-        </p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <br />
-      <div class="row">
-        <p *ngIf="this.municipio.population != null">
-          Población: {{this.municipio.population}}
-        </p>
-      </div>
-      <div class="row">
-        <p *ngIf="this.municipio.surface != null">
-          Superficie: {{this.municipio.surface}}
-        </p>
-      </div>
-      <div class="row">
-        <p *ngIf="this.municipio.altitude != null">
-          Altitud: {{this.municipio.altitude}}
-        </p>
-      </div>
-      <div class="row">
-        <p *ngIf="this.municipio.density != null">
-          Densidad: {{this.municipio.density}}
-        </p>
-      </div>
-      <br />
-      <div class="row">
-        <p *ngIf="this.municipio.unpopulated != null">
-          {{this.municipio.unpopulated}}
-        </p>
+  <div *ngIf="this.municipio.name == null">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let item of this.topBusquedas">
+        <div class="card bloque2">
+          <h5 class="card-header">{{item['name']}}</h5>
+          <img class="escudo" [src]="this.item['shield']" />
+          <div class="card-body">
+            <h5 class="card-title">Provincia: {{item['province']}}</h5>
+            <p class="card-text">CCAA: {{item['ccaa']}}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="row centros">
-    <h3
-      *ngIf="this.municipio.stations != null && this.municipio.stations.length != 0"
-    >
+  <!-- <div class = "fondo1"> -->
+  <div *ngIf="this.municipio.name != null">
+    <h3>Información básica</h3>
+    <div class="row">
+      <div class="col-md-4">
+        <img class="escudo" [src]="municipio.shield" />
+      </div>
+      <div class="col-md-4">
+        <br />
+        <div class="row">
+          <p>{{this.municipio.name}}</p>
+        </div>
+        <div class="row">
+          <p *ngIf="this.municipio.region != null">{{this.municipio.region}}</p>
+        </div>
+        <div class="row">
+          <p>{{this.municipio.province}}</p>
+        </div>
+        <div class="row">
+          <p>{{this.municipio.ccaa}}</p>
+        </div>
+        <br />
+        <div class="row">
+          <p *ngIf="this.municipio.nRestaurants != null">
+            Número de restaurantes: {{this.municipio.nRestaurants}}
+          </p>
+        </div>
+        <div class="row">
+          <p *ngIf="this.municipio.media != null">
+            Media de restaurantes: {{this.municipio.media}}
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <br />
+        <div class="row">
+          <p *ngIf="this.municipio.population != null">
+            Población: {{this.municipio.population}}
+          </p>
+        </div>
+        <div class="row">
+          <p *ngIf="this.municipio.surface != null">
+            Superficie: {{this.municipio.surface}}
+          </p>
+        </div>
+        <div class="row">
+          <p *ngIf="this.municipio.altitude != null">
+            Altitud: {{this.municipio.altitude}}
+          </p>
+        </div>
+        <div class="row">
+          <p *ngIf="this.municipio.density != null">
+            Densidad: {{this.municipio.density}}
+          </p>
+        </div>
+        <br />
+        <div class="row">
+          <p *ngIf="this.municipio.unpopulated != null">
+            {{this.municipio.unpopulated}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="this.municipio.stations != null && this.municipio.stations.length != 0" class="row centros">
+    <h3>
       Estaciones
     </h3>
     <div class="col-md-4" *ngFor="let item of this.municipio.stations">
@@ -110,16 +117,10 @@
           <p class="card-text">Dirección: {{item['address']}}</p>
         </div>
       </div>
-      <!-- <p class = "bloque">Estación: {{item['name']}}</p>
-              <p class = "bloque">Cercanias: {{item['cercanias']}}</p>
-              <p class = "bloque">Dirección: {{item['address']}}</p>
-              <p class = "bloque">-------------------------------------------------------------------</p> -->
     </div>
 
-    <div class="row centros">
-      <h3
-        *ngIf="this.municipio.medicalcenters != null && this.municipio.medicalcenters.length != 0"
-      >
+    <div *ngIf="this.municipio.medicalcenters != null && this.municipio.medicalcenters.length != 0" class="row centros">
+      <h3>
         Centros médicos
       </h3>
       <div class="col-md-4" *ngFor="let item of this.municipio.medicalcenters">
@@ -130,17 +131,11 @@
             <p class="card-text">Dirección: {{item['address']}}</p>
           </div>
         </div>
-        <!-- <p class = "bloque">Centro Médico: {{item['name']}}</p>
-            <p class = "bloque">Tipo: {{item['type']}}</p>
-            <p class = "bloque">Dirección: {{item['address']}}</p>
-            <p class = "bloque">-------------------------------------------------------------------</p> -->
       </div>
     </div>
 
-    <div class="row centros">
-      <h3
-        *ngIf="this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0"
-      >
+    <div *ngIf="this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0" class="row centros">
+      <h3>
         Supermercados
       </h3>
       <div class="col-md-4" *ngFor="let item of this.municipio.supermarkets">
@@ -155,13 +150,5 @@
         </div>
       </div>
     </div>
-
-    <!-- </div> -->
   </div>
-  <!-- <div *ngIf = "this.municipio != null"> -->
-  <!-- HOLAque hase? -->
-  <!-- [{ngModel}]="this.municipio" -->
-  <!-- {{this.municipio.stations | json}} -->
-  <!-- <div *ngFor = "let item of this.municipio.stations">{{item | json}}</div> -->
-  <!-- </div> -->
 </div>

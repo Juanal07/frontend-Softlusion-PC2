@@ -6,7 +6,7 @@ import { endpoints } from '../../environments/endpoints';
   providedIn: 'root',
 })
 export class MunicipalityService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getListaPueblos() {
     return this.http.get(`${endpoints.municipality}/listVillages`);
@@ -54,6 +54,11 @@ export class MunicipalityService {
     return this.http.post(`${endpoints.municipality}/news`, {
       idMunicipality,
       idSearch,
+    });
+  }
+
+  getTopMunicipios() {
+    return this.http.get(`${endpoints.municipality}/topsearches`, {
     });
   }
 }

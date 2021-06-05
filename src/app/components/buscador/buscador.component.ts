@@ -7,6 +7,7 @@ import { Autocompletado } from '../../models/autocompletado.model';
 import { Municipio } from '../../models/municipio.model';
 import { delay } from 'rxjs/operators';
 import { LoadingService } from '../../services/loading.service';
+import { NgbPaginationNumber } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-buscador',
@@ -22,6 +23,7 @@ export class BuscadorComponent implements OnInit {
   municipio = new Municipio();
   idSearch: number;
   idMunicipio: number;
+  topBusquedas: {name: string, shield: string, province: string, ccaa: string, numBusquedas: number} [];
 
   loading: boolean = false;
 
@@ -33,6 +35,7 @@ export class BuscadorComponent implements OnInit {
   ngOnInit() {
     this.listenToLoading();
     this.getListaPueblos();
+    this.getTopMunicipios()
 
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -62,7 +65,30 @@ export class BuscadorComponent implements OnInit {
         for (i; i < this.respuesta.length; i++) {
           this.options[i] = this.respuesta[i]['name'];
         }
-        console.log('mis opciones', this.options);
+        // console.log('mis opciones', this.options);
+      },
+      (error) => {
+        console.log('error is ', error);
+      }
+    );
+  }
+
+  getTopMunicipios() {
+    this.municipalityService.getTopMunicipios().subscribe(
+      (response) => {
+        this.topBusquedas = response['data']
+        console.log('Municipios Informacion', this.topBusquedas)
+        console.log('Nombre', this.topBusquedas[0]['name'])
+        console.log('Provincia', this.topBusquedas[0]['province'])
+        console.log('CCAA', this.topBusquedas[0]['ccaa'])
+        // let aux = new Array()
+        // aux = response['data'];
+        // for (let i = 0; i < aux.length; i++) {
+        //   // console.log(aux[])
+        //   this.topBusquedas[i].push(aux[i]['name'])
+        //   // this.topBusquedas[i]['nombre'] = aux[i]['name'];
+        //   console.log('nombre municipio', this.topBusquedas[i]['nombre']);
+        // }
       },
       (error) => {
         console.log('error is ', error);
