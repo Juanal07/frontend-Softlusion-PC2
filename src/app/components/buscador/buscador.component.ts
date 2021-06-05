@@ -4,8 +4,9 @@ import { map, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { MunicipalityService } from '../../services/municipality.service';
 import { Autocompletado } from '../../models/autocompletado.model';
-import { Municipio } from '../../models/municipio.model'
-import { ɵHttpInterceptingHandler } from '@angular/common/http';
+import { Municipio } from '../../models/municipio.model';
+import { delay } from 'rxjs/operators';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-buscador',
@@ -22,9 +23,15 @@ export class BuscadorComponent implements OnInit {
   idSearch: number;
   idMunicipio: number;
 
-  constructor(private municipalityService: MunicipalityService) {}
+  loading: boolean = false;
+
+  constructor(
+    private _loading: LoadingService,
+    private municipalityService: MunicipalityService
+  ) {}
 
   ngOnInit() {
+    this.listenToLoading();
     this.getListaPueblos();
 
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -32,7 +39,17 @@ export class BuscadorComponent implements OnInit {
       map((value) => this._filter(value))
     );
   }
-
+  /**
+   * Listen to the loadingSub property in the LoadingService class. This drives the
+   * display of the loading spinner.
+   */
+  listenToLoading(): void {
+    this._loading.loadingSub
+      .pipe(delay(0)) // This prevents a ExpressionChangedAfterItHasBeenCheckedError for subsequent requests
+      .subscribe((loading) => {
+        this.loading = loading;
+      });
+  }
   getListaPueblos() {
     this.municipalityService.getListaPueblos().subscribe(
       (response) => {
@@ -53,7 +70,7 @@ export class BuscadorComponent implements OnInit {
     );
   }
 
-  getIdPueblo(pueblo: string){
+  getIdPueblo(pueblo: string) {
     let i = 0;
     for (i; i < this.respuesta.length; i++) {
       // console.log(this.respuesta[i]['name'])
@@ -66,14 +83,14 @@ export class BuscadorComponent implements OnInit {
     }
   }
 
-  getInfoPueblo(){
+  getInfoPueblo() {
     // console.log("hola")
     // console.log(this.getIdPueblo(this.texto))
-    this.municipalityService.getBusqueda(this.getIdPueblo(this.texto)).subscribe(
-      (response) => {
+    this.municipalityService
+      .getBusqueda(this.getIdPueblo(this.texto))
+      .subscribe((response) => {
         // console.log("hola2")
-        if (response['status'] == 200){
-
+        if (response['status'] == 200) {
           this.municipio.name = response['data']['name'];
           this.municipio.shield = response['data']['shield'];
           this.municipio.region = response['data']['region'];
@@ -86,8 +103,8 @@ export class BuscadorComponent implements OnInit {
           this.municipio.stations = response['data']['stations'];
           this.municipio.medicalcenters = response['data']['medicalcenters'];
           this.municipio.supermarkets = response['data']['supermarkets'];
-          
-          if ( response['data']['nRestaurants'] == -10){
+
+          if (response['data']['nRestaurants'] == -10) {
             this.municipio.nRestaurants = 0;
             this.municipio.media = 0;
           } else {
@@ -95,20 +112,20 @@ export class BuscadorComponent implements OnInit {
             this.municipio.media = response['data']['media'];
           }
 
-          if(response['data']['populated'] == 0 ){
-            this.municipio.unpopulated = 'Pertenece a la España Vaciada'
+          if (response['data']['populated'] == 0) {
+            this.municipio.unpopulated = 'Pertenece a la España Vaciada';
           } else {
-            this.municipio.unpopulated = 'NO pertenece a la España Vaciada'
+            this.municipio.unpopulated = 'NO pertenece a la España Vaciada';
           }
-
-        }else{
-          console.log("ELSEEE")
-          this.idSearch = response['data']['idSearch']
-          this.idMunicipio = response['data']['idMunicipality']
+        } else {
+          console.log('ELSEEE');
+          this.idSearch = response['data']['idSearch'];
+          this.idMunicipio = response['data']['idMunicipality'];
           // console.log(this.idSearch)
           // console.log(this.idMunicipio)
-          this.municipalityService.getInfoPueblo(this.idMunicipio).subscribe(
-            (response) => {
+          this.municipalityService
+            .getInfoPueblo(this.idMunicipio)
+            .subscribe((response) => {
               // console.log("RESPONSEEE: ", response)
               this.municipio = response['data'];
               // console.log(this.municipio.name)
@@ -118,63 +135,61 @@ export class BuscadorComponent implements OnInit {
               // console.log(this.municipio.population)
 
               // this.municipio.name = "hola";
-              console.log("OBJETO: ", this.municipio)
-            }
-          )
+              console.log('OBJETO: ', this.municipio);
+            });
 
-          this.municipalityService.getEstaciones(this.idMunicipio).subscribe(
-            (response) => {
-              console.log(response)
+          this.municipalityService
+            .getEstaciones(this.idMunicipio)
+            .subscribe((response) => {
+              console.log(response);
               this.municipio.stations = response['data'];
-              console.log("ESTACIONES: ",this.municipio.stations)
-              console.log("OBJETO: ", response['data'])
-            }
-          )
+              console.log('ESTACIONES: ', this.municipio.stations);
+              console.log('OBJETO: ', response['data']);
+            });
 
-          this.municipalityService.getCentrosMedicos(this.idMunicipio).subscribe(
-            (response) => {
-              console.log(response)
+          this.municipalityService
+            .getCentrosMedicos(this.idMunicipio)
+            .subscribe((response) => {
+              console.log(response);
               this.municipio.medicalcenters = response['data'];
               // console.log("CENTROS MEDICOS: ",this.municipio.medicalcenters)
               // console.log("OBJETO: ", response['data'])
-            }
-          )
+            });
 
-          this.municipalityService.getSupermercados(this.idMunicipio, this.idSearch).subscribe(
-            (response) => {
-              console.log(response)
+          this.municipalityService
+            .getSupermercados(this.idMunicipio, this.idSearch)
+            .subscribe((response) => {
+              console.log(response);
               this.municipio.supermarkets = response['data'];
               // console.log("SUPERMERCADOS: ",this.municipio.supermarkets)
               // console.log("OBJETO: ", response['data'])
-            }
-          )
+            });
 
-          this.municipalityService.getRestaurantes(this.idMunicipio, this.idSearch).subscribe(
-            (response) => {
-              console.log(response)
-              if ( response['data']['nRestaurants'] == -10){
+          this.municipalityService
+            .getRestaurantes(this.idMunicipio, this.idSearch)
+            .subscribe((response) => {
+              console.log(response);
+              if (response['data']['nRestaurants'] == -10) {
                 this.municipio.nRestaurants = 0;
                 this.municipio.media = 0;
-              }
-              else {
+              } else {
                 this.municipio.nRestaurants = response['data']['nRestaurants'];
                 this.municipio.media = response['data']['media'];
               }
               // this.municipio.nRestaurants = response['data']['nRestaurants'];
               // console.log(this.municipio.media)
               // console.log(this.municipio.nRestaurants)
-            }
-          )
+            });
 
-          this.municipalityService.getNoticias(this.idMunicipio, this.idSearch).subscribe(
-            (response) => {
-              console.log(response)
-              if(response['data']['populated'] == 0 )
-                this.municipio.unpopulated = 'Pertenece a la España Vaciada'
-              else(
-                this.municipio.unpopulated = 'NO pertenece a la España Vaciada'
-              )
-                // this.municipio.unpopulated = response['data']['populated'];
+          this.municipalityService
+            .getNoticias(this.idMunicipio, this.idSearch)
+            .subscribe((response) => {
+              console.log(response);
+              if (response['data']['populated'] == 0)
+                this.municipio.unpopulated = 'Pertenece a la España Vaciada';
+              else
+                this.municipio.unpopulated = 'NO pertenece a la España Vaciada';
+              // this.municipio.unpopulated = response['data']['populated'];
               // console.log("OBJETO: ", this.municipio)
               // console.log(this.municipio.name)
               // console.log(this.municipio.ccaa)
@@ -182,15 +197,11 @@ export class BuscadorComponent implements OnInit {
               // console.log(this.municipio.province)
               // console.log(this.municipio.population)
               // console.log(this.municipio.unpopulated)
-
-            }
-          )
+            });
           // this.municipalityService.getBusqueda(this.getIdPueblo(this.texto)).subscribe(
           //   (response) => {
         }
-      }
-  
-    )
+      });
   }
 
   private _filter(value: string): string[] {

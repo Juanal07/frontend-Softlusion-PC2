@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './services/interceptor';
+import { HttpRequestInterceptor } from './services/http-request-interceptor';
 import { AdminComponent } from './components/admin/admin.component';
 import { TablasComponent } from './components/tablas/tablas.component';
 import { GridAllModule } from '@syncfusion/ej2-angular-grids';
@@ -26,7 +27,8 @@ import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
 import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
 import { BarchartComponent } from './components/barchart/barchart.component';
 import { ChartsModule } from 'ng2-charts';
-import { PieChartComponent } from './components/piechart/piechart.component'
+import { PieChartComponent } from './components/piechart/piechart.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -61,9 +63,15 @@ import { PieChartComponent } from './components/piechart/piechart.component'
     ToolbarModule,
     CheckBoxModule,
     ChartsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
