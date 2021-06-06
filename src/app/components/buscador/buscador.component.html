@@ -3,8 +3,8 @@
     <h1>¿Sobre qué destino deseas informarte?</h1>
   </div>
 
-  <form class="example-form">
-    <mat-form-field class="barra">
+  <form class="example-form barra">
+    <mat-form-field>
       <input type="text" placeholder="Introduce un municipio" aria-label="Number" matInput [formControl]="myControl"
         [matAutocomplete]="auto" [(ngModel)]="texto" (keydown.enter)="getInfoPueblo()" />
       <mat-autocomplete #auto="matAutocomplete">
@@ -123,7 +123,7 @@
       <h3>
         Centros médicos
       </h3>
-      <div class="col-md-4" *ngFor="let item of this.municipio.medicalcenters">
+      <!-- <div class="col-md-4" *ngFor="let item of this.municipio.medicalcenters">
         <div class="card bloque">
           <h5 class="card-header cmedicos">Centro Médico: {{item['name']}}</h5>
           <div class="card-body">
@@ -131,13 +131,12 @@
             <p class="card-text">Dirección: {{item['address']}}</p>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
         [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" 
         class="mySwiper">
         <ng-template *ngFor="let item of this.municipio.medicalcenters" swiperSlide>
-          <!-- Slide 1 -->
           <div class="card bloque">
             <h5 class="card-header cmedicos">Centro Médico: {{item['name']}}</h5>
             <div class="card-body">
