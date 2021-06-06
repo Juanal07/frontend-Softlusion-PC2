@@ -105,11 +105,11 @@
       </div>
     </div>
   </div>
+  
   <div *ngIf="this.municipio.stations != null && this.municipio.stations.length != 0" class="row centros">
-    <h3>
-      Estaciones
-    </h3>
-    <div class="col-md-4" *ngFor="let item of this.municipio.stations">
+    <h3>Estaciones</h3>
+
+    <!-- <div class="col-md-4" *ngFor="let item of this.municipio.stations">
       <div class="card bloque">
         <h5 class="card-header stations">Estación: {{item['name']}}</h5>
         <div class="card-body">
@@ -117,13 +117,40 @@
           <p class="card-text">Dirección: {{item['address']}}</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div *ngIf="this.municipio.medicalcenters != null && this.municipio.medicalcenters.length != 0" class="row centros">
-      <h3>
-        Centros médicos
-      </h3>
-      <!-- <div class="col-md-4" *ngFor="let item of this.municipio.medicalcenters">
+
+    <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false"
+      [pagination]="{ clickable: true }" [navigation]="true" class="mySwiper">
+      <ng-template *ngFor="let item of this.municipio.stations" swiperSlide>
+        <div class="card bloque">
+          <h5 class="card-header stations">Estación: {{item['name']}}</h5>
+          <div class="card-body">
+            <h5 class="card-title">Cercanias: {{item['cercanias']}}</h5>
+            <p class="card-text">Dirección: {{item['address']}}</p>
+          </div>
+        </div>
+      </ng-template>
+    </swiper>
+
+  </div>
+
+  <div *ngIf="this.municipio.medicalcenters != null && this.municipio.medicalcenters.length != 0" class="row centros">
+    <h3>Centros médicos</h3>
+
+    <!-- <div class="col-md-4" *ngFor="let item of this.municipio.medicalcenters">
+      <div class="card bloque">
+        <h5 class="card-header cmedicos">Centro Médico: {{item['name']}}</h5>
+        <div class="card-body">
+          <h5 class="card-title">Tipo: {{item['type']}}</h5>
+          <p class="card-text">Dirección: {{item['address']}}</p>
+        </div>
+      </div>
+    </div> -->
+
+    <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false"
+      [pagination]="{ clickable: true }" [navigation]="true" class="mySwiper">
+      <ng-template *ngFor="let item of this.municipio.medicalcenters" swiperSlide>
         <div class="card bloque">
           <h5 class="card-header cmedicos">Centro Médico: {{item['name']}}</h5>
           <div class="card-body">
@@ -131,29 +158,29 @@
             <p class="card-text">Dirección: {{item['address']}}</p>
           </div>
         </div>
-      </div> -->
+      </ng-template>
+    </swiper>
 
-      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
-        [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" 
-        class="mySwiper">
-        <ng-template *ngFor="let item of this.municipio.medicalcenters" swiperSlide>
-          <div class="card bloque">
-            <h5 class="card-header cmedicos">Centro Médico: {{item['name']}}</h5>
-            <div class="card-body">
-              <h5 class="card-title">Tipo: {{item['type']}}</h5>
-              <p class="card-text">Dirección: {{item['address']}}</p>
-            </div>
-          </div>
-        </ng-template>
-      </swiper>
+  </div>
 
-    </div>
+  <div *ngIf="this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0" class="row centros">
+    <h3>Supermercados</h3>
 
-    <div *ngIf="this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0" class="row centros">
-      <h3>
-        Supermercados
-      </h3>
-      <div class="col-md-4" *ngFor="let item of this.municipio.supermarkets">
+    <!-- <div class="col-md-4" *ngFor="let item of this.municipio.supermarkets">
+      <div class="card bloque">
+        <h5 class="card-header supermarkets">
+          Supermercado: {{item['name']}}
+        </h5>
+        <div class="card-body">
+          <h5 class="card-title">Distancia: {{item['distance']}} Km</h5>
+          <p class="card-text">Dirección: {{item['address']}}</p>
+        </div>
+      </div>
+    </div> -->
+
+    <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false"
+      [pagination]="{ clickable: true }" [navigation]="true" class="mySwiper">
+      <ng-template *ngFor="let item of this.municipio.supermarkets" swiperSlide>
         <div class="card bloque">
           <h5 class="card-header supermarkets">
             Supermercado: {{item['name']}}
@@ -163,7 +190,9 @@
             <p class="card-text">Dirección: {{item['address']}}</p>
           </div>
         </div>
-      </div>
-    </div>
+      </ng-template>
+    </swiper>
+
   </div>
+
 </div>
