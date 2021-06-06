@@ -27,9 +27,11 @@
   </div>
   <!-- the application -->
   <div *ngIf="this.municipio.name == null">
-    <div class="row">
+    <div class="row bloque2">
+      <h3>Municipios más búscados</h3>
+      <hr>
       <div class="col-md-3" *ngFor="let item of this.topBusquedas">
-        <div class="card bloque2">
+        <div class="card">
           <h5 class="card-header">{{item['name']}}</h5>
           <img class="escudo" [src]="this.item['shield']" />
           <div class="card-body">
