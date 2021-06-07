@@ -29,6 +29,7 @@ import { BarchartComponent } from './components/barchart/barchart.component';
 import { ChartsModule } from 'ng2-charts';
 import { PieChartComponent } from './components/piechart/piechart.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ScrolltopComponent } from './components/scrolltop/scrolltop.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     TablasComponent,
     BarchartComponent,
     PieChartComponent,
+    ScrolltopComponent,
   ],
   imports: [
     BrowserModule,
