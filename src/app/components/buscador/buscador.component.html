@@ -1,8 +1,10 @@
+<div class= "foto-fondo">
 <div class="container">
   <div class="titulo">
     <h1>¿Sobre qué destino deseas informarte?</h1>
   </div>
-
+<div class="row">
+  <div class="col-md-4 offset-md-4 tablas">
   <form class="example-form">
     <mat-form-field class="barra">
       <input type="text" placeholder="Introduce un municipio" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="texto" (keydown.enter)="getInfoPueblo()" />
@@ -11,7 +13,10 @@
       </mat-autocomplete>
     </mat-form-field>
   </form>
-
+</div>
+</div>
+<div *ngIf="this.municipio.name == null" class = "fantasma">
+</div>
   <!-- Loading spinner -->
 
   <div *ngIf="loading" class="loading-container flex-content-center">
@@ -22,12 +27,12 @@
     </div>
   </div>
   <!-- the application -->
-  <div *ngIf="this.municipio.name == null">
+  <!-- <div *ngIf="this.municipio.name == null">
     <div class="row bloque2">
       <h3>Municipios más búscados</h3>
       <hr />
       <div class="col-md-3" *ngFor="let item of this.topBusquedas">
-        <div class="card">
+        <div class="card card-principio">
           <h5 class="card-header">{{item['name']}}</h5>
           <img class="escudo" [src]="this.item['shield']" />
           <div class="card-body">
@@ -37,7 +42,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- <div class = "fondo1"> -->
   <div *ngIf="this.municipio.name != null">
@@ -96,6 +101,7 @@
         <h5 class="card-header stations">Estación: {{item['name']}}</h5>
         <div class="card-body">
           <h5 class="card-title">Cercanias: {{item['cercanias']}}</h5>
+          <h5 class="card-title">Feve: {{item['feve']}}</h5>
           <p class="card-text">Dirección: {{item['address']}}</p>
         </div>
       </div>
@@ -127,4 +133,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
