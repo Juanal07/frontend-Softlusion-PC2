@@ -1,0 +1,66 @@
+<br><br><br><br><br>
+<p>swipe works!</p>
+
+<!-- <swiper [slidesPerView]="3" [spaceBetween]="30" [pagination]="{ clickable: true }" class="mySwiper">
+    <ng-template swiperSlide>Slide 1</ng-template>
+    <ng-template swiperSlide>Slide 2</ng-template>
+    <ng-template swiperSlide>Slide 3</ng-template>
+    <ng-template swiperSlide>Slide 4</ng-template>
+    <ng-template swiperSlide>Slide 5</ng-template>
+    <ng-template swiperSlide>Slide 6</ng-template>
+    <ng-template swiperSlide>Slide 7</ng-template>
+    <ng-template swiperSlide>Slide 8</ng-template>
+    <ng-template swiperSlide>Slide 9</ng-template>
+</swiper> -->
+
+<!-- <br><br><br><br><br>
+<p>swipe works!</p>
+<br><br><br><br><br>
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-scrollbar"></div>
+</div>  -->
+
+<!-- <app-swipe></app-swipe> -->
+
+<!-- <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="true" 
+[loopFillGroupWithBlank]="true" [pagination]="{ clickable: true }" [navigation]="true" 
+    class="mySwiper">
+    <ng-template swiperSlide>Slide 1</ng-template>
+    <ng-template swiperSlide>Slide 2</ng-template>
+    <ng-template swiperSlide>Slide 3</ng-template>
+    <ng-template swiperSlide>Slide 4</ng-template>
+    <ng-template swiperSlide>Slide 5</ng-template>
+    <ng-template swiperSlide>Slide 6</ng-template>
+    <ng-template swiperSlide>Slide 7</ng-template>
+    <ng-template swiperSlide>Slide 8</ng-template>
+    <ng-template swiperSlide>Slide 9</ng-template>
+</swiper> -->
+
+<!-- *ngFor="let item of this.municipio.medicalcenters" -->
+
+<swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" 
+[loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" 
+     class="mySwiper">
+    <ng-template *ngFor="let item of this.municipio.medicalcenters" swiperSlide>
+        <!-- Slide 1 -->
+        <div class="card bloque">
+            <h5 class="card-header cmedicos">Centro Médico: {{item['name']}}</h5>
+            <div class="card-body">
+              <h5 class="card-title">Tipo: {{item['type']}}</h5>
+              <p class="card-text">Dirección: {{item['address']}}</p>
+            </div>
+          </div>
+    </ng-template>
+</swiper>
+
+<p>swipe works!</p>
+<br><br><br><br><br>

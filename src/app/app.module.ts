@@ -29,6 +29,8 @@ import { BarchartComponent } from './components/barchart/barchart.component';
 import { ChartsModule } from 'ng2-charts';
 import { PieChartComponent } from './components/piechart/piechart.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SwiperModule } from "swiper/angular";
+import { SwipeComponent } from './components/swipe/swipe.component';
 import { ScrolltopComponent } from './components/scrolltop/scrolltop.component';
 
 @NgModule({
@@ -46,6 +48,7 @@ import { ScrolltopComponent } from './components/scrolltop/scrolltop.component';
     TablasComponent,
     BarchartComponent,
     PieChartComponent,
+    SwipeComponent,
     ScrolltopComponent,
   ],
   imports: [
@@ -66,6 +69,7 @@ import { ScrolltopComponent } from './components/scrolltop/scrolltop.component';
     CheckBoxModule,
     ChartsModule,
     MatProgressSpinnerModule,
+    SwiperModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

@@ -1,3 +1,7 @@
+@import "~swiper/swiper";
+@import "~swiper/components/pagination/pagination";
+@import "~swiper/components/navigation/navigation";
+
 // .gris{
 //     padding-top: 0px;
 //     align-items: center;
@@ -169,10 +173,14 @@
   margin:auto;
 }
 .escudo {
-  width: 30%;
-  // height: 20%;
-  // width: 20%;
+  width: 90%;
   // height: 10rem;
+  display: block;
+  margin: auto;
+}
+.escudoMain {
+  // width: 90%;
+  height: 10rem;
   display: block;
   margin: auto;
   margin-left:2rem;
@@ -219,7 +227,7 @@
   margin-top: 4rem;
 }
 
-::ng-deep .mat-form-field {
+.mat-form-field {
   .mat-input-element {
     color: black !important;
     width: 100%;
@@ -247,6 +255,7 @@
 .stations {
   background-color: rgb(134, 1, 1);
   color: white;
+  text-align: center;
 }
 
 .supermarkets {
@@ -291,3 +300,122 @@
 //     overflow: auto;
 //   }
 // }
+
+.swiper-container {
+  width: 100%;
+  height: 30%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stationSwiper{
+  .swiper-button-prev, .swiper-button-next{
+    color: rgb(134, 1, 1);
+  }
+}
+
+.sanidadSwiper{
+  .swiper-button-prev, .swiper-button-next{
+    color: green;
+  }
+}
+
+.supermarketsSwiper{
+  .swiper-button-prev, .swiper-button-next{
+    color: rgb(149, 156, 49);
+  }
+}
+
+.emoji{
+  // height: 10px;
+  display: block;
+  width: 1.8rem !important;
+  margin-right: 1%;
+}
+
+.emojiDir{
+  display: block;
+  width: 1rem !important;
+  margin-right: 1%;
+}
+
+.bodyStation{
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  display: block;
+}
+
+.dirText{
+  font-size: 0.7rem;
+  // padding-bottom: 2%;
+}
+
+.disText{
+  font-size: 0.7rem;
+  padding-top: 0.2%;
+}
+
+h5{
+  width: auto;
+  margin: 0 !important;
+  padding: 0;
+}
+
+.tituloCaja{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  p{
+    margin-top: 5px;
+  }
+}
+
+.bodyCaja{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p{
+    margin-top: 8px;
+  }
+}
+
+.caja{
+  width: 100%;
+}
+
+.marginCaja{
+  margin-bottom: 2%;
+}
+
+.marginStation{
+  margin-bottom: 20px;
+}
