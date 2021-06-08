@@ -110,7 +110,7 @@
     <h3>Estaciones</h3>
 
     <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false"
-      [pagination]="{ clickable: true }" [navigation]="true" class="mySwiper">
+      [pagination]="{ clickable: true }" [navigation]="true" class="stationSwiper">
       <ng-template *ngFor="let item of this.municipio.stations" swiperSlide>
         <div class="caja">
           <div class="tituloCaja stations">
@@ -121,7 +121,7 @@
             <!-- <img class="emoji" *ngIf="item['feve'] = 0 && item['cercanias'] = 0" src="../../../assets/images/train_100px.png" alt=""> -->
             <h5>{{item['name']}}</h5>
           </div>
-          <div class="tituloCaja marginCaja">
+          <div class="tituloCaja marginStation">
             <img class="emojiDir" src="../../../assets/images/marker_100px.png" alt="">
             <p class="dirText">{{item['address']}}</p>
           </div>
@@ -134,24 +134,27 @@
   <div *ngIf="this.municipio.medicalcenters != null && this.municipio.medicalcenters.length != 0" class="row centros">
     <h3>Centros médicos</h3>
 
-    <!-- <div class="col-md-4" *ngFor="let item of this.municipio.medicalcenters">
-      <div class="card bloque">
-        <h5 class="card-header cmedicos">Centro Médico: {{item['name']}}</h5>
-        <div class="card-body">
-          <h5 class="card-title">Tipo: {{item['type']}}</h5>
-          <p class="card-text">Dirección: {{item['address']}}</p>
-        </div>
-      </div>
-    </div> -->
-
     <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false"
-      [pagination]="{ clickable: true }" [navigation]="true" class="mySwiper">
+      [pagination]="{ clickable: true }" [navigation]="true" class="sanidadSwiper">
       <ng-template *ngFor="let item of this.municipio.medicalcenters" swiperSlide>
-        <div class="card bloque">
-          <h5 class="card-header cmedicos">Centro Médico: {{item['name']}}</h5>
-          <div class="card-body">
-            <h5 class="card-title">Tipo: {{item['type']}}</h5>
-            <p class="card-text">Dirección: {{item['address']}}</p>
+        <div class="caja">
+          <div class="tituloCaja cmedicos">
+            <img class="emoji"
+              *ngIf="item['type'] == 'CENTRO SALUD' || item['type'] == 'CONSULTORIO LOCAL' || item['type'] == 'Otros Centros con Internamiento'"
+              src="../../../assets/images/hospital_100px.png" alt="">
+            <img class="emoji" *ngIf="item['type'] == 'Dispositivos de Urgencia Extrahospitalaria'"
+              src="../../../assets/images/ambulance_100px.png" alt="">
+            <img class="emoji"
+              *ngIf="item['type'] == 'Hospitales de media y larga estancia' || item['type'] == 'Hospitales de salud mental y tratamiento de toxicomanías' || item['type'] == 'Hospitales especializados' || item['type'] == 'Hospitales Generales'"
+              src="../../../assets/images/hospital_sign_100px.png" alt="">
+            <h5>{{item['name']}}</h5>
+          </div>
+          <div class="bodyCaja">
+            <p class="disText">{{item['type']}}</p>
+          </div>
+          <div class="bodyCaja marginCaja">
+            <img class="emojiDir" src="../../../assets/images/marker_100px.png" alt="">
+            <p class="dirText">{{item['address']}}</p>
           </div>
         </div>
       </ng-template>
@@ -162,20 +165,8 @@
   <div *ngIf="this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0" class="row centros">
     <h3>Supermercados</h3>
 
-    <!-- <div class="col-md-4" *ngFor="let item of this.municipio.supermarkets">
-      <div class="card bloque">
-        <h5 class="card-header supermarkets">
-          Supermercado: {{item['name']}}
-        </h5>
-        <div class="card-body">
-          <h5 class="card-title">Distancia: {{item['distance']}} Km</h5>
-          <p class="card-text">Dirección: {{item['address']}}</p>
-        </div>
-      </div>
-    </div> -->
-
     <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false"
-      [pagination]="{ clickable: true }" [navigation]="true" class="mySwiper">
+      [pagination]="{ clickable: true }" [navigation]="true" class="supermarketsSwiper">
       <ng-template *ngFor="let item of this.municipio.supermarkets" swiperSlide>
         <div class="caja">
           <div class="tituloCaja supermarkets">

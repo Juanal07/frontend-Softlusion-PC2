@@ -179,6 +179,24 @@
   object-fit: cover;
 }
 
+.stationSwiper{
+  .swiper-button-prev, .swiper-button-next{
+    color: rgb(134, 1, 1);
+  }
+}
+
+.sanidadSwiper{
+  .swiper-button-prev, .swiper-button-next{
+    color: green;
+  }
+}
+
+.supermarketsSwiper{
+  .swiper-button-prev, .swiper-button-next{
+    color: rgb(149, 156, 49);
+  }
+}
+
 .emoji{
   // height: 10px;
   display: block;
@@ -242,4 +260,8 @@ h5{
 
 .marginCaja{
   margin-bottom: 2%;
+}
+
+.marginStation{
+  margin-bottom: 20px;
 }
