@@ -1,4 +1,8 @@
 $azulOs: rgb(19, 35, 83);
+.fondo {
+  background-color: rgb(238, 238, 238);
+  padding: 2% 0;
+}
 .encabezado {
   height: 12rem;
   background-image: url("/../../assets/images/lake.jpeg");
@@ -14,17 +18,30 @@ h3 {
   margin: 0;
 }
 .control-section {
-  margin: 2%;
+  margin: 0 15%;
 }
-
+.control-section {
+  box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+  background-color: white;
+  border-color: rgb(150, 150, 150);
+  border-radius: 0.5rem;
+  background-color: rgb(238, 238, 238);
+}
 .grid {
+  // background-color: rgb(238, 238, 238);
+
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
   gap: 3%;
-  padding: 0 2%;
+  padding: 0 15%;
 
   .grid-item {
+    box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+    background-color: white;
+    border-color: rgb(150, 150, 150);
+    border-radius: 0.5rem;
+
     display: flex;
     flex-direction: column;
     padding: 5% 20%;

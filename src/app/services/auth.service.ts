@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { endpoints } from '../../environments/endpoints';
 import { Login } from '../models/login.model';
 import { Register } from '../models/register.model';
-
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +18,8 @@ export class AuthService {
   postRegister(register: Register) {
     return this.http.post(`${endpoints.auth}/register`, register);
   }
-  
+
   postendSession() {
-    return this.http.post(`${endpoints.auth}/endSession`,{});
+    return this.http.post(`${endpoints.auth}/endSession`, {});
   }
 }

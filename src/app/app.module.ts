@@ -31,6 +31,7 @@ import { PieChartComponent } from './components/piechart/piechart.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SwiperModule } from "swiper/angular";
 import { SwipeComponent } from './components/swipe/swipe.component';
+import { ScrolltopComponent } from './components/scrolltop/scrolltop.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { SwipeComponent } from './components/swipe/swipe.component';
     BarchartComponent,
     PieChartComponent,
     SwipeComponent,
+    ScrolltopComponent,
   ],
   imports: [
     BrowserModule,
