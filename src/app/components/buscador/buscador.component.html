@@ -105,29 +105,25 @@
       </div>
     </div>
   </div>
-  
+
   <div *ngIf="this.municipio.stations != null && this.municipio.stations.length != 0" class="row centros">
     <h3>Estaciones</h3>
-
-    <!-- <div class="col-md-4" *ngFor="let item of this.municipio.stations">
-      <div class="card bloque">
-        <h5 class="card-header stations">Estación: {{item['name']}}</h5>
-        <div class="card-body">
-          <h5 class="card-title">Cercanias: {{item['cercanias']}}</h5>
-          <p class="card-text">Dirección: {{item['address']}}</p>
-        </div>
-      </div>
-    </div> -->
-
 
     <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false"
       [pagination]="{ clickable: true }" [navigation]="true" class="mySwiper">
       <ng-template *ngFor="let item of this.municipio.stations" swiperSlide>
-        <div class="card bloque">
-          <h5 class="card-header stations">Estación: {{item['name']}}</h5>
-          <div class="card-body">
-            <h5 class="card-title">Cercanias: {{item['cercanias']}}</h5>
-            <p class="card-text">Dirección: {{item['address']}}</p>
+        <div class="caja">
+          <div class="tituloCaja stations">
+            <img class="emoji" *ngIf="item['cercanias'] == 1" src="../../../assets/images/1024px-Cercanias_Logo.svg.png"
+              alt="">
+            <img class="emoji" *ngIf="item['cercanias'] == 0" src="../../../assets/images/train_100px.png" alt="">
+            <!-- <img class="emoji" *ngIf="item['feve'] = 1" src="../../../assets/images/FEVE.svg.png" alt=""> -->
+            <!-- <img class="emoji" *ngIf="item['feve'] = 0 && item['cercanias'] = 0" src="../../../assets/images/train_100px.png" alt=""> -->
+            <h5>{{item['name']}}</h5>
+          </div>
+          <div class="tituloCaja marginCaja">
+            <img class="emojiDir" src="../../../assets/images/marker_100px.png" alt="">
+            <p class="dirText">{{item['address']}}</p>
           </div>
         </div>
       </ng-template>
@@ -181,13 +177,18 @@
     <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false"
       [pagination]="{ clickable: true }" [navigation]="true" class="mySwiper">
       <ng-template *ngFor="let item of this.municipio.supermarkets" swiperSlide>
-        <div class="card bloque">
-          <h5 class="card-header supermarkets">
-            Supermercado: {{item['name']}}
-          </h5>
-          <div class="card-body">
-            <h5 class="card-title">Distancia: {{item['distance']}} Km</h5>
-            <p class="card-text">Dirección: {{item['address']}}</p>
+        <div class="caja">
+          <div class="tituloCaja supermarkets">
+            <img class="emoji" src="../../../assets/images/fast_moving_consumer_goods_100px.png" alt="">
+            <h5>{{item['name']}}</h5>
+          </div>
+          <div class="bodyCaja">
+            <img class="emojiDir" src="../../../assets/images/ruler_100px.png" alt="">
+            <p class="disText">{{item['distance']}} Km</p>
+          </div>
+          <div class="bodyCaja marginCaja">
+            <img class="emojiDir" src="../../../assets/images/marker_100px.png" alt="">
+            <p class="dirText">{{item['address']}}</p>
           </div>
         </div>
       </ng-template>
