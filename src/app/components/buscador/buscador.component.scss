@@ -180,10 +180,54 @@
 }
 .escudoMain {
   // width: 90%;
-  height: 10rem;
+  height: 25vh;
   display: block;
-  margin: auto;
-  margin-left:2rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+  // margin-left:2rem;
+}
+.despoblacion{
+  background-color:green;
+  color:white;
+  text-align: center;
+  margin-top:12.5rem;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+  font-size: large;
+  box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+}
+
+.tituloInfo {
+  padding-left:5px;
+  background-color: rgb(230, 230, 230);
+  margin:auto;
+  border-radius: 3px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.tituloInfoTexto{
+  margin:auto !important;
+}
+
+.infoBasica{
+  background-color: rgb(255, 255, 255);
+  border-color:rgb(206, 206, 206);
+  padding-left: 10px;
+  margin:auto;
+}
+
+.nombre-municipio{
+  text-align: center;
+  font-size: x-large;
+}
+
+.espacio-barra {
+  margin-bottom: 4rem;
 }
 
 .card-body {
@@ -202,7 +246,7 @@
   box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
   background-color: white;
   border-color: rgb(150, 150, 150);
-  border-radius:.5rem;
+  border-radius:.2rem;
   // margin-bottom: 26.1rem;
 
 

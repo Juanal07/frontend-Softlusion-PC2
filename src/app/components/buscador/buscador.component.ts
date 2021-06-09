@@ -143,9 +143,9 @@ export class BuscadorComponent implements OnInit {
           }
 
           if (response['data']['populated'] == 0) {
-            this.municipio.unpopulated = 'Pertenece a la España Vaciada';
+            this.municipio.unpopulated = 'Municipio despoblado';
           } else {
-            this.municipio.unpopulated = 'NO pertenece a la España Vaciada';
+            this.municipio.unpopulated = 'Municipio poblado';
           }
         } else {
           console.log('ELSEEE');
@@ -216,9 +216,9 @@ export class BuscadorComponent implements OnInit {
             .subscribe((response) => {
               console.log(response);
               if (response['data']['populated'] == 0)
-                this.municipio.unpopulated = 'Pertenece a la España Vaciada';
+                this.municipio.unpopulated = 'Municipio despoblado';
               else
-                this.municipio.unpopulated = 'NO pertenece a la España Vaciada';
+                this.municipio.unpopulated = 'Municipio poblado';
               // this.municipio.unpopulated = response['data']['populated'];
               // console.log("OBJETO: ", this.municipio)
               // console.log(this.municipio.name)
