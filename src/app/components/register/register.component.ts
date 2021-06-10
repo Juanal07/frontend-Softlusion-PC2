@@ -16,17 +16,22 @@ export class RegisterComponent implements OnInit {
   closeResult = '';
   email: string = '';
   password: string = '';
+  password2: string = '';
   name: String = '';
   emailRepe: boolean = false;
+  errorDifferent: boolean = false;
+  notEmail: boolean;
+  noName: boolean;
+  badPass: boolean;
 
   constructor(
     // private registerService: RegisterService,
     private modalService: NgbModal,
     private commonsService: CommonsService,
     private authService: AuthService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   showPopupRegister() {
     this.modalService
@@ -52,29 +57,82 @@ export class RegisterComponent implements OnInit {
   }
 
   sendRegister() {
-    this.emailRepe=false;
-    this.register['name'] = this.name;
-    this.register['email'] = this.email;
-    this.register['password'] = this.password;
-    this.authService.postRegister(this.register).subscribe(
-      (response) => {
-        console.log('response is ', response);
-        console.log(response['status'])
+    this.emailRepe = false;
+    this.errorDifferent = false;
+    this.notEmail = false;
+    this.noName = false;
+    this.badPass = false;
+
+    console.log("name: ", this.name)
+    console.log("email: ", this.email)
+    console.log("name: ", this.password)
+    console.log("name: ", this.password2)
+
+
+    let regexEmail2 = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+.[^@ \t\r\n]+")
+    console.log(regexEmail2.test(this.email))
+    let regexPass = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$")
+    console.log(regexPass.test(this.password))
+    if (this.name == "") {
+      this.noName = true;
+    }
+    else if (!regexEmail2.test(this.email) && this.email != "" && this.noName == false) {
+      console.log("h1")
+      this.notEmail = true;
+    }
+    else if (this.password != this.password2 && this.password != "" && this.password2 != "" &&
+      this.noName == false && this.notEmail == false) {
+      console.log("h2")
+      this.errorDifferent = true;
+    }
+    else if (!regexPass.test(this.password) && this.password != "" && this.password2 != "" &&
+      this.noName == false && this.notEmail == false && this.errorDifferent == false) {
+      console.log("h3")
+      this.badPass = true;
+    }
+    if (this.noName == false && this.notEmail == false && this.errorDifferent == false && this.badPass == false) {
+      console.log("h4")
+      this.authService.postRegister(this.register).subscribe(
+        (response) => {
+          console.log('response is ', response);
+          console.log(response['status'])
           this.commonsService.setName(response['data']['name']);
           this.commonsService.setToken(response['data']['token']);
           this.modalService.dismissAll('Cross click')
-      },
-      (error) => {
-        console.log('error is ', error);
-        console.log("error email repe send")
-        this.emailRepe=true;
-      }
-    );
+        },
+        (error) => {
+          console.log("h5")
+          console.log('error is ', error);
+          console.log("error email repe send")
+          this.emailRepe = true;
+        }
+      );
+    }
   }
 
-  getEmailRepe(){
-    // console.log("error email repe bool")
-    return this.emailRepe == true;
-  }
+getEmailRepe(){
+  // console.log("error email repe bool")
+  return this.emailRepe == true;
+}
+
+getNotEmail() {
+  // console.log("error no es un mail")
+  return this.notEmail == true;
+}
+
+getBadPass() {
+  // console.log("error pass invalida")
+  return this.badPass == true;
+}
+
+getErrorDifferent() {
+  // console.log("error pass diferentes")
+  return this.errorDifferent == true;
+}
+
+getNoName() {
+  // console.log("error no hay nombre")
+  return this.noName == true;
+}
 
 }
