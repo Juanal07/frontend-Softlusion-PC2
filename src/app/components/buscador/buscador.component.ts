@@ -19,6 +19,7 @@ SwiperCore.use([Navigation, Pagination]);
   encapsulation: ViewEncapsulation.None,
 })
 export class BuscadorComponent implements OnInit {
+  fondoNegro: boolean;
   myControl = new FormControl();
   options = [];
   respuesta: Autocompletado[];
@@ -27,7 +28,13 @@ export class BuscadorComponent implements OnInit {
   municipio = new Municipio();
   idSearch: number;
   idMunicipio: number;
-  topBusquedas: {name: string, shield: string, province: string, ccaa: string, numBusquedas: number} [];
+  topBusquedas: {
+    name: string;
+    shield: string;
+    province: string;
+    ccaa: string;
+    numBusquedas: number;
+  }[];
 
   loading: boolean = false;
 
@@ -37,9 +44,11 @@ export class BuscadorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.fondoNegro = true;
+
     this.listenToLoading();
     this.getListaPueblos();
-    this.getTopMunicipios()
+    this.getTopMunicipios();
 
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -56,6 +65,9 @@ export class BuscadorComponent implements OnInit {
       .subscribe((loading) => {
         this.loading = loading;
       });
+  }
+  getFondo() {
+    return this.fondoNegro;
   }
   getListaPueblos() {
     this.municipalityService.getListaPueblos().subscribe(
@@ -80,11 +92,11 @@ export class BuscadorComponent implements OnInit {
   getTopMunicipios() {
     this.municipalityService.getTopMunicipios().subscribe(
       (response) => {
-        this.topBusquedas = response['data']
-        console.log('Municipios Informacion', this.topBusquedas)
-        console.log('Nombre', this.topBusquedas[0]['name'])
-        console.log('Provincia', this.topBusquedas[0]['province'])
-        console.log('CCAA', this.topBusquedas[0]['ccaa'])
+        this.topBusquedas = response['data'];
+        console.log('Municipios Informacion', this.topBusquedas);
+        console.log('Nombre', this.topBusquedas[0]['name']);
+        console.log('Provincia', this.topBusquedas[0]['province']);
+        console.log('CCAA', this.topBusquedas[0]['ccaa']);
         // let aux = new Array()
         // aux = response['data'];
         // for (let i = 0; i < aux.length; i++) {
@@ -114,6 +126,7 @@ export class BuscadorComponent implements OnInit {
   }
 
   getInfoPueblo() {
+    this.fondoNegro = false;
     // console.log("hola")
     // console.log(this.getIdPueblo(this.texto))
     this.municipalityService

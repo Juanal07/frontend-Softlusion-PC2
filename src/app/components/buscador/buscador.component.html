@@ -1,4 +1,4 @@
-<!-- <div class="foto-fondo"> -->
+<div [className]="getFondo() ? 'foto-fondo' : 'foto-fondo-blanco'">
   <div class="container">
     <div class="titulo">
       <h1>¿Sobre qué destino deseas informarte?</h1>
@@ -7,19 +7,15 @@
       <div class="col-md-4 offset-md-4 tablas">
         <form class="example-form">
           <mat-form-field class="barra">
-            <input type="text" placeholder="Introduce un municipio" aria-label="Number" matInput
-              [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="texto"
-              (keydown.enter)="getInfoPueblo()" />
+            <input type="text" placeholder="Introduce un municipio" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="texto" (keydown.enter)="getInfoPueblo()" />
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filteredOptions | async | slice:0:10" [value]="option"> {{option}}
-              </mat-option>
+              <mat-option *ngFor="let option of filteredOptions | async | slice:0:10" [value]="option"> {{option}} </mat-option>
             </mat-autocomplete>
           </mat-form-field>
         </form>
       </div>
     </div>
-    <div *ngIf="this.municipio.name == null" class="fantasma">
-    </div>
+    <div *ngIf="this.municipio.name == null" class="fantasma"></div>
     <!-- Loading spinner -->
 
     <div *ngIf="loading" class="loading-container flex-content-center">
@@ -171,82 +167,70 @@
     <div *ngIf="this.municipio.stations != null && this.municipio.stations.length != 0" class="row centros">
       <h3>Estaciones</h3>
 
-      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
-        [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="stationSwiper">
+      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="stationSwiper">
         <ng-template *ngFor="let item of this.municipio.stations" swiperSlide>
           <div class="caja">
             <div class="tituloCaja stations">
-              <img class="emoji" *ngIf="item['cercanias'] == 1"
-                src="../../../assets/images/1024px-Cercanias_Logo.svg.png" alt="">
-              <img class="emoji" *ngIf="item['cercanias'] == 0" src="../../../assets/images/train_100px.png" alt="">
+              <img class="emoji" *ngIf="item['cercanias'] == 1" src="../../../assets/images/1024px-Cercanias_Logo.svg.png" alt="" />
+              <img class="emoji" *ngIf="item['cercanias'] == 0" src="../../../assets/images/train_100px.png" alt="" />
               <!-- <img class="emoji" *ngIf="item['feve'] = 1" src="../../../assets/images/FEVE.svg.png" alt=""> -->
               <!-- <img class="emoji" *ngIf="item['feve'] = 0 && item['cercanias'] = 0" src="../../../assets/images/train_100px.png" alt=""> -->
               <h5>{{item['name']}}</h5>
             </div>
             <div class="tituloCaja marginStation">
-              <img class="emojiDir" src="../../../assets/images/marker_100px.png" alt="">
+              <img class="emojiDir" src="../../../assets/images/marker_100px.png" alt="" />
               <p class="dirText">{{item['address']}}</p>
             </div>
           </div>
         </ng-template>
       </swiper>
-
     </div>
 
     <div *ngIf="this.municipio.medicalcenters != null && this.municipio.medicalcenters.length != 0" class="row centros">
       <h3>Centros médicos</h3>
 
-      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
-        [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="sanidadSwiper">
+      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="sanidadSwiper">
         <ng-template *ngFor="let item of this.municipio.medicalcenters" swiperSlide>
           <div class="caja">
             <div class="tituloCaja cmedicos">
-              <img class="emoji"
-                *ngIf="item['type'] == 'CENTRO SALUD' || item['type'] == 'CONSULTORIO LOCAL' || item['type'] == 'Otros Centros con Internamiento'"
-                src="../../../assets/images/hospital_100px.png" alt="">
-              <img class="emoji" *ngIf="item['type'] == 'Dispositivos de Urgencia Extrahospitalaria'"
-                src="../../../assets/images/ambulance_100px.png" alt="">
-              <img class="emoji"
-                *ngIf="item['type'] == 'Hospitales de media y larga estancia' || item['type'] == 'Hospitales de salud mental y tratamiento de toxicomanías' || item['type'] == 'Hospitales especializados' || item['type'] == 'Hospitales Generales'"
-                src="../../../assets/images/hospital_sign_100px.png" alt="">
+              <img class="emoji" *ngIf="item['type'] == 'CENTRO SALUD' || item['type'] == 'CONSULTORIO LOCAL' || item['type'] == 'Otros Centros con Internamiento'" src="../../../assets/images/hospital_100px.png" alt="" />
+              <img class="emoji" *ngIf="item['type'] == 'Dispositivos de Urgencia Extrahospitalaria'" src="../../../assets/images/ambulance_100px.png" alt="" />
+              <img class="emoji" *ngIf="item['type'] == 'Hospitales de media y larga estancia' || item['type'] == 'Hospitales de salud mental y tratamiento de toxicomanías' || item['type'] == 'Hospitales especializados' || item['type'] == 'Hospitales Generales'" src="../../../assets/images/hospital_sign_100px.png" alt="" />
               <h5>{{item['name']}}</h5>
             </div>
             <div class="bodyCaja">
               <p class="disText">{{item['type']}}</p>
             </div>
             <div class="bodyCaja marginCaja">
-              <img class="emojiDir" src="../../../assets/images/marker_100px.png" alt="">
+              <img class="emojiDir" src="../../../assets/images/marker_100px.png" alt="" />
               <p class="dirText">{{item['address']}}</p>
             </div>
           </div>
         </ng-template>
       </swiper>
-
     </div>
 
     <div *ngIf="this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0" class="row centros">
       <h3>Supermercados</h3>
 
-      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
-        [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true"
-        class="supermarketsSwiper">
+      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="supermarketsSwiper">
         <ng-template *ngFor="let item of this.municipio.supermarkets" swiperSlide>
           <div class="caja">
             <div class="tituloCaja supermarkets">
-              <img class="emoji" src="../../../assets/images/fast_moving_consumer_goods_100px.png" alt="">
+              <img class="emoji" src="../../../assets/images/fast_moving_consumer_goods_100px.png" alt="" />
               <h5>{{item['name']}}</h5>
             </div>
             <div class="bodyCaja">
-              <img class="emojiDir" src="../../../assets/images/ruler_100px.png" alt="">
+              <img class="emojiDir" src="../../../assets/images/ruler_100px.png" alt="" />
               <p class="disText">{{item['distance']}} Km</p>
             </div>
             <div class="bodyCaja marginCaja">
-              <img class="emojiDir" src="../../../assets/images/marker_100px.png" alt="">
+              <img class="emojiDir" src="../../../assets/images/marker_100px.png" alt="" />
               <p class="dirText">{{item['address']}}</p>
             </div>
           </div>
         </ng-template>
       </swiper>
-
     </div>
-  <!-- </div> -->
+  </div>
+</div>
