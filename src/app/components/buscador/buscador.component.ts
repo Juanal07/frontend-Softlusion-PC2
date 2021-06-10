@@ -28,13 +28,11 @@ export class BuscadorComponent implements OnInit {
   municipio = new Municipio();
   idSearch: number;
   idMunicipio: number;
-  topBusquedas: {
-    name: string;
-    shield: string;
-    province: string;
-    ccaa: string;
-    numBusquedas: number;
-  }[];
+  topBusquedas: { name: string, shield: string, province: string, ccaa: string, numBusquedas: number }[];
+  nHospitales: number;
+  nConsultorios: number;
+  nUrgencias: number;
+  nEstaciones: number;
 
   loading: boolean = false;
 
@@ -129,10 +127,12 @@ export class BuscadorComponent implements OnInit {
     this.fondoNegro = false;
     // console.log("hola")
     // console.log(this.getIdPueblo(this.texto))
+    this.nConsultorios = 0;
+    this.nHospitales = 0;
+    this.nUrgencias = 0;
     this.municipalityService
       .getBusqueda(this.getIdPueblo(this.texto))
       .subscribe((response) => {
-        // console.log("hola2")
         if (response['status'] == 200) {
           this.municipio.name = response['data']['name'];
           this.municipio.shield = response['data']['shield'];
@@ -146,6 +146,22 @@ export class BuscadorComponent implements OnInit {
           this.municipio.stations = response['data']['stations'];
           this.municipio.medicalcenters = response['data']['medicalcenters'];
           this.municipio.supermarkets = response['data']['supermarkets'];
+
+          this.nEstaciones = this.municipio.stations.length;
+
+          for(let i=0; i<this.municipio.medicalcenters.length; i++){
+            console.log("tipo de medico", this.municipio.medicalcenters[i]['type'] )
+            if(this.municipio.medicalcenters[i]['type'] == 'CENTRO SALUD' || 
+            this.municipio.medicalcenters[i]['type']  == 'CONSULTORIO LOCAL' || this.municipio.medicalcenters[i]['type']  == 'Otros Centros con Internamiento'){
+              this.nConsultorios++;
+            }
+            else if(this.municipio.medicalcenters[i]['type']  == 'Dispositivos de Urgencia Extrahospitalaria'){
+              this.nUrgencias++;
+            }
+            else{
+              this.nHospitales++;
+            }
+          }
 
           if (response['data']['nRestaurants'] == -10) {
             this.municipio.nRestaurants = 0;
@@ -164,20 +180,10 @@ export class BuscadorComponent implements OnInit {
           console.log('ELSEEE');
           this.idSearch = response['data']['idSearch'];
           this.idMunicipio = response['data']['idMunicipality'];
-          // console.log(this.idSearch)
-          // console.log(this.idMunicipio)
           this.municipalityService
             .getInfoPueblo(this.idMunicipio)
             .subscribe((response) => {
-              // console.log("RESPONSEEE: ", response)
               this.municipio = response['data'];
-              // console.log(this.municipio.name)
-              // console.log(this.municipio.ccaa)
-              // console.log(this.municipio.density)
-              // console.log(this.municipio.province)
-              // console.log(this.municipio.population)
-
-              // this.municipio.name = "hola";
               console.log('OBJETO: ', this.municipio);
             });
 
@@ -186,6 +192,8 @@ export class BuscadorComponent implements OnInit {
             .subscribe((response) => {
               console.log(response);
               this.municipio.stations = response['data'];
+              this.nEstaciones =  this.municipio.stations.length;
+              console.log(this.nEstaciones)
               console.log('ESTACIONES: ', this.municipio.stations);
               console.log('OBJETO: ', response['data']);
             });
@@ -195,8 +203,19 @@ export class BuscadorComponent implements OnInit {
             .subscribe((response) => {
               console.log(response);
               this.municipio.medicalcenters = response['data'];
-              // console.log("CENTROS MEDICOS: ",this.municipio.medicalcenters)
-              // console.log("OBJETO: ", response['data'])
+              for(let i=0; i<this.municipio.medicalcenters.length; i++){
+                console.log("tipo de medico", this.municipio.medicalcenters[i]['type'] )
+                if(this.municipio.medicalcenters[i]['type'] == 'CENTRO SALUD' || 
+                this.municipio.medicalcenters[i]['type']  == 'CONSULTORIO LOCAL' || this.municipio.medicalcenters[i]['type']  == 'Otros Centros con Internamiento'){
+                  this.nConsultorios++;
+                }
+                else if(this.municipio.medicalcenters[i]['type']  == 'Dispositivos de Urgencia Extrahospitalaria'){
+                  this.nUrgencias++;
+                }
+                else{
+                  this.nHospitales++;
+                }
+              }
             });
 
           this.municipalityService
@@ -232,17 +251,7 @@ export class BuscadorComponent implements OnInit {
                 this.municipio.unpopulated = 'Pertenece a la España Vaciada';
               else
                 this.municipio.unpopulated = 'NO pertenece a la España Vaciada';
-              // this.municipio.unpopulated = response['data']['populated'];
-              // console.log("OBJETO: ", this.municipio)
-              // console.log(this.municipio.name)
-              // console.log(this.municipio.ccaa)
-              // console.log(this.municipio.density)
-              // console.log(this.municipio.province)
-              // console.log(this.municipio.population)
-              // console.log(this.municipio.unpopulated)
             });
-          // this.municipalityService.getBusqueda(this.getIdPueblo(this.texto)).subscribe(
-          //   (response) => {
         }
       });
   }
