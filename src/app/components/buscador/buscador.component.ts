@@ -172,9 +172,9 @@ export class BuscadorComponent implements OnInit {
           }
 
           if (response['data']['populated'] == 0) {
-            this.municipio.unpopulated = 'Pertenece a la España Vaciada';
+            this.municipio.unpopulated = 'Municipio despoblado';
           } else {
-            this.municipio.unpopulated = 'NO pertenece a la España Vaciada';
+            this.municipio.unpopulated = 'Municipio poblado';
           }
         } else {
           console.log('ELSEEE');
@@ -248,9 +248,17 @@ export class BuscadorComponent implements OnInit {
             .subscribe((response) => {
               console.log(response);
               if (response['data']['populated'] == 0)
-                this.municipio.unpopulated = 'Pertenece a la España Vaciada';
+                this.municipio.unpopulated = 'Municipio despoblado';
               else
-                this.municipio.unpopulated = 'NO pertenece a la España Vaciada';
+                this.municipio.unpopulated = 'Municipio poblado';
+              // this.municipio.unpopulated = response['data']['populated'];
+              // console.log("OBJETO: ", this.municipio)
+              // console.log(this.municipio.name)
+              // console.log(this.municipio.ccaa)
+              // console.log(this.municipio.density)
+              // console.log(this.municipio.province)
+              // console.log(this.municipio.population)
+              // console.log(this.municipio.unpopulated)
             });
         }
       });
