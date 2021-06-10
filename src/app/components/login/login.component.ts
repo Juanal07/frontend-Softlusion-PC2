@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   closeResult: string = '';
   @ViewChild('content') block: ElementRef;
   @ViewChild(RegisterComponent) child: RegisterComponent; //hijo referenciado
+  errorLogin: boolean = false;
 
   constructor(
     // private loginService: LoginService,
@@ -60,6 +61,7 @@ export class LoginComponent implements OnInit {
   }
 
   sendLogin() {
+    this.errorLogin = false;
     this.login['email'] = this.user;
     this.login['password'] = this.password;
     this.authService.postLogin(this.login).subscribe(
@@ -70,10 +72,18 @@ export class LoginComponent implements OnInit {
         if (response['data']['db_idUser'] == 43) {
           this.router.navigate(['admin']);
         }
+        this.modalService.dismissAll('Cross click')
       },
       (error) => {
         console.log('error is ', error);
+        this.errorLogin = true;
       }
     );
   }
+
+  getErrorLogin(){
+    console.log("error login")
+    return this.errorLogin == true;
+  }
+
 }

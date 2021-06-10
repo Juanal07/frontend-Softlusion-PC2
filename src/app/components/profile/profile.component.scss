@@ -78,6 +78,15 @@ h3 {
   }
 }
 
+
+.error{
+  color: red;
+}
+
+.ok{
+  color: green;
+}
+
 @media all and (max-width: 1000px) {
   .grid {
     grid-template-rows: 1fr 1fr;

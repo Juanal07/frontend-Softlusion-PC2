@@ -12,7 +12,8 @@
       <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="password" />
       <p>Confirm password</p>
       <input type="password" class="form-control" placeholder="Confirm password" aria-label="Username" aria-describedby="basic-addon1" />
-      <button class="boton" (click)="modal.dismiss('Cross click')" (click)="sendRegister()" type="submit">Register and Login</button>
+      <p *ngIf="getEmailRepe()" class="error">Email ya registrado. Introduzca uno nuevo</p>
+      <button class="boton" (click)="sendRegister()" type="submit">Register and Login</button>
     </div>
   </div>
 </ng-template>

@@ -20,6 +20,9 @@
       <input class="flex-item" value="{{ this.new_psw }}" [(ngModel)]="this.new_psw" type="password" />
       <div class="flex-item">Confirme nueva contraseña</div>
       <input class="flex-item" value="{{ this.repeat_psw }}" [(ngModel)]="this.repeat_psw" type="password" />
+      <p *ngIf="getErrorChange()" class="error">Contraseña incorrecta</p>
+      <p *ngIf="getChangeOK()" class="ok">Contraseña cambiada con éxito</p>
+      <p *ngIf="getErrorDifferent()" class="error">La nueva conraseña no coincide</p>
       <button class="flex-item" (click)="updatePsw()">Cambiar contraseña</button>
     </div>
   </div>

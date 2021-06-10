@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   email: string = '';
   password: string = '';
   name: String = '';
+  emailRepe: boolean = false;
 
   constructor(
     // private registerService: RegisterService,
@@ -51,18 +52,29 @@ export class RegisterComponent implements OnInit {
   }
 
   sendRegister() {
+    this.emailRepe=false;
     this.register['name'] = this.name;
     this.register['email'] = this.email;
     this.register['password'] = this.password;
     this.authService.postRegister(this.register).subscribe(
       (response) => {
         console.log('response is ', response);
-        this.commonsService.setName(response['data']['name']);
-        this.commonsService.setToken(response['data']['token']);
+        console.log(response['status'])
+          this.commonsService.setName(response['data']['name']);
+          this.commonsService.setToken(response['data']['token']);
+          this.modalService.dismissAll('Cross click')
       },
       (error) => {
         console.log('error is ', error);
+        console.log("error email repe send")
+        this.emailRepe=true;
       }
     );
   }
+
+  getEmailRepe(){
+    console.log("error email repe bool")
+    return this.emailRepe == true;
+  }
+
 }

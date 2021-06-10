@@ -17,6 +17,9 @@ export class ProfileComponent implements OnInit {
   new_psw: string;
   repeat_psw: string;
   busquedas: string[];
+  errorChange: boolean = false;
+  errorDifferent: boolean = false;
+  changeOK: boolean = false;
 
   public data: any[];
   public toolbar: string[];
@@ -64,16 +67,47 @@ export class ProfileComponent implements OnInit {
   }
 
   updatePsw() {
-    this.profileService
+    this.errorChange = false;
+    this.errorDifferent = false;
+    this.changeOK = false;
+    if(this.new_psw != this.repeat_psw){
+      this.errorDifferent = true;
+    }
+    else{
+      this.profileService
       .updatePsw(this.old_psw, this.new_psw, this.repeat_psw)
       .subscribe(
         (response) => {
+          if(response['status']==403){
+            this.errorChange = true;
+          }
+          else{
+            this.changeOK = true;
+          }
           console.log('response is: ', response);
         },
         (error) => {
           console.log('error is ', error);
+          this.errorChange = true;
         }
       );
+    }
+    
+  }
+
+  getErrorChange(){
+    console.log("contraseña antigua incorrecta")
+    return this.errorChange == true;
+  }
+
+  getErrorDifferent(){
+    console.log("error pass diferentes")
+    return this.errorDifferent == true;
+  }
+
+  getChangeOK(){
+    console.log("cambio hecho")
+    return this.changeOK == true;
   }
 
   showSearches() {

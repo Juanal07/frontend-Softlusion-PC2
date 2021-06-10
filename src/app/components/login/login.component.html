@@ -8,11 +8,12 @@
       <input type="text" class="form-control" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="user" (keydown.enter)="sendLogin()" (keydown.enter)="modal.dismiss('Cross click')" />
       <p>Contraseña</p>
       <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="password" (keydown.enter)="sendLogin()" (keydown.enter)="modal.dismiss('Cross click')" />
-      <button class="boton" (click)="modal.dismiss('Cross click')" (click)="sendLogin()" type="submit">Login</button>
+      <p *ngIf="getErrorLogin()" class="error">Email o contraseña incorrecta</p>
+      <button class="boton" (click)="sendLogin()" type="submit">Login</button>
     </div>
   </div>
   <div class="modal-footer">
-    <button class="boton1" (click)="modal.dismiss('Cross click')" (click)="showRegister()">Register</button>
+    <button class="boton1" (click)="showRegister()">Register</button>
   </div>
 </ng-template>
 <app-register></app-register>
