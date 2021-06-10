@@ -21,7 +21,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './services/interceptor';
 import { HttpRequestInterceptor } from './services/http-request-interceptor';
 import { AdminComponent } from './components/admin/admin.component';
-import { TablasComponent } from './components/tablas/tablas.component';
 import { GridAllModule } from '@syncfusion/ej2-angular-grids';
 import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
 import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
@@ -30,7 +29,6 @@ import { ChartsModule } from 'ng2-charts';
 import { PieChartComponent } from './components/piechart/piechart.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SwiperModule } from "swiper/angular";
-import { SwipeComponent } from './components/swipe/swipe.component';
 import { ScrolltopComponent } from './components/scrolltop/scrolltop.component';
 
 @NgModule({
@@ -45,10 +43,8 @@ import { ScrolltopComponent } from './components/scrolltop/scrolltop.component';
     BuscadorComponent,
     ProfileComponent,
     AdminComponent,
-    TablasComponent,
     BarchartComponent,
     PieChartComponent,
-    SwipeComponent,
     ScrolltopComponent,
   ],
   imports: [
