@@ -4,8 +4,22 @@
     // border-bottom-left-radius:20% 70%;
     // border-bottom-right-radius:80% 10%;
     // background: rgb(19, 24, 41);
-    background: rgb(0, 0, 0);
+    background: rgb(19, 24, 41);
     box-shadow: 0px 4px 10px 0px rgba(255, 255, 255, 0.36);
+}
+
+.navbar-collapse{
+    background-color: rgb(19, 24, 41);
+    border-radius: 10px;
+}
+.active[_ngcontent-vdr-c163]{
+    // padding-left: 10px;
+    width: 20%;
+}
+
+.navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .show > .nav-link {
+    color: #fff;
+    padding-left: 20px;
 }
 
 .logo {
@@ -35,7 +49,7 @@
 }
 
 .nav-dark {
-    background-color: rgba(0, 0, 0, 0.541) !important;
+    background-color: rrgb(19, 24, 41) !important;
     border-radius: 10px;
 }
 

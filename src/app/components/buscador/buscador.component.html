@@ -1,15 +1,18 @@
 <div [className]="getFondo() ? 'foto-fondo' : 'foto-fondo-blanco'">
   <div class="container">
     <div class="titulo">
-      <h1>¿Sobre qué destino deseas informarte?</h1>
+      <h1 class = "fraseBusqueda">¿Sobre qué destino deseas informarte?</h1>
     </div>
     <div class="row espacio-barra">
       <div class="col-md-4 offset-md-4 tablas">
         <form class="example-form">
           <mat-form-field class="barra">
-            <input type="text" placeholder="Introduce un municipio" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="texto" (keydown.enter)="getInfoPueblo()" />
+            <input type="text" placeholder="Introduce un municipio" aria-label="Number" matInput
+              [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="texto"
+              (keydown.enter)="getInfoPueblo()" />
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filteredOptions | async | slice:0:10" [value]="option"> {{option}} </mat-option>
+              <mat-option *ngFor="let option of filteredOptions | async | slice:0:10" [value]="option"> {{option}}
+              </mat-option>
             </mat-autocomplete>
           </mat-form-field>
         </form>
@@ -45,70 +48,108 @@
 
     <!-- <div class = "fondo1"> -->
 
-    <div class = "row" *ngIf="this.municipio.name != null">
+    <div class="row" *ngIf="this.municipio.name != null">
       <div class="row">
-          <h1 class = "nombre-municipio"> Descubre {{this.municipio.name}}</h1>
+        <h1 class="nombre-municipio"> Descubre {{this.municipio.name}}</h1>
       </div>
-      <div class="row ">
-        <div class="col-md-2">
-          <p *ngIf="this.nEstaciones != 0">Número de estaciones: {{this.nEstaciones}}</p>
+      <div class="row">
+        <div *ngIf="this.municipio.nRestaurants != null" class="col">
+          <div class="cajitas">
+            <spam class="primeraFilaCajitas">
+              <spam class="tituloCajitas">Restaurantes</spam>
+              <img class="imagenCajitas" src="../../../assets/images/restaurant_100px_black.png" alt="" />
+            </spam>
+            <spam class="valorCajitas">{{this.municipio.nRestaurants}}</spam>
+          </div>
         </div>
-        <div class="col-md-2">
-          <p *ngIf="this.municipio.unpopulated != null">{{this.municipio.unpopulated}}</p>
+        <div *ngIf="this.municipio.nRestaurants != null" class="col">
+          <div class="cajitas">
+            <spam class="primeraFilaCajitas">
+              <spam class="tituloCajitas">Nota restaurantes</spam>
+              <img class="imagenCajitas" src="../../../assets/images/star_100px_black.png" alt="" />
+            </spam>
+            <spam class="valorCajitas">{{this.municipio.media}}</spam>
+          </div>
         </div>
-        <div class="col-md-2">
-          <p *ngIf="this.nUrgencias != 0">Número de urgencias: {{this.nUrgencias}}</p>
+        <div *ngIf="this.nEstaciones != 0" class="col">
+          <div class="cajitas">
+            <spam class="primeraFilaCajitas">
+              <spam class="tituloCajitas">Estaciones</spam>
+              <img class="imagenCajitas" src="../../../assets/images/train_100px_black.png" alt="" />
+            </spam>
+            <spam class="valorCajitas">{{this.nEstaciones}}</spam>
+          </div>
         </div>
-        <div class="col-md-2">
-          <p *ngIf="this.nConsultorios != 0">Número de consultorios: {{this.nConsultorios}}</p>
+        <div *ngIf="this.nHospitales != 0" class="col">
+          <div class="cajitas">
+            <spam class="primeraFilaCajitas">
+              <spam class="tituloCajitas">Hospitales</spam>
+              <img class="imagenCajitas" src="../../../assets/images/hospital_sign_100px_black.png" alt="" />
+            </spam>
+            <spam class="valorCajitas">{{this.nHospitales}}</spam>
+          </div>
         </div>
-        <div class="col-md-2">
-          
+        <div *ngIf="this.nUrgencias != 0" class="col">
+          <div class="cajitas">
+            <spam class="primeraFilaCajitas">
+              <spam class="tituloCajitas">Urgencias</spam>
+              <img class="imagenCajitas" src="../../../assets/images/ambulance_100px_black.png" alt="" />
+            </spam>
+            <spam class="valorCajitas">{{this.nUrgencias}}</spam>
+          </div>
         </div>
-        <div class="col-md-2">
-          
-        </div>
-      </div>
-      <div class="row ">
-      <div class="col-md-4">
-        <img class="escudoMain" [src]="municipio.shield" />
-      </div>
-      <div class="col-md-4">
-        <div class="row">
-          <div class="despoblacion">
-            <p *ngIf="this.municipio.unpopulated != null">{{this.municipio.unpopulated}}</p>
+        <div *ngIf="this.nConsultorios != 0" class="col">
+          <div class="cajitas">
+            <spam class="primeraFilaCajitas">
+              <spam class="tituloCajitas">Centro de salud</spam>
+              <img class="imagenCajitas" src="../../../assets/images/hospital_100px_black.png" alt="" />
+            </spam>
+            <spam class="valorCajitas">{{this.nConsultorios}}</spam>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="row tituloInfo">
-          <h3 class= "tituloInfoTexto">Información básica</h3>
+
+      <div class="row ">
+        <div class="col-md-4 divEscudo">
+          <img class="col-md-4 escudoMain" [src]="municipio.shield" />
         </div>
-        <div class="row infoBasica">
-          <lu>
-            <li *ngIf="this.municipio.region != null">
-              <p>Comarca: {{this.municipio.region}}</p>
-            </li>
-            <li>
-              <p>Provincia: {{this.municipio.province}}</p>
-            </li>
-            <li>
-              <p>Comunidad Autónoma: {{this.municipio.ccaa}}</p>
-            </li>
-            <li  *ngIf="this.municipio.population != null">
-              <p>Población: {{this.municipio.population}}</p>
-            </li>
-            <li *ngIf="this.municipio.surface != null">
-              <p>Superficie: {{this.municipio.surface}}</p>
-            </li>
-            <li *ngIf="this.municipio.altitude != null">
-              <p>Altitud: {{this.municipio.altitude}}</p>
-            </li>
-            <li *ngIf="this.municipio.density != null">
-              <p>Densidad: {{this.municipio.density}}</p>
-            </li>
-          </lu>
+        <div class="col-md-4">
+          <img class="imgDespoblacion" src="../../../assets/images/house_with_a_garden_24px.png" alt="" />
+          <div class="row">
+            <div class="despoblacion">
+              <p *ngIf="this.municipio.unpopulated != null">{{this.municipio.unpopulated}}</p>
+            </div>
+          </div>
         </div>
+        <div class="col-md-4">
+          <div class="row tituloInfo">
+            <h3 class="tituloInfoTexto">Información básica</h3>
+          </div>
+          <div class="row infoBasica">
+            <lu>
+              <li *ngIf="this.municipio.region != null">
+                <p>Comarca: {{this.municipio.region}}</p>
+              </li>
+              <li>
+                <p>Provincia: {{this.municipio.province}}</p>
+              </li>
+              <li>
+                <p>Comunidad Autónoma: {{this.municipio.ccaa}}</p>
+              </li>
+              <li *ngIf="this.municipio.population != null">
+                <p>Población: {{this.municipio.population}}</p>
+              </li>
+              <li *ngIf="this.municipio.surface != null">
+                <p>Superficie: {{this.municipio.surface}}</p>
+              </li>
+              <li *ngIf="this.municipio.altitude != null">
+                <p>Altitud: {{this.municipio.altitude}}</p>
+              </li>
+              <li *ngIf="this.municipio.density != null">
+                <p>Densidad: {{this.municipio.density}}</p>
+              </li>
+            </lu>
+          </div>
           <!-- <div class="row">
             <p *ngIf="this.municipio.region != null">Comarca: {{this.municipio.region}}</p>
           </div>
@@ -132,13 +173,8 @@
           </div> -->
         </div>
       </div>
-
-      <p *ngIf="this.nEstaciones != 0">Número de estaciones: {{this.nEstaciones}}</p>
-      <p *ngIf="this.nHospitales != 0">Número de hospitales: {{this.nHospitales}}</p>
-      <p *ngIf="this.nUrgencias != 0">Número de urgencias: {{this.nUrgencias}}</p>
-      <p *ngIf="this.nConsultorios != 0">Número de consultorios: {{this.nConsultorios}}</p>
-      </div>
-      <!-- <h3>Información básica</h3>
+    </div>
+    <!-- <h3>Información básica</h3>
       <div class="row">
         <div class="col-md-4">
           <img class="escudoMain" [src]="municipio.shield" />
@@ -190,11 +226,13 @@
     <div *ngIf="this.municipio.stations != null && this.municipio.stations.length != 0" class="row centros">
       <h3>Estaciones</h3>
 
-      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="stationSwiper">
+      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
+        [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="stationSwiper">
         <ng-template *ngFor="let item of this.municipio.stations" swiperSlide>
           <div class="caja">
             <div class="tituloCaja stations">
-              <img class="emoji" *ngIf="item['cercanias'] == 1" src="../../../assets/images/1024px-Cercanias_Logo.svg.png" alt="" />
+              <img class="emoji" *ngIf="item['cercanias'] == 1"
+                src="../../../assets/images/1024px-Cercanias_Logo.svg.png" alt="" />
               <img class="emoji" *ngIf="item['cercanias'] == 0" src="../../../assets/images/train_100px.png" alt="" />
               <!-- <img class="emoji" *ngIf="item['feve'] = 1" src="../../../assets/images/FEVE.svg.png" alt=""> -->
               <!-- <img class="emoji" *ngIf="item['feve'] = 0 && item['cercanias'] = 0" src="../../../assets/images/train_100px.png" alt=""> -->
@@ -212,13 +250,19 @@
     <div *ngIf="this.municipio.medicalcenters != null && this.municipio.medicalcenters.length != 0" class="row centros">
       <h3>Centros médicos</h3>
 
-      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="sanidadSwiper">
+      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
+        [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="sanidadSwiper">
         <ng-template *ngFor="let item of this.municipio.medicalcenters" swiperSlide>
           <div class="caja">
             <div class="tituloCaja cmedicos">
-              <img class="emoji" *ngIf="item['type'] == 'CENTRO SALUD' || item['type'] == 'CONSULTORIO LOCAL' || item['type'] == 'Otros Centros con Internamiento'" src="../../../assets/images/hospital_100px.png" alt="" />
-              <img class="emoji" *ngIf="item['type'] == 'Dispositivos de Urgencia Extrahospitalaria'" src="../../../assets/images/ambulance_100px.png" alt="" />
-              <img class="emoji" *ngIf="item['type'] == 'Hospitales de media y larga estancia' || item['type'] == 'Hospitales de salud mental y tratamiento de toxicomanías' || item['type'] == 'Hospitales especializados' || item['type'] == 'Hospitales Generales'" src="../../../assets/images/hospital_sign_100px.png" alt="" />
+              <img class="emoji"
+                *ngIf="item['type'] == 'CENTRO SALUD' || item['type'] == 'CONSULTORIO LOCAL' || item['type'] == 'Otros Centros con Internamiento'"
+                src="../../../assets/images/hospital_100px.png" alt="" />
+              <img class="emoji" *ngIf="item['type'] == 'Dispositivos de Urgencia Extrahospitalaria'"
+                src="../../../assets/images/ambulance_100px.png" alt="" />
+              <img class="emoji"
+                *ngIf="item['type'] == 'Hospitales de media y larga estancia' || item['type'] == 'Hospitales de salud mental y tratamiento de toxicomanías' || item['type'] == 'Hospitales especializados' || item['type'] == 'Hospitales Generales'"
+                src="../../../assets/images/hospital_sign_100px.png" alt="" />
               <h5>{{item['name']}}</h5>
             </div>
             <div class="bodyCaja">
@@ -236,7 +280,9 @@
     <div *ngIf="this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0" class="row centros">
       <h3>Supermercados</h3>
 
-      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false" [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="supermarketsSwiper">
+      <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
+        [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true"
+        class="supermarketsSwiper">
         <ng-template *ngFor="let item of this.municipio.supermarkets" swiperSlide>
           <div class="caja">
             <div class="tituloCaja supermarkets">
