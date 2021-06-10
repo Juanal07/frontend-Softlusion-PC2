@@ -29,7 +29,7 @@
 
 .foto-fondo {
   background-image: url("../../../assets/images/pueblos1.jpg") !important;
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-color: black;
   height: auto;
@@ -47,119 +47,119 @@
   height: 90vh;
 }
 
-@media only screen and (max-width: 1920px) {
-  .foto-fondo {
-    background-size: 100%;
-    // height: 100%;
-    background-color: black;
-    // bottom: 10px;
+// @media only screen and (max-width: 1920px) {
+//   .foto-fondo {
+//     background-size: 100%;
+//     // height: 100%;
+//     background-color: black;
+//     // bottom: 10px;
 
-    .fantasma {
-      height: 70vh;
-    }
-  }
-}
+//     .fantasma {
+//       height: 70vh;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 1500px) {
-  .foto-fondo {
-    background-size: 100%;
-    // height: 80%;
-    background-color: black;
-    // bottom: 10px;
+// @media only screen and (max-width: 1500px) {
+//   .foto-fondo {
+//     background-size: 100%;
+//     // height: 80%;
+//     background-color: black;
+//     // bottom: 10px;
 
-    .fantasma {
-      height: 57vh;
-    }
-  }
-}
+//     .fantasma {
+//       height: 57vh;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 1250x) {
-  .foto-fondo {
-    background-size: 100%;
-    height: 60%;
+// @media only screen and (max-width: 1250x) {
+//   .foto-fondo {
+//     background-size: 100%;
+//     height: 60%;
 
-    .fantasma {
-      height: 20vh;
-    }
-  }
-}
+//     .fantasma {
+//       height: 20vh;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 1000px) {
-  .foto-fondo {
-    background-size: 150%;
-    height: 73%;
+// @media only screen and (max-width: 1000px) {
+//   .foto-fondo {
+//     background-size: 150%;
+//     height: 73%;
 
-    .fantasma {
-      height: 90vh;
-    }
-  }
-}
+//     .fantasma {
+//       height: 90vh;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 800px) {
-  .foto-fondo {
-    background-size: 180%;
-    height: 78%;
+// @media only screen and (max-width: 800px) {
+//   .foto-fondo {
+//     background-size: 180%;
+//     height: 78%;
 
-    .fantasma {
-      height: 90vh;
-    }
-  }
-}
+//     .fantasma {
+//       height: 90vh;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 700px) {
-  .foto-fondo {
-    background-size: 200%;
-    height: 75%;
+// @media only screen and (max-width: 700px) {
+//   .foto-fondo {
+//     background-size: 200%;
+//     height: 75%;
 
-    .fantasma {
-      height: 90vh;
-    }
-  }
-}
+//     .fantasma {
+//       height: 90vh;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 600px) {
-  .foto-fondo {
-    background-size: 270%;
-    height: 80%;
+// @media only screen and (max-width: 600px) {
+//   .foto-fondo {
+//     background-size: 270%;
+//     height: 80%;
 
-    .fantasma {
-      height: 90vh;
-    }
-  }
-}
+//     .fantasma {
+//       height: 90vh;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 500px) {
-  .foto-fondo {
-    background-size: 340%;
-    height: 80%;
+// @media only screen and (max-width: 500px) {
+//   .foto-fondo {
+//     background-size: 340%;
+//     height: 80%;
 
-    .fantasma {
-      height: 60vh;
-    }
-  }
-}
+//     .fantasma {
+//       height: 60vh;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 400px) {
-  .foto-fondo {
-    background-size: 360%;
-    height: 80%;
+// @media only screen and (max-width: 400px) {
+//   .foto-fondo {
+//     background-size: 360%;
+//     height: 80%;
 
-    .fantasma {
-      height: 90vh;
-    }
-  }
-}
+//     .fantasma {
+//       height: 90vh;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 360px) {
-  .foto-fondo {
-    background-size: 100vh;
-    height: 80%;
+// @media only screen and (max-width: 360px) {
+//   .foto-fondo {
+//     background-size: 100vh;
+//     height: 80%;
 
-    .fantasma {
-      height: 90vh;
-    }
-  }
-}
+//     .fantasma {
+//       height: 90vh;
+//     }
+//   }
+// }
 
 .barra {
   width: 80%;
@@ -229,8 +229,12 @@
 }
 
 .nombre-municipio{
-  text-align: center;
-  font-size: x-large;
+  // font-family: 'Handlee', cursive !important;
+  // font-family: 'Salsa', cursive !important;
+  font-family: 'Bebas Neue', cursive !important;
+  font-size: 300% !important;
+  margin-top: 3rem !important;
+  color: rgb(255, 102, 0);
 }
 
 .espacio-barra {
