@@ -9,6 +9,8 @@
       <input class="flex-item" value="{{ this.name }}" [(ngModel)]="this.name" />
       <div class="flex-item">Email</div>
       <input class="flex-item" value="{{ this.email }}" [(ngModel)]="this.email" />
+      <p *ngIf="getNotEmail()" class="error">El email no es válido</p>
+      <p *ngIf="getChangeEmail()" class="ok">Datos cambiados con éxito</p>
       <button class="flex-item" (click)="updateUser()">Guardar cambios</button>
     </div>
     <div class="grid-item">
@@ -21,14 +23,17 @@
       <div class="flex-item">Confirme nueva contraseña</div>
       <input class="flex-item" value="{{ this.repeat_psw }}" [(ngModel)]="this.repeat_psw" type="password" />
       <p *ngIf="getErrorChange()" class="error">Contraseña incorrecta</p>
+      <p *ngIf="getBadPass()" class="error">La contraseña debe tener como mínimo 8 carácteres, una 
+        mayúscula, una minuscula, un número y un carácter especial</p>
       <p *ngIf="getChangeOK()" class="ok">Contraseña cambiada con éxito</p>
-      <p *ngIf="getErrorDifferent()" class="error">La nueva conraseña no coincide</p>
+      <p *ngIf="getErrorDifferent()" class="error">La nueva contraseña no coincide</p>
       <button class="flex-item" (click)="updatePsw()">Cambiar contraseña</button>
     </div>
   </div>
   <h2>Últimas búsquedas</h2>
   <div class="control-section">
-    <ejs-grid class="sortingenabled" [dataSource]="data" allowPaging="true" allowSorting="true" [enableHover]="false" [allowSelection]="true" [toolbar]="toolbar">
+    <ejs-grid class="sortingenabled" [dataSource]="data" allowPaging="true" allowSorting="true" [enableHover]="false"
+      [allowSelection]="true" [toolbar]="toolbar">
       <e-columns>
         <e-column field="name" headerText="Municipio" width="170"></e-column>
         <e-column field="media" headerText="Media restaurantes" width="155" textAlign="Center"></e-column>

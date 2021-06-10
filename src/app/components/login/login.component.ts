@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
   }
 
   getErrorLogin(){
-    console.log("error login")
+    // console.log("error login")
     return this.errorLogin == true;
   }
 

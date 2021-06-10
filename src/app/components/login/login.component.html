@@ -4,10 +4,10 @@
   </div>
   <div class="modal-body">
     <div class="container">
-      <p>Usuario</p>
-      <input type="text" class="form-control" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="user" (keydown.enter)="sendLogin()" (keydown.enter)="modal.dismiss('Cross click')" />
+      <p>Email</p>
+      <input type="text" class="form-control" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="user" (keydown.enter)="sendLogin()" />
       <p>Contraseña</p>
-      <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="password" (keydown.enter)="sendLogin()" (keydown.enter)="modal.dismiss('Cross click')" />
+      <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="password" (keydown.enter)="sendLogin()" />
       <p *ngIf="getErrorLogin()" class="error">Email o contraseña incorrecta</p>
       <button class="boton" (click)="sendLogin()" type="submit">Login</button>
     </div>

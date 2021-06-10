@@ -73,7 +73,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getEmailRepe(){
-    console.log("error email repe bool")
+    // console.log("error email repe bool")
     return this.emailRepe == true;
   }
 
