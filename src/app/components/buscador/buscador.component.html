@@ -3,7 +3,7 @@
     <div class="titulo">
       <h1>¿Sobre qué destino deseas informarte?</h1>
     </div>
-    <div class="row">
+    <div class="row espacio-barra">
       <div class="col-md-4 offset-md-4 tablas">
         <form class="example-form">
           <mat-form-field class="barra">
@@ -44,8 +44,78 @@
   </div> -->
 
     <!-- <div class = "fondo1"> -->
-    <div *ngIf="this.municipio.name != null">
-      <h3>Información básica</h3>
+
+    <div class = "row" *ngIf="this.municipio.name != null">
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <h1 class = "nombre-municipio">{{this.municipio.name}}</h1>
+        </div>
+      </div>
+      <div class="row ">
+      <div class="col-md-4">
+        <img class="escudoMain" [src]="municipio.shield" />
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="despoblacion">
+            <p *ngIf="this.municipio.unpopulated != null">{{this.municipio.unpopulated}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row tituloInfo">
+          <h3 class= "tituloInfoTexto">Información básica</h3>
+        </div>
+        <div class="row infoBasica">
+          <lu>
+            <li>
+              <p *ngIf="this.municipio.region != null">Comarca: {{this.municipio.region}}</p>
+            </li>
+            <li>
+              <p>Provincia: {{this.municipio.province}}</p>
+            </li>
+            <li>
+              <p>Comunidad Autónoma: {{this.municipio.ccaa}}</p>
+            </li>
+            <li>
+              <p *ngIf="this.municipio.population != null">Población: {{this.municipio.population}}</p>
+            </li>
+            <li>
+              <p *ngIf="this.municipio.surface != null">Superficie: {{this.municipio.surface}}</p>
+            </li>
+            <li>
+              <p *ngIf="this.municipio.altitude != null">Altitud: {{this.municipio.altitude}}</p>
+            </li>
+            <li>
+              <p *ngIf="this.municipio.density != null">Densidad: {{this.municipio.density}}</p>
+            </li>
+          </lu>
+        </div>
+          <!-- <div class="row">
+            <p *ngIf="this.municipio.region != null">Comarca: {{this.municipio.region}}</p>
+          </div>
+          <div class="row">
+            <p>Provincia: {{this.municipio.province}}</p>
+          </div>
+          <div class="row">
+            <p>Comunidad Autónoma: {{this.municipio.ccaa}}</p>
+          </div>
+          <div class="row">
+            <p *ngIf="this.municipio.population != null">Población: {{this.municipio.population}}</p>
+          </div>
+          <div class="row">
+            <p *ngIf="this.municipio.surface != null">Superficie: {{this.municipio.surface}}</p>
+          </div>
+          <div class="row">
+            <p *ngIf="this.municipio.altitude != null">Altitud: {{this.municipio.altitude}}</p>
+          </div>
+          <div class="row">
+            <p *ngIf="this.municipio.density != null">Densidad: {{this.municipio.density}}</p>
+          </div> -->
+        </div>
+      </div>
+      </div>
+      <!-- <h3>Información básica</h3>
       <div class="row">
         <div class="col-md-4">
           <img class="escudoMain" [src]="municipio.shield" />
@@ -92,7 +162,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div *ngIf="this.municipio.stations != null && this.municipio.stations.length != 0" class="row centros">
       <h3>Estaciones</h3>
