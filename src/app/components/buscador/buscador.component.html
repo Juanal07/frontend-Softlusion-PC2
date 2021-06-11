@@ -135,7 +135,7 @@
               <hr>
             </div>
             <div class="row infoBasica">
-                <!-- <li *ngIf="this.municipio.region != null">
+              <!-- <li *ngIf="this.municipio.region != null">
                 <p>Comarca: {{this.municipio.region}}</p>
               </li>
               <li>
@@ -146,18 +146,18 @@
               </li> -->
               <br>
               <br>
-                <div *ngIf="this.municipio.population != null">
-                  <p>Población: {{this.municipio.population}}</p>
-                </div>
-                <div *ngIf="this.municipio.surface != null">
-                  <p>Superficie: {{this.municipio.surface}}</p>
-                </div>
-                <div *ngIf="this.municipio.altitude != null">
-                  <p>Altitud: {{this.municipio.altitude}}</p>
-                </div>
-                <div *ngIf="this.municipio.density != null">
-                  <p>Densidad: {{this.municipio.density}}</p>
-                </div>
+              <div *ngIf="this.municipio.population != null">
+                <p>Población: {{this.municipio.population}}</p>
+              </div>
+              <div *ngIf="this.municipio.surface != null">
+                <p>Superficie: {{this.municipio.surface}}</p>
+              </div>
+              <div *ngIf="this.municipio.altitude != null">
+                <p>Altitud: {{this.municipio.altitude}}</p>
+              </div>
+              <div *ngIf="this.municipio.density != null">
+                <p>Densidad: {{this.municipio.density}}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -252,11 +252,25 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <h1 class="fraseBusqueda">España Vaciada</h1>
+  <div *ngIf="this.municipio.name != null" class="container">
+    <!-- <h1 class="fraseBusqueda">España Vaciada</h1>
     <br>
     <p class="localizacionTexto">Proverbio chino: Si quieres ser feliz un dia, emborrachate. Si quieres ser feliz un
-      año, casate. Si quieres ser feliz toda la vida, cuida un huerto.</p>
+      año, casate. Si quieres ser feliz toda la vida, cuida un huerto.</p> -->
+    <!-- <blockquote class="blockquote">
+      <p class="mb-0">Si quieres ser feliz un dia, emborrachate. Si quieres ser feliz un
+        año, casate. Si quieres ser feliz toda la vida, cuida un huerto.</p>
+      <footer class="blockquote-footer"><cite title="Source Title">Proverbio chino</cite></footer>
+    </blockquote> -->
 
+    <figure>
+      <blockquote class="blockquote">
+        <p>Si quieres ser feliz una hora, emborráchate. Si quieres ser feliz un día, mata un cerdo. Si quieres ser feliz
+          una semana, haz un viaje. Si quieres ser feliz un año, cásate. Si quieres ser feliz toda tu vida, cultiva un
+          huerto.</p>
+      </blockquote>
+      <figcaption class="blockquote-footer"><cite title="Source Title">Proverbio chino</cite>
+      </figcaption>
+    </figure>
   </div>
 </div>
