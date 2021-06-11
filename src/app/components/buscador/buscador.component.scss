@@ -28,197 +28,178 @@
 // }
 
 .foto-fondo {
-  background-image: url("../../../assets/images/pueblos1.jpg") !important;
+  background-image: url("../../../assets/images/campo-soft.jpg") !important;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: black;
+  // background-color: black;
   height: auto;
 }
 
 .foto-fondo-blanco {
   // background-image: url("../../../assets/images/pueblos1.jpg") !important;
-  background-size: 100%;
+  // background-image: url("../../../assets/images/campo-soft.jpg") !important;
+  // opacity: .2;
+  background-size: cover;
   background-repeat: no-repeat;
-  // background-color: black;
+  background-color: rgb(255, 255, 255);
   height: auto;
+}
+
+.cambio-seccion{ 
+  margin-top: 3rem;
+  width:100%;
+  height:8rem;
+  border-top-left-radius:300% 300%;
+/*    border-top-right-radius:50% 50%; */
+  background: rgb(19, 24, 41);
 }
 
 .fantasma {
   height: 90vh;
 }
 
-// @media only screen and (max-width: 1920px) {
-//   .foto-fondo {
-//     background-size: 100%;
-//     // height: 100%;
-//     background-color: black;
-//     // bottom: 10px;
-
-//     .fantasma {
-//       height: 70vh;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 1500px) {
-//   .foto-fondo {
-//     background-size: 100%;
-//     // height: 80%;
-//     background-color: black;
-//     // bottom: 10px;
-
-//     .fantasma {
-//       height: 57vh;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 1250x) {
-//   .foto-fondo {
-//     background-size: 100%;
-//     height: 60%;
-
-//     .fantasma {
-//       height: 20vh;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 1000px) {
-//   .foto-fondo {
-//     background-size: 150%;
-//     height: 73%;
-
-//     .fantasma {
-//       height: 90vh;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 800px) {
-//   .foto-fondo {
-//     background-size: 180%;
-//     height: 78%;
-
-//     .fantasma {
-//       height: 90vh;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 700px) {
-//   .foto-fondo {
-//     background-size: 200%;
-//     height: 75%;
-
-//     .fantasma {
-//       height: 90vh;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 600px) {
-//   .foto-fondo {
-//     background-size: 270%;
-//     height: 80%;
-
-//     .fantasma {
-//       height: 90vh;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 500px) {
-//   .foto-fondo {
-//     background-size: 340%;
-//     height: 80%;
-
-//     .fantasma {
-//       height: 60vh;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 400px) {
-//   .foto-fondo {
-//     background-size: 360%;
-//     height: 80%;
-
-//     .fantasma {
-//       height: 90vh;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 360px) {
-//   .foto-fondo {
-//     background-size: 100vh;
-//     height: 80%;
-
-//     .fantasma {
-//       height: 90vh;
-//     }
-//   }
-// }
-
 .barra {
   width: 80%;
   height: 45px;
   margin: auto;
   display: block;
-  // position: relative;
   border-radius: 20px;
-  // top: -30px;
 }
 
-// input{
-//   border:2px solid rgb(0, 0, 0);
-// }
+.lupa{
+  text-align: end;
+  width: 35px;
+  margin:0;
+  position: relative;
+  top:-11px
+}
 
 .gifloading {
   display: block;
   margin: auto;
 }
-.escudo {
-  width: 90%;
-  // height: 10rem;
-  display: block;
-  margin: auto;
+
+// .escudo {
+//   width: 90%;
+//   // height: 10rem;
+//   display: block;
+//   margin: auto;
+// }
+
+.divEscudo{
+  background-size: cover;
+  // width: auto;
+  // max-width: 432px;
+  // max-height: 260px;
 }
+
+// .escudoMain1 {
+//   width: 100%;
+//   height: 25vh;
+//   min-width: 227;
+//   max-width: 432px;
+//   max-height: 280px;
+//   background-size: cover;
+//   margin:auto;
+//   display: block;
+//   border-radius:10px;
+//   box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+//   margin-bottom: 10px;
+// }
+
 .escudoMain {
-  // width: 90%;
-  height: 25vh;
+  height: 30vh;
   display: block;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
   box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
-  // margin-left:2rem;
+  border-radius:10px;
+  margin:auto;
+  margin-bottom: 10px;
 }
+
+.localizacion{
+  width: 100%;
+  // padding-left: 10%;
+  margin:auto;
+  padding:0;
+}
+
+.localizacionTexto{
+  text-align: center;
+}
+
+.imgDespoblacion{
+  max-width: 90%;
+  min-width: 333px;
+  height: 30vh;
+  border-radius:300px;
+  display:block;
+  margin:auto;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+
+}
+
+.fondo-seccion-carrusel{
+  background-color:rgb(19, 24, 41);
+}
+
+.informacionMunicipio{
+  width: 90%;
+  min-width: 234px;
+  padding-top: 40px;
+  margin: auto;
+  text-align: center; 
+}
+
+.infoMunicipio{
+  display:block;
+  margin-left:2rem;
+}
+
 .despoblacion{
   background-color:green;
   color:white;
   text-align: center;
-  margin-top:12.5rem;
+  margin-top:1rem;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 15px;
-  font-size: large;
+  // padding-top: 15px;
+  // font-size: large;
+  border-radius:20px;
   box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+  opacity: .6;
+  margin-bottom: 2rem;
 }
 
-.tituloInfo {
-  padding-left:5px;
-  background-color: rgb(230, 230, 230);
-  margin:auto;
-  border-radius: 3px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+.poblacion{
+  background-color:#860101;
+  color:white;
+  text-align: center;
+  margin-top:1rem;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  // padding-top: 15px;
+  // font-size: large;
+  border-radius:20px;
+  box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+  opacity: .6;
+  margin-bottom: 2rem;
 }
+
+// .tituloInfo {
+//   padding-left:5px;
+//   background-color: rgb(230, 230, 230);
+//   margin:auto;
+//   border-radius: 3px;
+//   padding-top: 4px;
+//   padding-bottom: 4px;
+// }
 
 .tituloInfoTexto{
-  margin:auto !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 180% !important;
 }
 
 .infoBasica{
@@ -228,19 +209,115 @@
   margin:auto;
 }
 
-.nombre-municipio{
-  // font-family: 'Handlee', cursive !important;
-  // font-family: 'Salsa', cursive !important;
-  font-family: 'Bebas Neue', cursive !important;
-  font-size: 300% !important;
-  margin-top: 3rem !important;
-  color: rgb(255, 102, 0);
+.fraseBusqueda{
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 250% !important;
 }
+
+.nombre-municipio{
+  font-family: 'Bebas Neue', cursive !important;
+  // font-family: 'Viga', sans-serif;
+  font-size: 350% !important;
+  padding-top: 4rem;
+  // color: rgb(255, 102, 0);
+  color: rgba(255, 102, 0, 0.795);
+}
+
+.cajitas{
+  background-color: white;
+  width: 100%;
+  height: 4.2rem;
+  min-width: 120px;
+  max-width: 200px;
+  border:1px solid rgb(226, 226, 226);
+  border-radius: 10px;
+  justify-content:center;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right:auto;
+  box-shadow: 2px 2px 5px 5px rgb(226, 226, 226);
+  // text-align: left;
+}
+
+.cajitas:hover{
+  transform: scale(1.2); 
+  // opacity: .7;
+  background-color:rgb(231, 231, 231);
+}
+
+.primeraFilaCajitas{
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.primeraFilaCajitas1{
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top:1rem;
+}
+
+.tituloCajitas{
+  display: block;
+  margin-top: 5px;
+  font-family: 'Comfortaa', cursive;
+  padding-left: 10px;
+}
+
+.valorCajitas{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  display: block;
+  text-align: center !important;
+  margin-top: 3px;
+  font-family: 'Comfortaa', cursive;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.contenidoCajitas{
+  flex-direction: column;
+  text-align: center;
+  margin:0 !important;
+  font-family: 'Comfortaa', cursive;
+  padding-left:10px;
+  padding-top: 5px;
+}
+
+.imagenCajitas{
+  position: relative;
+  display: block;
+  width: 1.8rem !important;
+  margin-top: 3% !important;
+  margin-right: 10% !important;
+}
+
+.marginTop{
+  padding-top: 2rem;
+}
+
+.titulosCarrusel{
+  color:white;
+  font-family: 'Raleway', sans-serif !important;
+}
+
+// .localizacionMunicipio{
+//   margin-top: auto;
+// }
 
 .espacio-barra {
   margin-bottom: 4rem;
   margin: auto;
   margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .card-body {
@@ -267,6 +344,10 @@
   // padding-right: 5px;
 }
 
+// .swiper-button-prev, .swiper-button-next{
+//   margin-top:1rem;
+// }
+
 .bloque {
   display: flex;
   justify-content: center;
@@ -281,7 +362,7 @@
 }
 
 .centros {
-  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 .mat-form-field {
@@ -328,7 +409,9 @@
 }
 
 // @import "variables";
-
+.loading-container{
+  margin-top:3rem;
+}
 // .loading-container {
 //   display: flex;
 //   position: fixed;
@@ -470,6 +553,11 @@ h5 {
 
 .caja {
   width: 100%;
+  // margin-bottom:2rem;
+}
+
+.swiper-slide{
+  margin-bottom:3rem;
 }
 
 .marginCaja {

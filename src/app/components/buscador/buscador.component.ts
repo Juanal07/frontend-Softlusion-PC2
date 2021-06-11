@@ -170,11 +170,43 @@ export class BuscadorComponent implements OnInit {
             this.municipio.nRestaurants = response['data']['nRestaurants'];
             this.municipio.media = response['data']['media'];
           }
-
-          if (response['data']['populated'] == 0) {
+          if (this.municipio.media >= -1 && this.municipio.media <= -0.8){
+            this.municipio.media = 1;
+          }
+          if (this.municipio.media >= -0.8 && this.municipio.media <= -0.6){
+            this.municipio.media = 2;
+          }
+          if (this.municipio.media >= -0.6 && this.municipio.media <= -0.4){
+            this.municipio.media = 3;
+          }
+          if (this.municipio.media >= -0.4 && this.municipio.media <= -0.2){
+            this.municipio.media = 4;
+          }
+          if (this.municipio.media >= -0.2 && this.municipio.media <= 0){
+            this.municipio.media = 5;
+          }
+          if (this.municipio.media >= 0 && this.municipio.media <= 0.2){
+            this.municipio.media = 6;
+          }
+          if (this.municipio.media >= 0.2 && this.municipio.media <= 0.4){
+            this.municipio.media = 7;
+          }
+          if (this.municipio.media >= 0.4 && this.municipio.media <= 0.6){
+            this.municipio.media = 8;
+          }
+          if (this.municipio.media >= 0.6 && this.municipio.media <= 0.8){
+            this.municipio.media = 9;
+          }
+          if (this.municipio.media >= 0.8 && this.municipio.media <= 1){
+            this.municipio.media = 10;
+          }
+          console.log('Devuelto de BD',response['data']['unpopulated'] )
+          if (response['data']['unpopulated'] == 0 || response['data']['unpopulated'] == -1) {
             this.municipio.unpopulated = 'Municipio despoblado';
+            console.log('ESTADOOOO: ', this.municipio.unpopulated)
           } else {
             this.municipio.unpopulated = 'Municipio poblado';
+            console.log('ESTADOOOO: ', this.municipio.unpopulated)
           }
         } else {
           console.log('ELSEEE');
@@ -237,7 +269,38 @@ export class BuscadorComponent implements OnInit {
               } else {
                 this.municipio.nRestaurants = response['data']['nRestaurants'];
                 this.municipio.media = response['data']['media'];
+                if (this.municipio.media >= -1 && this.municipio.media <= -0.8){
+                  this.municipio.media = 1;
+                }
+                if (this.municipio.media >= -0.8 && this.municipio.media <= -0.6){
+                  this.municipio.media = 2;
+                }
+                if (this.municipio.media >= -0.6 && this.municipio.media <= -0.4){
+                  this.municipio.media = 3;
+                }
+                if (this.municipio.media >= -0.4 && this.municipio.media <= -0.2){
+                  this.municipio.media = 4;
+                }
+                if (this.municipio.media >= -0.2 && this.municipio.media <= 0){
+                  this.municipio.media = 5;
+                }
+                if (this.municipio.media >= 0 && this.municipio.media <= 0.2){
+                  this.municipio.media = 6;
+                }
+                if (this.municipio.media >= 0.2 && this.municipio.media <= 0.4){
+                  this.municipio.media = 7;
+                }
+                if (this.municipio.media >= 0.4 && this.municipio.media <= 0.6){
+                  this.municipio.media = 8;
+                }
+                if (this.municipio.media >= 0.6 && this.municipio.media <= 0.8){
+                  this.municipio.media = 9;
+                }
+                if (this.municipio.media >= 0.8 && this.municipio.media <= 1){
+                  this.municipio.media = 10;
+                }
               }
+              console.log(this.municipio.media)
               // this.municipio.nRestaurants = response['data']['nRestaurants'];
               // console.log(this.municipio.media)
               // console.log(this.municipio.nRestaurants)
@@ -247,7 +310,7 @@ export class BuscadorComponent implements OnInit {
             .getNoticias(this.idMunicipio, this.idSearch)
             .subscribe((response) => {
               console.log(response);
-              if (response['data']['populated'] == 0)
+              if (response['data']['populated'] == 0 || response['data']['populated'] == -1)
                 this.municipio.unpopulated = 'Municipio despoblado';
               else
                 this.municipio.unpopulated = 'Municipio poblado';
