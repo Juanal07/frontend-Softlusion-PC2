@@ -1,15 +1,20 @@
 <div [className]="getFondo() ? 'foto-fondo' : 'foto-fondo-blanco'">
   <div class="container">
     <div class="titulo">
-      <h1 class = "fraseBusqueda">¿Sobre qué destino deseas informarte?</h1>
+      <h1 class="fraseBusqueda">¿Sobre qué destino deseas informarte?</h1>
     </div>
     <div class="row espacio-barra">
       <div class="col-md-4 offset-md-4 tablas">
         <form class="example-form">
           <mat-form-field class="barra">
-            <input type="text" placeholder="Introduce un municipio" aria-label="Number" matInput
-              [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="texto"
-              (keydown.enter)="getInfoPueblo()" />
+            <!-- <img class="lupa" src="../../../assets/images/search_50px.png" alt="" /> -->
+            <!-- <div class="primeraFilaCajitas"> -->
+              <input type="text" placeholder="Introduce un municipio" aria-label="Number" matInput
+                [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="texto"
+                (keydown.enter)="getInfoPueblo()" />
+                <!-- <img class="lupa" src="../../../assets/images/search_50px.png" alt="" /> -->
+              <!-- <img src="../../../assets/images/search_50px.png" alt="" /> -->
+            <!-- </div> -->
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let option of filteredOptions | async | slice:0:10" [value]="option"> {{option}}
               </mat-option>
@@ -28,25 +33,6 @@
         </div>
       </div>
     </div>
-    <!-- the application -->
-    <!-- <div *ngIf="this.municipio.name == null">
-    <div class="row bloque2">
-      <h3>Municipios más búscados</h3>
-      <hr />
-      <div class="col-md-3" *ngFor="let item of this.topBusquedas">
-        <div class="card card-principio">
-          <h5 class="card-header">{{item['name']}}</h5>
-          <img class="escudo" [src]="this.item['shield']" />
-          <div class="card-body">
-            <h5 class="card-title">Provincia: {{item['province']}}</h5>
-            <p class="card-text">CCAA: {{item['ccaa']}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-    <!-- <div class = "fondo1"> -->
 
     <div class="row" *ngIf="this.municipio.name != null">
       <div class="row">
@@ -111,7 +97,10 @@
 
       <div class="row ">
         <div class="col-md-4 divEscudo">
-          <img class="col-md-4 escudoMain" [src]="municipio.shield" />
+          <img class="escudoMain" [src]="municipio.shield" />
+          <div class="row">
+            <spam>España | {{this.municipio.ccaa}} | {{this.municipio.province}} | {{this.municipio.name}}</spam>
+          </div>
         </div>
         <div class="col-md-4">
           <img class="imgDespoblacion" src="../../../assets/images/house_with_a_garden_24px.png" alt="" />
@@ -224,7 +213,7 @@
     </div> -->
 
     <div *ngIf="this.municipio.stations != null && this.municipio.stations.length != 0" class="row centros">
-      <h3>Estaciones</h3>
+      <h3 class="marginTop">Estaciones</h3>
 
       <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
         [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="stationSwiper">
@@ -277,7 +266,8 @@
       </swiper>
     </div>
 
-    <div *ngIf="this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0" class="row centros">
+    <div *ngIf="this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0"
+      class="row centros marginBot">
       <h3>Supermercados</h3>
 
       <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
