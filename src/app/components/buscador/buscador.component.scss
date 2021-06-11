@@ -79,29 +79,99 @@
 
 .divEscudo{
   background-size: cover;
+  // width: auto;
+  // max-width: 432px;
+  // max-height: 260px;
 }
+
+// .escudoMain1 {
+//   width: 100%;
+//   height: 25vh;
+//   min-width: 227;
+//   max-width: 432px;
+//   max-height: 280px;
+//   background-size: cover;
+//   margin:auto;
+//   display: block;
+//   border-radius:10px;
+//   box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+//   margin-bottom: 10px;
+// }
+
 .escudoMain {
-  width: 100%;
+  height: 30vh;
   display: block;
-  border-radius:10px;
   box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+  border-radius:10px;
+  margin:auto;
   margin-bottom: 10px;
 }
 
-// .imgDespoblacion{
-//   width: 100px;
-// }
+.localizacion{
+  width: 100%;
+  // padding-left: 10%;
+  margin:auto;
+  padding:0;
+}
+
+.localizacionTexto{
+  text-align: center;
+}
+
+.imgDespoblacion{
+  max-width: 90%;
+  min-width: 333px;
+  height: 30vh;
+  border-radius:300px;
+  display:block;
+  margin:auto;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+
+}
+
+.informacionMunicipio{
+  width: 90%;
+  min-width: 234px;
+  margin: auto;
+  text-align: center; 
+}
+
+.infoMunicipio{
+  display:block;
+  margin-left:2rem;
+}
+
 .despoblacion{
   background-color:green;
   color:white;
   text-align: center;
-  margin-top:12.5rem;
+  margin-top:1rem;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 15px;
-  font-size: large;
+  // padding-top: 15px;
+  // font-size: large;
+  border-radius:20px;
   box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+  opacity: .6;
+  margin-bottom: 2rem;
+}
+
+.poblacion{
+  background-color:#860101;
+  color:white;
+  text-align: center;
+  margin-top:1rem;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  // padding-top: 15px;
+  // font-size: large;
+  border-radius:20px;
+  box-shadow: 2px 2px 5px 5px rgb(202, 202, 202);
+  opacity: .6;
+  margin-bottom: 2rem;
 }
 
 // .tituloInfo {
@@ -125,7 +195,8 @@
 }
 
 .fraseBusqueda{
-  font-family: 'Baloo Tammudu 2', cursive !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 250% !important;
 }
 
 .nombre-municipio{
@@ -133,7 +204,8 @@
   // font-family: 'Viga', sans-serif;
   font-size: 350% !important;
   padding-top: 4rem;
-  color: rgb(255, 102, 0);
+  // color: rgb(255, 102, 0);
+  color: rgba(255, 102, 0, 0.795);
 }
 
 .cajitas{
@@ -147,7 +219,16 @@
   justify-content:center;
   align-items: center;
   margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right:auto;
   box-shadow: 2px 2px 5px 5px rgb(226, 226, 226);
+  // text-align: left;
+}
+
+.cajitas:hover{
+  transform: scale(1.2); 
+  // opacity: .7;
+  background-color:rgb(231, 231, 231);
 }
 
 .primeraFilaCajitas{
@@ -156,6 +237,15 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+}
+
+.primeraFilaCajitas1{
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top:1rem;
 }
 
 .tituloCajitas{
@@ -299,7 +389,9 @@
 }
 
 // @import "variables";
-
+.loading-container{
+  margin-top:3rem;
+}
 // .loading-container {
 //   display: flex;
 //   position: fixed;
