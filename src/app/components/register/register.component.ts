@@ -68,32 +68,57 @@ export class RegisterComponent implements OnInit {
     console.log("name: ", this.password)
     console.log("name: ", this.password2)
 
+    // this.register['name'] = this.name;
+    // this.register['email'] = this.email;
+    // this.register['password'] = this.password;
+
 
     let regexEmail2 = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+.[^@ \t\r\n]+")
     console.log(regexEmail2.test(this.email))
     let regexPass = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$")
     console.log(regexPass.test(this.password))
-    if (this.name == "") {
+    if (this.name == "" || this.email == "" || this.password == "" || this.password2 == "") {
+      // this.authService.postRegister(this.register).subscribe(
+      //   (response) => {
+      //     console.log("h4")
+      //     console.log('response is ', response);
+      //     console.log(response['status'])
+      //     this.commonsService.setName(response['data']['name']);
+      //     this.commonsService.setToken(response['data']['token']);
+      //     this.modalService.dismissAll('Cross click')
+      //   },
+      //   (error) => {
+      //     console.log("h5")
+      //     console.log('error is ', error);
+      //     console.log("error email repe send")
+      //     this.emailRepe = true;
+      //   }
+      // );
       this.noName = true;
+      // break;
     }
-    else if (!regexEmail2.test(this.email) && this.email != "" && this.noName == false) {
+    else if (!regexEmail2.test(this.email)) {
       console.log("h1")
       this.notEmail = true;
+      // break;
     }
-    else if (this.password != this.password2 && this.password != "" && this.password2 != "" &&
-      this.noName == false && this.notEmail == false) {
+    else if (this.password != this.password2) {
       console.log("h2")
       this.errorDifferent = true;
+      // break;
     }
-    else if (!regexPass.test(this.password) && this.password != "" && this.password2 != "" &&
-      this.noName == false && this.notEmail == false && this.errorDifferent == false) {
+    else if (!regexPass.test(this.password)) {
       console.log("h3")
       this.badPass = true;
     }
-    if (this.noName == false && this.notEmail == false && this.errorDifferent == false && this.badPass == false) {
-      console.log("h4")
+    else {
+      // this.noName = true;
+      this.register['name'] = this.name;
+      this.register['email'] = this.email;
+      this.register['password'] = this.password;
       this.authService.postRegister(this.register).subscribe(
         (response) => {
+          console.log("h4")
           console.log('response is ', response);
           console.log(response['status'])
           this.commonsService.setName(response['data']['name']);
