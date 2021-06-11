@@ -22,6 +22,9 @@
           </mat-form-field>
         </form>
       </div>
+      <div class="col-md-4 offset-md-4">
+        <p *ngIf="getNoMuni()" class="error">El pueblo que está intenteando buscar no existe</p>
+      </div>
     </div>
     <div *ngIf="this.municipio.name == null" class="fantasma"></div>
     <!-- Loading spinner -->

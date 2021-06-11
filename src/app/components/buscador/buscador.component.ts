@@ -33,13 +33,14 @@ export class BuscadorComponent implements OnInit {
   nConsultorios: number;
   nUrgencias: number;
   nEstaciones: number;
+  noMuni: boolean;
 
   loading: boolean = false;
 
   constructor(
     private _loading: LoadingService,
     private municipalityService: MunicipalityService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.fondoNegro = true;
@@ -121,210 +122,225 @@ export class BuscadorComponent implements OnInit {
         return Number(this.respuesta[i]['idMunicipality']);
       }
     }
+    return -1;
   }
 
   getInfoPueblo() {
-    this.fondoNegro = false;
+    
+    this.noMuni = false;
     // console.log("hola")
     // console.log(this.getIdPueblo(this.texto))
     this.nConsultorios = 0;
     this.nHospitales = 0;
     this.nUrgencias = 0;
-    this.municipalityService
-      .getBusqueda(this.getIdPueblo(this.texto))
-      .subscribe((response) => {
-        if (response['status'] == 200) {
-          this.municipio.name = response['data']['name'];
-          this.municipio.shield = response['data']['shield'];
-          this.municipio.region = response['data']['region'];
-          this.municipio.province = response['data']['province'];
-          this.municipio.ccaa = response['data']['ccaa'];
-          this.municipio.population = response['data']['population'];
-          this.municipio.surface = response['data']['surface'];
-          this.municipio.altitude = response['data']['altitude'];
-          this.municipio.density = response['data']['density'];
-          this.municipio.stations = response['data']['stations'];
-          this.municipio.medicalcenters = response['data']['medicalcenters'];
-          this.municipio.supermarkets = response['data']['supermarkets'];
+    let id = this.getIdPueblo(this.texto)
+    if (id == -1) {
+      console.log("Error")
+      this.noMuni = true;
+    }
+    else {
+      this.fondoNegro = false;
+      this.municipalityService
+        .getBusqueda(id)
+        .subscribe((response) => {
+          console.log("Hola")
+          if (response['status'] == 200) {
+            this.municipio.name = response['data']['name'];
+            this.municipio.shield = response['data']['shield'];
+            this.municipio.region = response['data']['region'];
+            this.municipio.province = response['data']['province'];
+            this.municipio.ccaa = response['data']['ccaa'];
+            this.municipio.population = response['data']['population'];
+            this.municipio.surface = response['data']['surface'];
+            this.municipio.altitude = response['data']['altitude'];
+            this.municipio.density = response['data']['density'];
+            this.municipio.stations = response['data']['stations'];
+            this.municipio.medicalcenters = response['data']['medicalcenters'];
+            this.municipio.supermarkets = response['data']['supermarkets'];
 
-          this.nEstaciones = this.municipio.stations.length;
+            this.nEstaciones = this.municipio.stations.length;
 
-          for(let i=0; i<this.municipio.medicalcenters.length; i++){
-            console.log("tipo de medico", this.municipio.medicalcenters[i]['type'] )
-            if(this.municipio.medicalcenters[i]['type'] == 'CENTRO SALUD' || 
-            this.municipio.medicalcenters[i]['type']  == 'CONSULTORIO LOCAL' || this.municipio.medicalcenters[i]['type']  == 'Otros Centros con Internamiento'){
-              this.nConsultorios++;
-            }
-            else if(this.municipio.medicalcenters[i]['type']  == 'Dispositivos de Urgencia Extrahospitalaria'){
-              this.nUrgencias++;
-            }
-            else{
-              this.nHospitales++;
-            }
-          }
-
-          if (response['data']['nRestaurants'] == -10) {
-            this.municipio.nRestaurants = 0;
-            this.municipio.media = 0;
-          } else {
-            this.municipio.nRestaurants = response['data']['nRestaurants'];
-            this.municipio.media = response['data']['media'];
-          }
-          if (this.municipio.media >= -1 && this.municipio.media <= -0.8){
-            this.municipio.media = 1;
-          }
-          if (this.municipio.media >= -0.8 && this.municipio.media <= -0.6){
-            this.municipio.media = 2;
-          }
-          if (this.municipio.media >= -0.6 && this.municipio.media <= -0.4){
-            this.municipio.media = 3;
-          }
-          if (this.municipio.media >= -0.4 && this.municipio.media <= -0.2){
-            this.municipio.media = 4;
-          }
-          if (this.municipio.media >= -0.2 && this.municipio.media <= 0){
-            this.municipio.media = 5;
-          }
-          if (this.municipio.media >= 0 && this.municipio.media <= 0.2){
-            this.municipio.media = 6;
-          }
-          if (this.municipio.media >= 0.2 && this.municipio.media <= 0.4){
-            this.municipio.media = 7;
-          }
-          if (this.municipio.media >= 0.4 && this.municipio.media <= 0.6){
-            this.municipio.media = 8;
-          }
-          if (this.municipio.media >= 0.6 && this.municipio.media <= 0.8){
-            this.municipio.media = 9;
-          }
-          if (this.municipio.media >= 0.8 && this.municipio.media <= 1){
-            this.municipio.media = 10;
-          }
-          console.log('Devuelto de BD',response['data']['unpopulated'] )
-          if (response['data']['unpopulated'] == 0 || response['data']['unpopulated'] == -1) {
-            this.municipio.unpopulated = 'Municipio despoblado';
-            console.log('ESTADOOOO: ', this.municipio.unpopulated)
-          } else {
-            this.municipio.unpopulated = 'Municipio poblado';
-            console.log('ESTADOOOO: ', this.municipio.unpopulated)
-          }
-        } else {
-          console.log('ELSEEE');
-          this.idSearch = response['data']['idSearch'];
-          this.idMunicipio = response['data']['idMunicipality'];
-          this.municipalityService
-            .getInfoPueblo(this.idMunicipio)
-            .subscribe((response) => {
-              this.municipio = response['data'];
-              console.log('OBJETO: ', this.municipio);
-            });
-
-          this.municipalityService
-            .getEstaciones(this.idMunicipio)
-            .subscribe((response) => {
-              console.log(response);
-              this.municipio.stations = response['data'];
-              this.nEstaciones =  this.municipio.stations.length;
-              console.log(this.nEstaciones)
-              console.log('ESTACIONES: ', this.municipio.stations);
-              console.log('OBJETO: ', response['data']);
-            });
-
-          this.municipalityService
-            .getCentrosMedicos(this.idMunicipio)
-            .subscribe((response) => {
-              console.log(response);
-              this.municipio.medicalcenters = response['data'];
-              for(let i=0; i<this.municipio.medicalcenters.length; i++){
-                console.log("tipo de medico", this.municipio.medicalcenters[i]['type'] )
-                if(this.municipio.medicalcenters[i]['type'] == 'CENTRO SALUD' || 
-                this.municipio.medicalcenters[i]['type']  == 'CONSULTORIO LOCAL' || this.municipio.medicalcenters[i]['type']  == 'Otros Centros con Internamiento'){
-                  this.nConsultorios++;
-                }
-                else if(this.municipio.medicalcenters[i]['type']  == 'Dispositivos de Urgencia Extrahospitalaria'){
-                  this.nUrgencias++;
-                }
-                else{
-                  this.nHospitales++;
-                }
+            for (let i = 0; i < this.municipio.medicalcenters.length; i++) {
+              console.log("tipo de medico", this.municipio.medicalcenters[i]['type'])
+              if (this.municipio.medicalcenters[i]['type'] == 'CENTRO SALUD' ||
+                this.municipio.medicalcenters[i]['type'] == 'CONSULTORIO LOCAL' || this.municipio.medicalcenters[i]['type'] == 'Otros Centros con Internamiento') {
+                this.nConsultorios++;
               }
-            });
-
-          this.municipalityService
-            .getSupermercados(this.idMunicipio, this.idSearch)
-            .subscribe((response) => {
-              console.log(response);
-              this.municipio.supermarkets = response['data'];
-              // console.log("SUPERMERCADOS: ",this.municipio.supermarkets)
-              // console.log("OBJETO: ", response['data'])
-            });
-
-          this.municipalityService
-            .getRestaurantes(this.idMunicipio, this.idSearch)
-            .subscribe((response) => {
-              console.log(response);
-              if (response['data']['nRestaurants'] == -10) {
-                this.municipio.nRestaurants = 0;
-                this.municipio.media = 0;
-              } else {
-                this.municipio.nRestaurants = response['data']['nRestaurants'];
-                this.municipio.media = response['data']['media'];
-                if (this.municipio.media >= -1 && this.municipio.media <= -0.8){
-                  this.municipio.media = 1;
-                }
-                if (this.municipio.media >= -0.8 && this.municipio.media <= -0.6){
-                  this.municipio.media = 2;
-                }
-                if (this.municipio.media >= -0.6 && this.municipio.media <= -0.4){
-                  this.municipio.media = 3;
-                }
-                if (this.municipio.media >= -0.4 && this.municipio.media <= -0.2){
-                  this.municipio.media = 4;
-                }
-                if (this.municipio.media >= -0.2 && this.municipio.media <= 0){
-                  this.municipio.media = 5;
-                }
-                if (this.municipio.media >= 0 && this.municipio.media <= 0.2){
-                  this.municipio.media = 6;
-                }
-                if (this.municipio.media >= 0.2 && this.municipio.media <= 0.4){
-                  this.municipio.media = 7;
-                }
-                if (this.municipio.media >= 0.4 && this.municipio.media <= 0.6){
-                  this.municipio.media = 8;
-                }
-                if (this.municipio.media >= 0.6 && this.municipio.media <= 0.8){
-                  this.municipio.media = 9;
-                }
-                if (this.municipio.media >= 0.8 && this.municipio.media <= 1){
-                  this.municipio.media = 10;
-                }
+              else if (this.municipio.medicalcenters[i]['type'] == 'Dispositivos de Urgencia Extrahospitalaria') {
+                this.nUrgencias++;
               }
-              console.log(this.municipio.media)
-              // this.municipio.nRestaurants = response['data']['nRestaurants'];
-              // console.log(this.municipio.media)
-              // console.log(this.municipio.nRestaurants)
-            });
+              else {
+                this.nHospitales++;
+              }
+            }
 
-          this.municipalityService
-            .getNoticias(this.idMunicipio, this.idSearch)
-            .subscribe((response) => {
-              console.log(response);
-              if (response['data']['populated'] == 0 || response['data']['populated'] == -1)
-                this.municipio.unpopulated = 'Municipio despoblado';
-              else
-                this.municipio.unpopulated = 'Municipio poblado';
-              // this.municipio.unpopulated = response['data']['populated'];
-              // console.log("OBJETO: ", this.municipio)
-              // console.log(this.municipio.name)
-              // console.log(this.municipio.ccaa)
-              // console.log(this.municipio.density)
-              // console.log(this.municipio.province)
-              // console.log(this.municipio.population)
-              // console.log(this.municipio.unpopulated)
-            });
-        }
-      });
+            if (response['data']['nRestaurants'] == -10) {
+              this.municipio.nRestaurants = 0;
+              this.municipio.media = 0;
+            } else {
+              this.municipio.nRestaurants = response['data']['nRestaurants'];
+              this.municipio.media = response['data']['media'];
+            }
+            if (this.municipio.media >= -1 && this.municipio.media <= -0.8) {
+              this.municipio.media = 1;
+            }
+            if (this.municipio.media >= -0.8 && this.municipio.media <= -0.6) {
+              this.municipio.media = 2;
+            }
+            if (this.municipio.media >= -0.6 && this.municipio.media <= -0.4) {
+              this.municipio.media = 3;
+            }
+            if (this.municipio.media >= -0.4 && this.municipio.media <= -0.2) {
+              this.municipio.media = 4;
+            }
+            if (this.municipio.media >= -0.2 && this.municipio.media <= 0) {
+              this.municipio.media = 5;
+            }
+            if (this.municipio.media >= 0 && this.municipio.media <= 0.2) {
+              this.municipio.media = 6;
+            }
+            if (this.municipio.media >= 0.2 && this.municipio.media <= 0.4) {
+              this.municipio.media = 7;
+            }
+            if (this.municipio.media >= 0.4 && this.municipio.media <= 0.6) {
+              this.municipio.media = 8;
+            }
+            if (this.municipio.media >= 0.6 && this.municipio.media <= 0.8) {
+              this.municipio.media = 9;
+            }
+            if (this.municipio.media >= 0.8 && this.municipio.media <= 1) {
+              this.municipio.media = 10;
+            }
+            console.log('Devuelto de BD', response['data']['unpopulated'])
+            if (response['data']['unpopulated'] == 0 || response['data']['unpopulated'] == -1) {
+              this.municipio.unpopulated = 'Municipio despoblado';
+              console.log('ESTADOOOO: ', this.municipio.unpopulated)
+            } else {
+              this.municipio.unpopulated = 'Municipio poblado';
+              console.log('ESTADOOOO: ', this.municipio.unpopulated)
+            }
+          } else {
+            console.log('ELSEEE');
+            this.idSearch = response['data']['idSearch'];
+            this.idMunicipio = response['data']['idMunicipality'];
+            this.municipalityService
+              .getInfoPueblo(this.idMunicipio)
+              .subscribe((response) => {
+                this.municipio = response['data'];
+                console.log('OBJETO: ', this.municipio);
+              });
+
+            this.municipalityService
+              .getEstaciones(this.idMunicipio)
+              .subscribe((response) => {
+                console.log(response);
+                this.municipio.stations = response['data'];
+                this.nEstaciones = this.municipio.stations.length;
+                console.log(this.nEstaciones)
+                console.log('ESTACIONES: ', this.municipio.stations);
+                console.log('OBJETO: ', response['data']);
+              });
+
+            this.municipalityService
+              .getCentrosMedicos(this.idMunicipio)
+              .subscribe((response) => {
+                console.log(response);
+                this.municipio.medicalcenters = response['data'];
+                for (let i = 0; i < this.municipio.medicalcenters.length; i++) {
+                  console.log("tipo de medico", this.municipio.medicalcenters[i]['type'])
+                  if (this.municipio.medicalcenters[i]['type'] == 'CENTRO SALUD' ||
+                    this.municipio.medicalcenters[i]['type'] == 'CONSULTORIO LOCAL' || this.municipio.medicalcenters[i]['type'] == 'Otros Centros con Internamiento') {
+                    this.nConsultorios++;
+                  }
+                  else if (this.municipio.medicalcenters[i]['type'] == 'Dispositivos de Urgencia Extrahospitalaria') {
+                    this.nUrgencias++;
+                  }
+                  else {
+                    this.nHospitales++;
+                  }
+                }
+              });
+
+            this.municipalityService
+              .getSupermercados(this.idMunicipio, this.idSearch)
+              .subscribe((response) => {
+                console.log(response);
+                this.municipio.supermarkets = response['data'];
+                // console.log("SUPERMERCADOS: ",this.municipio.supermarkets)
+                // console.log("OBJETO: ", response['data'])
+              });
+
+            this.municipalityService
+              .getRestaurantes(this.idMunicipio, this.idSearch)
+              .subscribe((response) => {
+                console.log(response);
+                if (response['data']['nRestaurants'] == -10) {
+                  this.municipio.nRestaurants = 0;
+                  this.municipio.media = 0;
+                } else {
+                  this.municipio.nRestaurants = response['data']['nRestaurants'];
+                  this.municipio.media = response['data']['media'];
+                  if (this.municipio.media >= -1 && this.municipio.media <= -0.8) {
+                    this.municipio.media = 1;
+                  }
+                  if (this.municipio.media >= -0.8 && this.municipio.media <= -0.6) {
+                    this.municipio.media = 2;
+                  }
+                  if (this.municipio.media >= -0.6 && this.municipio.media <= -0.4) {
+                    this.municipio.media = 3;
+                  }
+                  if (this.municipio.media >= -0.4 && this.municipio.media <= -0.2) {
+                    this.municipio.media = 4;
+                  }
+                  if (this.municipio.media >= -0.2 && this.municipio.media <= 0) {
+                    this.municipio.media = 5;
+                  }
+                  if (this.municipio.media >= 0 && this.municipio.media <= 0.2) {
+                    this.municipio.media = 6;
+                  }
+                  if (this.municipio.media >= 0.2 && this.municipio.media <= 0.4) {
+                    this.municipio.media = 7;
+                  }
+                  if (this.municipio.media >= 0.4 && this.municipio.media <= 0.6) {
+                    this.municipio.media = 8;
+                  }
+                  if (this.municipio.media >= 0.6 && this.municipio.media <= 0.8) {
+                    this.municipio.media = 9;
+                  }
+                  if (this.municipio.media >= 0.8 && this.municipio.media <= 1) {
+                    this.municipio.media = 10;
+                  }
+                }
+                console.log(this.municipio.media)
+                // this.municipio.nRestaurants = response['data']['nRestaurants'];
+                // console.log(this.municipio.media)
+                // console.log(this.municipio.nRestaurants)
+              });
+
+            this.municipalityService
+              .getNoticias(this.idMunicipio, this.idSearch)
+              .subscribe((response) => {
+                console.log(response);
+                if (response['data']['populated'] == 0 || response['data']['populated'] == -1)
+                  this.municipio.unpopulated = 'Municipio despoblado';
+                else
+                  this.municipio.unpopulated = 'Municipio poblado';
+                // this.municipio.unpopulated = response['data']['populated'];
+                // console.log("OBJETO: ", this.municipio)
+                // console.log(this.municipio.name)
+                // console.log(this.municipio.ccaa)
+                // console.log(this.municipio.density)
+                // console.log(this.municipio.province)
+                // console.log(this.municipio.population)
+                // console.log(this.municipio.unpopulated)
+              });
+          }
+        });
+    }
+  }
+
+  getNoMuni() {
+    return this.noMuni == true;
   }
 
   private _filter(value: string): string[] {
