@@ -31,7 +31,7 @@
   background-image: url("../../../assets/images/campo-soft.jpg") !important;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: black;
+  // background-color: black;
   height: auto;
 }
 
@@ -43,6 +43,15 @@
   background-repeat: no-repeat;
   background-color: rgb(255, 255, 255);
   height: auto;
+}
+
+.cambio-seccion{ 
+  margin-top: 3rem;
+  width:100%;
+  height:8rem;
+  border-top-left-radius:300% 300%;
+/*    border-top-right-radius:50% 50%; */
+  background: rgb(19, 24, 41);
 }
 
 .fantasma {
@@ -130,9 +139,14 @@
 
 }
 
+.fondo-seccion-carrusel{
+  background-color:rgb(19, 24, 41);
+}
+
 .informacionMunicipio{
   width: 90%;
   min-width: 234px;
+  padding-top: 40px;
   margin: auto;
   text-align: center; 
 }
@@ -183,9 +197,10 @@
 //   padding-bottom: 4px;
 // }
 
-// .tituloInfoTexto{
-//   margin:auto !important;
-// }
+.tituloInfoTexto{
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 180% !important;
+}
 
 .infoBasica{
   background-color: rgb(255, 255, 255);
@@ -286,7 +301,12 @@
 }
 
 .marginTop{
-  padding-top: 4rem;
+  padding-top: 2rem;
+}
+
+.titulosCarrusel{
+  color:white;
+  font-family: 'Raleway', sans-serif !important;
 }
 
 // .localizacionMunicipio{
@@ -324,9 +344,9 @@
   // padding-right: 5px;
 }
 
-.swiper-button-prev, .swiper-button-next{
-  margin-top:1rem;
-}
+// .swiper-button-prev, .swiper-button-next{
+//   margin-top:1rem;
+// }
 
 .bloque {
   display: flex;
@@ -533,6 +553,11 @@ h5 {
 
 .caja {
   width: 100%;
+  // margin-bottom:2rem;
+}
+
+.swiper-slide{
+  margin-bottom:3rem;
 }
 
 .marginCaja {

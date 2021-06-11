@@ -127,10 +127,11 @@
         <div class="col">
           <div class="informacionMunicipio">
             <div class="row tituloInfo">
+              <!-- <h3 class="tituloInfoTexto"><b>Información básica</b></h3> -->
               <h3 class="tituloInfoTexto">Información básica</h3>
+              <hr>
             </div>
             <div class="row infoBasica">
-              <ul>
                 <!-- <li *ngIf="this.municipio.region != null">
                 <p>Comarca: {{this.municipio.region}}</p>
               </li>
@@ -140,27 +141,34 @@
               <li>
                 <p>Comunidad Autónoma: {{this.municipio.ccaa}}</p>
               </li> -->
-                <li *ngIf="this.municipio.population != null">
+              <br>
+              <br>
+                <div *ngIf="this.municipio.population != null">
                   <p>Población: {{this.municipio.population}}</p>
-                </li>
-                <li *ngIf="this.municipio.surface != null">
+                </div>
+                <div *ngIf="this.municipio.surface != null">
                   <p>Superficie: {{this.municipio.surface}}</p>
-                </li>
-                <li *ngIf="this.municipio.altitude != null">
+                </div>
+                <div *ngIf="this.municipio.altitude != null">
                   <p>Altitud: {{this.municipio.altitude}}</p>
-                </li>
-                <li *ngIf="this.municipio.density != null">
+                </div>
+                <div *ngIf="this.municipio.density != null">
                   <p>Densidad: {{this.municipio.density}}</p>
-                </li>
-              </ul>
+                </div>
             </div>
           </div>
         </div>
       </div>
-      <hr>
+      <!-- <hr> -->
+
+    </div>
+  </div>
+  <!-- <div class="cambio-seccion"></div> -->
+  <div class="fondo-seccion-carrusel">
+    <div class="container">
 
       <div *ngIf="this.municipio.stations != null && this.municipio.stations.length != 0" class="row centros">
-        <h3 class="marginTop">Estaciones</h3>
+        <h3 class="titulosCarrusel marginTop">Estaciones</h3>
 
         <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
           [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="stationSwiper">
@@ -185,7 +193,7 @@
 
       <div *ngIf="this.municipio.medicalcenters != null && this.municipio.medicalcenters.length != 0"
         class="row centros">
-        <h3>Centros médicos</h3>
+        <h3 class="titulosCarrusel">Centros médicos</h3>
 
         <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
           [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true" class="sanidadSwiper">
@@ -216,7 +224,7 @@
 
       <div *ngIf="this.municipio.supermarkets!= null && this.municipio.supermarkets.length != 0"
         class="row centros marginBot">
-        <h3>Supermercados</h3>
+        <h3 class="titulosCarrusel">Supermercados</h3>
 
         <swiper [slidesPerView]="3" [spaceBetween]="30" [slidesPerGroup]="3" [loop]="false"
           [loopFillGroupWithBlank]="false" [pagination]="{ clickable: true }" [navigation]="true"
@@ -240,5 +248,12 @@
         </swiper>
       </div>
     </div>
+  </div>
+  <div class="container">
+    <h1 class="fraseBusqueda">España Vaciada</h1>
+    <br>
+    <p class="localizacionTexto">Proverbio chino: Si quieres ser feliz un dia, emborrachate. Si quieres ser feliz un
+      año, casate. Si quieres ser feliz toda la vida, cuida un huerto.</p>
+
   </div>
 </div>
