@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('content') block: ElementRef;
   @ViewChild(RegisterComponent) child: RegisterComponent; //hijo referenciado
   errorLogin: boolean = false;
+  noName: boolean;
 
   constructor(
     // private loginService: LoginService,
@@ -61,29 +62,41 @@ export class LoginComponent implements OnInit {
   }
 
   sendLogin() {
+    this.noName = false;
     this.errorLogin = false;
     this.login['email'] = this.user;
     this.login['password'] = this.password;
-    this.authService.postLogin(this.login).subscribe(
-      (response) => {
-        console.log('response is ', response);
-        this.commonsService.setName(response['data']['name']);
-        this.commonsService.setToken(response['data']['token']);
-        if (response['data']['db_idUser'] == 43) {
-          this.router.navigate(['admin']);
+    if (this.user=="" || this.password==""){
+      this.noName = true;
+    }
+    else{
+      this.authService.postLogin(this.login).subscribe(
+        (response) => {
+          console.log('response is ', response);
+          this.commonsService.setName(response['data']['name']);
+          this.commonsService.setToken(response['data']['token']);
+          if (response['data']['db_idUser'] == 43) {
+            this.router.navigate(['admin']);
+          }
+          this.modalService.dismissAll('Cross click')
+        },
+        (error) => {
+          console.log('error is ', error);
+          this.errorLogin = true;
         }
-        this.modalService.dismissAll('Cross click')
-      },
-      (error) => {
-        console.log('error is ', error);
-        this.errorLogin = true;
-      }
-    );
+      );
+    }
+  
   }
 
   getErrorLogin(){
     // console.log("error login")
     return this.errorLogin == true;
+  }
+
+  getNoName() {
+    // console.log("error no hay nombre")
+    return this.noName == true;
   }
 
 }

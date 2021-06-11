@@ -9,6 +9,7 @@
       <p>Contraseña</p>
       <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="password" (keydown.enter)="sendLogin()" />
       <p *ngIf="getErrorLogin()" class="error">Email o contraseña incorrecta</p>
+      <p *ngIf="getNoName()" class="error">Rellene todos los campos</p>
       <button class="boton" (click)="sendLogin()" type="submit">Login</button>
     </div>
   </div>
