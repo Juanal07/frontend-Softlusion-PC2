@@ -37,6 +37,43 @@
       </div>
     </div>
 
+    <div *ngIf="this.nombre != null" class="ampliado">
+      <div class="rowAmp nombre">
+        <p>Nombre: </p>
+        <p>Valor: </p>
+        
+      </div>
+      <div class="rowAmp">
+        <p>{{this.nombre}}</p>
+        <p>{{this.valor}}</p>
+      </div>
+        
+      <br><br>
+
+      <button (click)="ocultar()">ocultar</button>
+      
+    </div>
+
+    <div *ngIf="this.data !=null">
+      <div class="tabla">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Valor</th>
+              <th>Acciones</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let d of data;">
+              <td>{{d.nombre}}</td>
+              <td>{{d.valor}}</td>
+              <td> <button (click)="rowSelected(d)">Ver</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <div *ngIf="this.municipio.name != null">
       <div class="row" *ngIf="this.municipio.name != null">
         <div class="row">

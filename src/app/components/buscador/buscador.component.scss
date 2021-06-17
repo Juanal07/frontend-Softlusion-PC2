@@ -599,3 +599,26 @@ figure{
     font-style: italic;
   }
 }
+
+.tabla{
+  width: 66%;
+  margin-top: 3rem;
+  text-align:center;
+  margin-left: 33%;
+}
+
+.ampliado{
+  margin-top: 3rem;
+  width: 50vw;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.rowAmp{
+  display: inline-block;
+}
+
+.nombre{
+  text-align: right !important;
+}

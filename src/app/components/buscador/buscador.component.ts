@@ -37,6 +37,10 @@ export class BuscadorComponent implements OnInit {
 
   loading: boolean = false;
 
+  data: { nombre: String, valor: any }[] = [];
+  nombre: string;
+  valor: string;
+
   constructor(
     private _loading: LoadingService,
     private municipalityService: MunicipalityService
@@ -126,7 +130,7 @@ export class BuscadorComponent implements OnInit {
   }
 
   getInfoPueblo() {
-    
+
     this.noMuni = false;
     // console.log("hola")
     // console.log(this.getIdPueblo(this.texto))
@@ -335,8 +339,47 @@ export class BuscadorComponent implements OnInit {
                 // console.log(this.municipio.unpopulated)
               });
           }
+
+          //construyo data para el examen
+          // this.data.push({ "nombre": "id", "valor": this.idMunicipio });
+          this.data.push({ "nombre": "Municipo", "valor": this.municipio.name });
+          this.data.push({ "nombre": "escudo", "valor": this.municipio.shield });
+          this.data.push({ "nombre": "region", "valor": this.municipio.region });
+          this.data.push({ "nombre": "provincia", "valor": this.municipio.province });
+          this.data.push({ "nombre": "ccaa", "valor": this.municipio.ccaa });
+          this.data.push({ "nombre": "poblacion", "valor": this.municipio.population });
+          this.data.push({ "nombre": "superficie", "valor": this.municipio.surface });
+          this.data.push({ "nombre": "altitud", "valor": this.municipio.altitude });
+          this.data.push({ "nombre": "densidad", "valor": this.municipio.density });
+          this.data.push({ "nombre": "nRestaurantes", "valor": this.municipio.nRestaurants });
+          this.data.push({ "nombre": "media", "valor": this.municipio.media });
+          this.data.push({ "nombre": "unpopulated", "valor": this.municipio.unpopulated });
+
+          for (let i = 0; i < this.municipio.medicalcenters.length; i++) {
+            this.data.push({ "nombre": "Centro Medico", "valor": this.municipio.medicalcenters[i]['name'] });
+          }
+
+          for (let i = 0; i < this.municipio.supermarkets.length; i++) {
+            this.data.push({ "nombre": "Centro Medico", "valor": this.municipio.supermarkets[i]['name'] });
+          }
+
+          for (let i = 0; i < this.municipio.stations.length; i++) {
+            this.data.push({ "nombre": "Estacion", "valor": this.municipio.stations[i]['name'] });
+          }
+
+          console.log(this.data)
+
         });
     }
+  }
+
+  rowSelected(d: any) {
+    this.nombre = d['nombre'];
+    this.valor = d['valor'];
+  }
+
+  ocultar() {
+    this.nombre = null;
   }
 
   getNoMuni() {
